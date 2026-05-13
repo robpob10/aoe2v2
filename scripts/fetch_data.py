@@ -44,8 +44,8 @@ def get_recent_dumps(n: int) -> list[dict]:
     recent = sorted(with_data, key=lambda d: d.get("end_date", ""), reverse=True)[:n]
 
     if not recent:
-        print("ERROR: No usable dumps found", file=sys.stderr)
-        sys.exit(1)
+        print("WARN: No usable dumps found — skipping historical data", file=sys.stderr)
+        return []
 
     print(f"  Using {len(recent)} most recent dump(s):")
     for d in recent:
@@ -85,6 +85,9 @@ def main() -> None:
 
     # ── 1. Get recent dump URLs ────────────────────────────────────────────────
     dumps = get_recent_dumps(WEEKS_TO_USE)
+    if not dumps:
+        print("No historical dumps available — exiting without writing output")
+        return
     latest_end_date = dumps[0]["end_date"]
 
     # ── 2. Download Parquet files ─────────────────────────────────────────────────
