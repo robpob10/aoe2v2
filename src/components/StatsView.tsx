@@ -1,15 +1,83 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import type { StatsData, TeamStat } from '@/lib/types';
 
-// Custom display names for maps that need special casing
+// ── Image helpers ─────────────────────────────────────────────────────────────
+
+const civIconUrl = (civ: string) =>
+  `https://aoestats.io/assets/civ_crests/${civ.toLowerCase()}.webp`;
+const civIconFallback = (civ: string) =>
+  `https://raw.githubusercontent.com/SiegeEngineers/aoe2techtree/master/img/Civs/${civ.toLowerCase()}.png`;
+const mapImgUrl = (mapKey: string) =>
+  `https://www.aoe2insights.com/static/images/maps/${mapKey}.png`;
+
+function CivIcon({ civ, size = 26 }: { civ: string; size?: number }) {
+  const [src, setSrc] = useState(civIconUrl(civ));
+  const usedFallback = useRef(false);
+  return (
+    <img
+      src={src}
+      alt={civ}
+      width={size}
+      height={size}
+      className="rounded-full ring-1 ring-white/10 shrink-0 bg-stone-800"
+      onError={() => {
+        if (!usedFallback.current) {
+          usedFallback.current = true;
+          setSrc(civIconFallback(civ));
+        }
+      }}
+    />
+  );
+}
+
+function MapThumb({
+  mapKey,
+  width,
+  height,
+  className = '',
+}: {
+  mapKey: string;
+  width: number;
+  height: number;
+  className?: string;
+}) {
+  const [show, setShow] = useState(true);
+  if (!show) return <div style={{ width, height }} className="bg-stone-800 rounded shrink-0" />;
+  return (
+    <img
+      src={mapImgUrl(mapKey)}
+      alt={mapKey}
+      width={width}
+      height={height}
+      className={`object-cover rounded shrink-0 ${className}`}
+      onError={() => setShow(false)}
+    />
+  );
+}
+
+// ── Map name formatting ───────────────────────────────────────────────────────
+
 const MAP_DISPLAY: Record<string, string> = {
   goldenpit: 'Golden Pit',
   land_nomad: 'Land Nomad',
   black_forest: 'Black Forest',
   hill_fort: 'Hill Fort',
   african_clearing: 'African Clearing',
+  ghost_lake: 'Ghost Lake',
+  four_lakes: 'Four Lakes',
+  team_islands: 'Team Islands',
+  gold_rush: 'Gold Rush',
+  water_nomad: 'Water Nomad',
+  seize_the_mountain: 'Seize the Mountain',
+  mountain_ridge: 'Mountain Ridge',
+  coastal_forest: 'Coastal Forest',
+  wolf_hill: 'Wolf Hill',
+  golden_swamp: 'Golden Swamp',
+  bogland: 'Bogland',
+  paradise_island: 'Paradise Island',
+  fortified_clearing: 'Fortified Clearing',
 };
 
 function formatMapName(key: string): string {
@@ -20,26 +88,7 @@ function formatMapName(key: string): string {
     .join(' ');
 }
 
-// Deterministic color per civ name
-const CIV_PALETTES = [
-  'bg-blue-900/70 text-blue-200 border-blue-700/40',
-  'bg-emerald-900/70 text-emerald-200 border-emerald-700/40',
-  'bg-amber-900/70 text-amber-200 border-amber-700/40',
-  'bg-red-900/70 text-red-200 border-red-700/40',
-  'bg-purple-900/70 text-purple-200 border-purple-700/40',
-  'bg-teal-900/70 text-teal-200 border-teal-700/40',
-  'bg-orange-900/70 text-orange-200 border-orange-700/40',
-  'bg-indigo-900/70 text-indigo-200 border-indigo-700/40',
-  'bg-rose-900/70 text-rose-200 border-rose-700/40',
-  'bg-cyan-900/70 text-cyan-200 border-cyan-700/40',
-  'bg-lime-900/70 text-lime-200 border-lime-700/40',
-  'bg-sky-900/70 text-sky-200 border-sky-700/40',
-];
-
-function civColor(civ: string): string {
-  const hash = civ.split('').reduce((acc, c) => acc + c.charCodeAt(0), 0);
-  return CIV_PALETTES[hash % CIV_PALETTES.length];
-}
+// ── Win rate helpers ──────────────────────────────────────────────────────────
 
 function winRateColor(pct: number): string {
   if (pct >= 56) return 'text-green-400';
@@ -59,27 +108,18 @@ function winRateBg(pct: number): string {
   return 'bg-red-700';
 }
 
-function CivBadge({ civ }: { civ: string }) {
-  return (
-    <span
-      className={`inline-block px-2 py-0.5 rounded border text-xs font-medium tracking-wide ${civColor(civ)}`}
-    >
-      {civ}
-    </span>
-  );
-}
+// ── Sub-components ────────────────────────────────────────────────────────────
 
-function WinRateBar({ pct }: { pct: number }) {
-  // Bar represents deviation from 50%, max shown at 60%
+function WinRateCell({ pct }: { pct: number }) {
   const barWidth = Math.min(Math.max((pct - 40) / 20, 0), 1) * 100;
   return (
     <div className="flex items-center gap-2 justify-end">
-      <span className={`font-mono font-semibold tabular-nums w-12 text-right ${winRateColor(pct)}`}>
+      <span className={`font-mono font-semibold tabular-nums w-12 text-right text-sm ${winRateColor(pct)}`}>
         {pct.toFixed(1)}%
       </span>
-      <div className="w-16 h-1.5 bg-stone-800 rounded-full overflow-hidden">
+      <div className="w-14 h-1.5 bg-stone-800 rounded-full overflow-hidden shrink-0">
         <div
-          className={`h-full rounded-full transition-all ${winRateBg(pct)}`}
+          className={`h-full rounded-full ${winRateBg(pct)}`}
           style={{ width: `${barWidth}%` }}
         />
       </div>
@@ -92,13 +132,15 @@ function TeamRow({ rank, team }: { rank: number; team: TeamStat }) {
   const playPct = (team.playrate * 100).toFixed(2);
 
   return (
-    <tr className="border-b border-stone-800/50 hover:bg-stone-800/20 transition-colors group">
-      <td className="py-3 px-4 text-stone-600 font-mono text-xs tabular-nums w-8">{rank}</td>
+    <tr className="border-b border-stone-800/50 hover:bg-stone-800/20 transition-colors">
+      <td className="py-3 px-4 text-stone-600 font-mono text-xs tabular-nums">{rank}</td>
       <td className="py-3 px-4">
-        <div className="flex flex-wrap gap-2 items-center">
-          <CivBadge civ={team.civs[0]} />
-          <span className="text-stone-700 text-xs">+</span>
-          <CivBadge civ={team.civs[1]} />
+        <div className="flex items-center gap-2 flex-wrap">
+          <CivIcon civ={team.civs[0]} size={26} />
+          <span className="text-stone-200 text-sm">{team.civs[0]}</span>
+          <span className="text-stone-700 text-xs mx-0.5">+</span>
+          <CivIcon civ={team.civs[1]} size={26} />
+          <span className="text-stone-200 text-sm">{team.civs[1]}</span>
         </div>
       </td>
       <td className="py-3 px-4 text-right text-stone-400 font-mono tabular-nums text-sm">
@@ -108,11 +150,13 @@ function TeamRow({ rank, team }: { rank: number; team: TeamStat }) {
         {playPct}%
       </td>
       <td className="py-3 px-4 text-right">
-        <WinRateBar pct={winPct} />
+        <WinRateCell pct={winPct} />
       </td>
     </tr>
   );
 }
+
+// ── Main component ────────────────────────────────────────────────────────────
 
 export default function StatsView() {
   const [data, setData] = useState<StatsData | null>(null);
@@ -123,12 +167,11 @@ export default function StatsView() {
   useEffect(() => {
     fetch('/data/maps.json')
       .then((r) => {
-        if (!r.ok) throw new Error('Data file not found — run: npm run fetch-data');
+        if (!r.ok) throw new Error('Data file not found — run: npm run fetch-data or python3 scripts/crawl.py');
         return r.json();
       })
       .then((d: StatsData) => {
         setData(d);
-        // Default to most popular map
         const top = Object.entries(d.maps).sort(
           (a, b) => b[1].total_appearances - a[1].total_appearances,
         );
@@ -163,9 +206,6 @@ export default function StatsView() {
           <div className="text-stone-400 text-sm font-mono bg-stone-950 rounded px-4 py-2">
             {error}
           </div>
-          <p className="text-stone-500 text-xs">
-            Run the fetch script to download and process match data from aoestats.io
-          </p>
         </div>
       </div>
     );
@@ -181,13 +221,15 @@ export default function StatsView() {
               AoE2 2v2 Team Win Rates
             </h1>
             <p className="text-stone-500 text-xs mt-0.5">
-              Ranked Random Map · 2v2 · {data?.total_matches.toLocaleString()} matches analysed
+              Ranked Random Map · 2v2 · {data?.total_matches.toLocaleString()} matches
             </p>
           </div>
           {data && (
             <div className="text-right shrink-0">
               <div className="text-stone-500 text-xs">Updated {data.crawled_at}</div>
-              <div className="text-stone-600 text-xs mt-0.5">Rolling {data.days_back} days · live data</div>
+              <div className="text-stone-600 text-xs mt-0.5">
+                Rolling {data.days_back} days · live data
+              </div>
             </div>
           )}
         </div>
@@ -196,68 +238,67 @@ export default function StatsView() {
       <main className="max-w-5xl mx-auto px-4 sm:px-6 py-6 space-y-6">
         {/* Map tabs */}
         <div className="overflow-x-auto tabs-scroll pb-1">
-          <div className="flex gap-1.5 min-w-max">
-            {sortedMaps.map(([mapKey, mapData]) => (
-              <button
-                key={mapKey}
-                onClick={() => setSelectedMap(mapKey)}
-                className={`px-3 py-1.5 rounded-md text-sm font-medium transition-colors whitespace-nowrap ${
-                  selectedMap === mapKey
-                    ? 'bg-amber-500 text-stone-950 shadow-sm'
-                    : 'bg-stone-800 text-stone-400 hover:bg-stone-700 hover:text-stone-200'
-                }`}
-              >
-                {formatMapName(mapKey)}
-                <span
-                  className={`ml-1.5 text-xs tabular-nums ${
-                    selectedMap === mapKey ? 'text-stone-800' : 'text-stone-600'
+          <div className="flex gap-2 min-w-max">
+            {sortedMaps.map(([mapKey, mapData]) => {
+              const active = selectedMap === mapKey;
+              return (
+                <button
+                  key={mapKey}
+                  onClick={() => setSelectedMap(mapKey)}
+                  className={`flex items-center gap-2 pl-1 pr-3 py-1 rounded-lg text-sm font-medium transition-colors whitespace-nowrap ${
+                    active
+                      ? 'bg-amber-500 text-stone-950 shadow-sm'
+                      : 'bg-stone-800 text-stone-400 hover:bg-stone-700 hover:text-stone-200'
                   }`}
                 >
-                  {(mapData.total_appearances / 1000).toFixed(1)}k
-                </span>
-              </button>
-            ))}
+                  <MapThumb mapKey={mapKey} width={48} height={36} className="rounded-md" />
+                  <div className="text-left">
+                    <div className="leading-tight">{formatMapName(mapKey)}</div>
+                    <div className={`text-xs tabular-nums leading-tight ${active ? 'text-stone-800' : 'text-stone-600'}`}>
+                      {(mapData.total_appearances / 1000).toFixed(1)}k
+                    </div>
+                  </div>
+                </button>
+              );
+            })}
           </div>
         </div>
 
-        {/* Table */}
+        {/* Selected map hero */}
         {currentMap && (
           <div>
-            <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-3">
-              <h2 className="text-base font-semibold text-stone-100">
-                Top {currentMap.teams.length} Teams on{' '}
-                <span className="text-amber-400">{formatMapName(selectedMap)}</span>
-              </h2>
-              <span className="text-stone-500 text-sm">
-                {currentMap.total_appearances.toLocaleString()} team appearances
-              </span>
+            <div className="flex items-center gap-4 mb-4">
+              <MapThumb mapKey={selectedMap} width={80} height={60} className="rounded-lg ring-1 ring-stone-700" />
+              <div>
+                <h2 className="text-lg font-semibold text-stone-100">
+                  {formatMapName(selectedMap)}
+                </h2>
+                <p className="text-stone-500 text-sm">
+                  {currentMap.total_appearances.toLocaleString()} team appearances ·{' '}
+                  Top {currentMap.teams.length} by play rate
+                </p>
+              </div>
             </div>
 
             <div className="bg-stone-900 rounded-xl border border-stone-800 overflow-hidden">
               <div className="overflow-x-auto">
-                <table className="w-full text-sm min-w-[540px]">
+                <table className="w-full text-sm min-w-[560px]">
                   <thead>
                     <tr className="border-b border-stone-800 bg-stone-900/50">
-                      <th className="text-left py-2.5 px-4 text-stone-500 text-xs font-medium uppercase tracking-wider w-8">
-                        #
-                      </th>
-                      <th className="text-left py-2.5 px-4 text-stone-500 text-xs font-medium uppercase tracking-wider">
-                        Team
-                      </th>
-                      <th className="text-right py-2.5 px-4 text-stone-500 text-xs font-medium uppercase tracking-wider">
-                        Games
-                      </th>
-                      <th className="text-right py-2.5 px-4 text-stone-500 text-xs font-medium uppercase tracking-wider">
-                        Play Rate
-                      </th>
-                      <th className="text-right py-2.5 px-4 text-stone-500 text-xs font-medium uppercase tracking-wider pr-5">
-                        Win Rate
-                      </th>
+                      <th className="text-left py-2.5 px-4 text-stone-500 text-xs font-medium uppercase tracking-wider w-8">#</th>
+                      <th className="text-left py-2.5 px-4 text-stone-500 text-xs font-medium uppercase tracking-wider">Team</th>
+                      <th className="text-right py-2.5 px-4 text-stone-500 text-xs font-medium uppercase tracking-wider">Games</th>
+                      <th className="text-right py-2.5 px-4 text-stone-500 text-xs font-medium uppercase tracking-wider">Play Rate</th>
+                      <th className="text-right py-2.5 px-4 text-stone-500 text-xs font-medium uppercase tracking-wider pr-4">Win Rate</th>
                     </tr>
                   </thead>
                   <tbody>
                     {currentMap.teams.map((team, i) => (
-                      <TeamRow key={`${team.civs[0]}-${team.civs[1]}`} rank={i + 1} team={team} />
+                      <TeamRow
+                        key={`${team.civs[0]}-${team.civs[1]}`}
+                        rank={i + 1}
+                        team={team}
+                      />
                     ))}
                   </tbody>
                 </table>
@@ -265,8 +306,7 @@ export default function StatsView() {
             </div>
 
             <p className="text-stone-700 text-xs mt-3">
-              Play rate = share of all 2v2 team slots on this map. Win rate = percentage of games
-              won by teams with this civ combination.
+              Play rate = share of all 2v2 team slots on this map. Win rate = games won by this civ pair.
             </p>
           </div>
         )}
