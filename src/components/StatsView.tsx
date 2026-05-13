@@ -37,47 +37,19 @@ function formatMapName(key: string): string {
 // ── Win rate helpers ──────────────────────────────────────────────────────────
 
 function winRateColor(pct: number): string {
-  if (pct >= 53) return '#00b894';
-  if (pct >= 50) return '#00cec9';
-  if (pct >= 47) return '#b2bec3';
-  if (pct >= 44) return '#fdcb6e';
-  return '#ff7675';
-}
-
-function winRateBg(pct: number): string {
-  if (pct >= 53) return '#00b894';
-  if (pct >= 50) return '#00cec9';
-  if (pct >= 47) return '#636e72';
-  if (pct >= 44) return '#e17055';
-  return '#d63031';
+  const dev = pct - 50;
+  const t = Math.min(Math.abs(dev) / 8, 1);
+  const [nr, ng, nb] = [190, 195, 200];
+  const [tr, tg, tb] = dev >= 0 ? [0, 200, 150] : [255, 90, 90];
+  const r = Math.round(nr + (tr - nr) * t);
+  const g = Math.round(ng + (tg - ng) * t);
+  const b = Math.round(nb + (tb - nb) * t);
+  return `rgb(${r},${g},${b})`;
 }
 
 // ── Sub-components ────────────────────────────────────────────────────────────
 
-function WinRateCell({ pct }: { pct: number }) {
-  const barWidth = Math.min(Math.max((pct - 40) / 20, 0), 1) * 100;
-  return (
-    <div className="flex items-center gap-2 justify-end">
-      <span
-        className="font-mono font-semibold tabular-nums w-12 text-right text-sm"
-        style={{ color: winRateColor(pct) }}
-      >
-        {pct.toFixed(1)}%
-      </span>
-      <div
-        className="w-14 h-1.5 rounded-full overflow-hidden shrink-0"
-        style={{ background: 'rgba(255,255,255,0.1)' }}
-      >
-        <div
-          className="h-full rounded-full"
-          style={{ width: `${barWidth}%`, background: winRateBg(pct) }}
-        />
-      </div>
-    </div>
-  );
-}
-
-function TeamRow({ rank, team }: { rank: number; team: TeamStat }) {
+function TeamRow({ team }: { team: TeamStat }) {
   const winPct = team.winrate * 100;
   const playPct = (team.playrate * 100).toFixed(2);
 
@@ -88,9 +60,6 @@ function TeamRow({ rank, team }: { rank: number; team: TeamStat }) {
       onMouseEnter={(e) => { (e.currentTarget as HTMLTableRowElement).style.background = 'rgba(255,255,255,0.04)'; }}
       onMouseLeave={(e) => { (e.currentTarget as HTMLTableRowElement).style.background = ''; }}
     >
-      <td className="py-3 px-4 font-mono text-xs tabular-nums w-8" style={{ color: 'rgba(255,255,255,0.3)' }}>
-        {rank}
-      </td>
       <td className="py-3 px-4 font-medium" style={{ color: '#eee' }}>
         {team.civs[0]}
         <span style={{ color: 'rgba(255,255,255,0.3)', margin: '0 6px' }}>+</span>
@@ -102,8 +71,8 @@ function TeamRow({ rank, team }: { rank: number; team: TeamStat }) {
       <td className="py-3 px-4 text-right font-mono tabular-nums text-sm" style={{ color: 'rgba(255,255,255,0.55)' }}>
         {playPct}%
       </td>
-      <td className="py-3 px-4 text-right">
-        <WinRateCell pct={winPct} />
+      <td className="py-3 px-4 text-right font-mono font-semibold tabular-nums text-sm" style={{ color: winRateColor(winPct) }}>
+        {winPct.toFixed(1)}%
       </td>
     </tr>
   );
@@ -249,7 +218,6 @@ export default function StatsView() {
                 <table className="w-full text-sm">
                   <thead>
                     <tr style={{ background: 'rgba(255,255,255,0.08)' }}>
-                      <th className="text-left py-2.5 px-4 text-xs font-semibold uppercase tracking-wider w-8" style={{ color: 'rgba(255,255,255,0.45)' }}>#</th>
                       <th className="text-left py-2.5 px-4 text-xs font-semibold uppercase tracking-wider" style={{ color: 'rgba(255,255,255,0.45)' }}>Team</th>
                       <th className="text-right py-2.5 px-4 text-xs font-semibold uppercase tracking-wider" style={{ color: 'rgba(255,255,255,0.45)' }}>Games</th>
                       <th className="text-right py-2.5 px-4 text-xs font-semibold uppercase tracking-wider" style={{ color: 'rgba(255,255,255,0.45)' }}>Play Rate</th>
@@ -257,10 +225,9 @@ export default function StatsView() {
                     </tr>
                   </thead>
                   <tbody>
-                    {currentMap.teams.map((team, i) => (
+                    {currentMap.teams.map((team) => (
                       <TeamRow
                         key={`${team.civs[0]}-${team.civs[1]}`}
-                        rank={i + 1}
                         team={team}
                       />
                     ))}
