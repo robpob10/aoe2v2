@@ -1,0 +1,13 @@
+# Next.js
+.next/
+out/
+node_modules/
+
+# Python cache
+__pycache__/
+*.pyc
+.data_cache/
+
+# Env
+.env*
+!.env.example
