@@ -65,9 +65,6 @@ function TeamRow({ team }: { team: TeamStat }) {
         <span style={{ color: 'rgba(255,255,255,0.3)', margin: '0 2px' }}>+</span>
         {team.civs[1]}
       </td>
-      <td className="py-2 px-2 text-right font-mono tabular-nums text-sm" style={{ color: 'rgba(255,255,255,0.5)' }}>
-        {team.games}
-      </td>
       <td className="py-2 px-2 text-right font-mono tabular-nums text-sm" style={{ color: 'rgba(255,255,255,0.55)' }}>
         {playPct}%
       </td>
@@ -219,7 +216,6 @@ export default function StatsView() {
                   <thead>
                     <tr style={{ background: 'rgba(255,255,255,0.08)' }}>
                       <th className="text-left py-2 pl-2 pr-1 text-xs font-semibold uppercase tracking-wider" style={{ color: 'rgba(255,255,255,0.45)' }}>Team</th>
-                      <th className="text-right py-2 px-2 text-xs font-semibold uppercase tracking-wider" style={{ color: 'rgba(255,255,255,0.45)' }}>G</th>
                       <th className="text-right py-2 px-2 text-xs font-semibold uppercase tracking-wider" style={{ color: 'rgba(255,255,255,0.45)' }}>Play%</th>
                       <th className="text-right py-2 px-2 text-xs font-semibold uppercase tracking-wider" style={{ color: 'rgba(255,255,255,0.45)' }}>Win%</th>
                     </tr>
