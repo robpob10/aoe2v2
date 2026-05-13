@@ -12,7 +12,6 @@ export interface MapData {
 }
 
 export interface StatsData {
-  patch: number;
   dump_date: string;
   total_matches: number;
   maps: Record<string, MapData>;

@@ -101,13 +101,13 @@ def main() -> None:
         matches_frames.append(
             pd.read_parquet(
                 matches_path,
-                columns=["game_id", "map", "patch", "num_players", "raw_match_type"],
+                columns=["game_id", "map", "num_players", "raw_match_type"],
             )
         )
         players_frames.append(
             pd.read_parquet(
                 players_path,
-                columns=["game_id", "civ", "winner", "team"],
+                columns=["game_id", "civ", "winner", "team", "old_rating"],
             )
         )
 
@@ -138,43 +138,36 @@ def main() -> None:
     print(f"\n  2v2 RM matches (types {RM_2V2_TYPES}): {len(matches_2v2):,}")
 
     if matches_2v2.empty:
-        # Fallback: accept any 4-player game if the type filter is too strict
         print(
             "  WARNING: strict type filter yielded 0 rows. "
             "Falling back to all 4-player games."
         )
         matches_2v2 = four_player.copy()
 
-    # ── 5. Latest major patch ─────────────────────────────────────────────────
-    patch_counts = matches_2v2["patch"].value_counts()
-    print("\n  Patch distribution (top 5):")
-    print("    " + patch_counts.head(5).to_string(header=False).replace("\n", "\n    "))
+    # ── 5. Filter players: drop any game containing a player with rating < 1200 ─
+    print(f"\n  Total player rows: {len(players_df):,}")
+    game_ids_2v2 = set(matches_2v2["game_id"])
+    players_2v2 = players_df[players_df["game_id"].isin(game_ids_2v2)].copy()
 
-    latest_patch = int(matches_2v2["patch"].max())
-    print(f"\n  Using latest patch: {latest_patch}")
+    low_elo_games = set(
+        players_2v2.loc[players_2v2["old_rating"] < 1200, "game_id"]
+    )
+    print(f"  Games with a player rated <1200: {len(low_elo_games):,} (dropping)")
 
-    matches_latest = matches_2v2[matches_2v2["patch"] == latest_patch].copy()
-    print(f"  Matches on latest patch: {len(matches_latest):,}")
+    matches_filtered = matches_2v2[~matches_2v2["game_id"].isin(low_elo_games)].copy()
+    print(f"  Matches after elo filter: {len(matches_filtered):,}")
 
-    if len(matches_latest) < 100:
-        print("  WARNING: very few matches on latest patch — using all patches instead")
-        matches_latest = matches_2v2.copy()
-        latest_patch = -1
+    game_ids = set(matches_filtered["game_id"])
+    players_filtered = players_2v2[players_2v2["game_id"].isin(game_ids)].copy()
+    print(f"  Player rows after elo filter: {len(players_filtered):,}")
 
-    # ── 6. Filter players ────────────────────────────────────────────────────
-
-    print(f"  Total player rows: {len(players_df):,}")
-    game_ids = set(matches_latest["game_id"])
-    players_filtered = players_df[players_df["game_id"].isin(game_ids)].copy()
-    print(f"  Player rows for filtered matches: {len(players_filtered):,}")
-
-    # ── 7. Join ───────────────────────────────────────────────────────────────
+    # ── 6. Join ───────────────────────────────────────────────────────────────
     print("\nJoining match metadata to player rows …")
-    merged = matches_latest[["game_id", "map"]].merge(
+    merged = matches_filtered[["game_id", "map"]].merge(
         players_filtered, on="game_id", how="inner"
     )
 
-    # ── 8. Build per-team rows (one row = one team's civ pair + result) ───────
+    # ── 7. Build per-team rows (one row = one team's civ pair + result) ───────
     print("Extracting team compositions …")
 
     # Sort civs within each (game_id, team) group so civ1 <= civ2 alphabetically
@@ -202,7 +195,7 @@ def main() -> None:
 
     print(f"  Team appearances: {len(team_df):,}")
 
-    # ── 9. Aggregate by map + civ pair ────────────────────────────────────────
+    # ── 8. Aggregate by map + civ pair ────────────────────────────────────────
     print("\nAggregating stats …")
     agg = (
         team_df.groupby(["map", "civ1", "civ2"], observed=True)
@@ -210,11 +203,10 @@ def main() -> None:
         .reset_index()
     )
 
-    # ── 10. Build output JSON ─────────────────────────────────────────────────
+    # ── 9. Build output JSON ──────────────────────────────────────────────────
     output: dict = {
-        "patch": latest_patch if latest_patch != -1 else "all",
         "dump_date": latest_end_date,
-        "total_matches": len(matches_latest),
+        "total_matches": len(matches_filtered),
         "maps": {},
     }
 
@@ -250,7 +242,7 @@ def main() -> None:
 
     print(
         f"\nSaved {len(output['maps'])} maps → {OUTPUT_PATH}\n"
-        f"Patch: {output['patch']}  |  Matches: {output['total_matches']:,}"
+        f"Matches: {output['total_matches']:,}"
     )
 
 

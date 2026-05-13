@@ -186,8 +186,8 @@ export default function StatsView() {
           </div>
           {data && (
             <div className="text-right shrink-0">
-              <div className="text-amber-500/70 text-xs font-mono">Patch {data.patch}</div>
-              <div className="text-stone-600 text-xs mt-0.5">Data from {data.dump_date}</div>
+              <div className="text-stone-500 text-xs">Data through {data.dump_date}</div>
+              <div className="text-stone-600 text-xs mt-0.5">≥1200 rated · rolling 4 weeks</div>
             </div>
           )}
         </div>
