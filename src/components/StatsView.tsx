@@ -1,61 +1,7 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import type { StatsData, TeamStat } from '@/lib/types';
-
-// ── Image helpers ─────────────────────────────────────────────────────────────
-
-const civIconUrl = (civ: string) =>
-  `https://aoestats.io/assets/civ_crests/${civ.toLowerCase()}.webp`;
-const civIconFallback = (civ: string) =>
-  `https://raw.githubusercontent.com/SiegeEngineers/aoe2techtree/master/img/Civs/${civ.toLowerCase()}.png`;
-const mapImgUrl = (mapKey: string) =>
-  `https://www.aoe2insights.com/static/images/maps/${mapKey}.png`;
-
-function CivIcon({ civ, size = 26 }: { civ: string; size?: number }) {
-  const [src, setSrc] = useState(civIconUrl(civ));
-  const usedFallback = useRef(false);
-  return (
-    <img
-      src={src}
-      alt={civ}
-      width={size}
-      height={size}
-      className="rounded-full ring-1 ring-white/10 shrink-0 bg-stone-800"
-      onError={() => {
-        if (!usedFallback.current) {
-          usedFallback.current = true;
-          setSrc(civIconFallback(civ));
-        }
-      }}
-    />
-  );
-}
-
-function MapThumb({
-  mapKey,
-  width,
-  height,
-  className = '',
-}: {
-  mapKey: string;
-  width: number;
-  height: number;
-  className?: string;
-}) {
-  const [show, setShow] = useState(true);
-  if (!show) return <div style={{ width, height }} className="bg-stone-800 rounded shrink-0" />;
-  return (
-    <img
-      src={mapImgUrl(mapKey)}
-      alt={mapKey}
-      width={width}
-      height={height}
-      className={`object-cover rounded shrink-0 ${className}`}
-      onError={() => setShow(false)}
-    />
-  );
-}
 
 // ── Map name formatting ───────────────────────────────────────────────────────
 
@@ -91,21 +37,19 @@ function formatMapName(key: string): string {
 // ── Win rate helpers ──────────────────────────────────────────────────────────
 
 function winRateColor(pct: number): string {
-  if (pct >= 56) return 'text-green-400';
-  if (pct >= 53) return 'text-green-500/90';
-  if (pct >= 50) return 'text-emerald-400/80';
-  if (pct >= 47) return 'text-stone-300';
-  if (pct >= 44) return 'text-orange-400';
-  return 'text-red-400';
+  if (pct >= 53) return '#00b894';
+  if (pct >= 50) return '#00cec9';
+  if (pct >= 47) return '#b2bec3';
+  if (pct >= 44) return '#fdcb6e';
+  return '#ff7675';
 }
 
 function winRateBg(pct: number): string {
-  if (pct >= 56) return 'bg-green-500';
-  if (pct >= 53) return 'bg-green-600';
-  if (pct >= 50) return 'bg-emerald-700';
-  if (pct >= 47) return 'bg-stone-600';
-  if (pct >= 44) return 'bg-orange-700';
-  return 'bg-red-700';
+  if (pct >= 53) return '#00b894';
+  if (pct >= 50) return '#00cec9';
+  if (pct >= 47) return '#636e72';
+  if (pct >= 44) return '#e17055';
+  return '#d63031';
 }
 
 // ── Sub-components ────────────────────────────────────────────────────────────
@@ -114,13 +58,19 @@ function WinRateCell({ pct }: { pct: number }) {
   const barWidth = Math.min(Math.max((pct - 40) / 20, 0), 1) * 100;
   return (
     <div className="flex items-center gap-2 justify-end">
-      <span className={`font-mono font-semibold tabular-nums w-12 text-right text-sm ${winRateColor(pct)}`}>
+      <span
+        className="font-mono font-semibold tabular-nums w-12 text-right text-sm"
+        style={{ color: winRateColor(pct) }}
+      >
         {pct.toFixed(1)}%
       </span>
-      <div className="w-14 h-1.5 bg-stone-800 rounded-full overflow-hidden shrink-0">
+      <div
+        className="w-14 h-1.5 rounded-full overflow-hidden shrink-0"
+        style={{ background: 'rgba(255,255,255,0.1)' }}
+      >
         <div
-          className={`h-full rounded-full ${winRateBg(pct)}`}
-          style={{ width: `${barWidth}%` }}
+          className="h-full rounded-full"
+          style={{ width: `${barWidth}%`, background: winRateBg(pct) }}
         />
       </div>
     </div>
@@ -132,21 +82,24 @@ function TeamRow({ rank, team }: { rank: number; team: TeamStat }) {
   const playPct = (team.playrate * 100).toFixed(2);
 
   return (
-    <tr className="border-b border-stone-800/50 hover:bg-stone-800/20 transition-colors">
-      <td className="py-3 px-4 text-stone-600 font-mono text-xs tabular-nums">{rank}</td>
-      <td className="py-3 px-4">
-        <div className="flex items-center gap-2 flex-wrap">
-          <CivIcon civ={team.civs[0]} size={26} />
-          <span className="text-stone-200 text-sm">{team.civs[0]}</span>
-          <span className="text-stone-700 text-xs mx-0.5">+</span>
-          <CivIcon civ={team.civs[1]} size={26} />
-          <span className="text-stone-200 text-sm">{team.civs[1]}</span>
-        </div>
+    <tr
+      className="border-b transition-colors"
+      style={{ borderColor: 'rgba(255,255,255,0.06)' }}
+      onMouseEnter={(e) => { (e.currentTarget as HTMLTableRowElement).style.background = 'rgba(255,255,255,0.04)'; }}
+      onMouseLeave={(e) => { (e.currentTarget as HTMLTableRowElement).style.background = ''; }}
+    >
+      <td className="py-3 px-4 font-mono text-xs tabular-nums w-8" style={{ color: 'rgba(255,255,255,0.3)' }}>
+        {rank}
       </td>
-      <td className="py-3 px-4 text-right text-stone-400 font-mono tabular-nums text-sm">
+      <td className="py-3 px-4 font-medium" style={{ minWidth: '260px', color: '#eee' }}>
+        {team.civs[0]}
+        <span style={{ color: 'rgba(255,255,255,0.3)', margin: '0 6px' }}>+</span>
+        {team.civs[1]}
+      </td>
+      <td className="py-3 px-4 text-right font-mono tabular-nums text-sm" style={{ color: 'rgba(255,255,255,0.5)' }}>
         {team.games.toLocaleString()}
       </td>
-      <td className="py-3 px-4 text-right text-stone-300 font-mono tabular-nums text-sm">
+      <td className="py-3 px-4 text-right font-mono tabular-nums text-sm" style={{ color: 'rgba(255,255,255,0.55)' }}>
         {playPct}%
       </td>
       <td className="py-3 px-4 text-right">
@@ -167,7 +120,7 @@ export default function StatsView() {
   useEffect(() => {
     fetch('/data/maps.json')
       .then((r) => {
-        if (!r.ok) throw new Error('Data file not found — run: npm run fetch-data or python3 scripts/crawl.py');
+        if (!r.ok) throw new Error('Data file not found — run: python3 scripts/crawl.py');
         return r.json();
       })
       .then((d: StatsData) => {
@@ -190,20 +143,25 @@ export default function StatsView() {
 
   const currentMap = data && selectedMap ? data.maps[selectedMap] : null;
 
+  const pageBg = { background: 'linear-gradient(135deg, #1a1a2e 0%, #16213e 100%)' };
+
   if (loading) {
     return (
-      <div className="min-h-screen bg-stone-950 flex items-center justify-center">
-        <div className="text-amber-400 text-base animate-pulse">Loading match data…</div>
+      <div className="min-h-screen flex items-center justify-center" style={pageBg}>
+        <div className="text-base animate-pulse" style={{ color: '#00cec9' }}>Loading match data…</div>
       </div>
     );
   }
 
   if (error) {
     return (
-      <div className="min-h-screen bg-stone-950 flex items-center justify-center p-8">
-        <div className="bg-stone-900 border border-red-900/60 rounded-xl p-8 max-w-lg text-center space-y-3">
-          <div className="text-red-400 font-semibold text-lg">No data available</div>
-          <div className="text-stone-400 text-sm font-mono bg-stone-950 rounded px-4 py-2">
+      <div className="min-h-screen flex items-center justify-center p-8" style={pageBg}>
+        <div
+          className="rounded-xl p-8 max-w-lg text-center space-y-3"
+          style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,71,87,0.4)' }}
+        >
+          <div className="font-semibold text-lg" style={{ color: '#ff7675' }}>No data available</div>
+          <div className="text-sm font-mono rounded px-4 py-2" style={{ color: '#b2bec3', background: 'rgba(0,0,0,0.3)' }}>
             {error}
           </div>
         </div>
@@ -212,84 +170,90 @@ export default function StatsView() {
   }
 
   return (
-    <div className="min-h-screen bg-stone-950 text-stone-100">
+    <div className="min-h-screen" style={{ ...pageBg, color: '#eee' }}>
       {/* Header */}
-      <header className="border-b border-stone-800 bg-stone-900/80 backdrop-blur sticky top-0 z-10">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+      <header
+        className="border-b sticky top-0 z-10"
+        style={{ borderColor: 'rgba(255,255,255,0.08)', background: 'rgba(26,26,46,0.95)', backdropFilter: 'blur(8px)' }}
+      >
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
           <div>
-            <h1 className="text-xl font-bold text-amber-400 tracking-tight">
+            <h1 className="text-xl font-bold tracking-tight" style={{ color: '#00cec9' }}>
               AoE2 2v2 Team Win Rates
             </h1>
-            <p className="text-stone-500 text-xs mt-0.5">
+            <p className="text-xs mt-0.5" style={{ color: 'rgba(255,255,255,0.4)' }}>
               Ranked Random Map · 2v2 · {data?.total_matches.toLocaleString()} matches
             </p>
           </div>
           {data && (
-            <div className="text-right shrink-0">
-              <div className="text-stone-500 text-xs">Updated {data.crawled_at}</div>
-              <div className="text-stone-600 text-xs mt-0.5">
-                Rolling {data.days_back} days · live data
-              </div>
+            <div className="text-right shrink-0 text-xs" style={{ color: 'rgba(255,255,255,0.35)' }}>
+              <div>Updated {data.crawled_at}</div>
+              <div className="mt-0.5">Rolling {data.days_back} days · live data</div>
             </div>
           )}
         </div>
       </header>
 
-      <main className="max-w-5xl mx-auto px-4 sm:px-6 py-6 space-y-6">
+      <main className="max-w-3xl mx-auto px-4 sm:px-6 py-6 space-y-5">
         {/* Map tabs */}
-        <div className="overflow-x-auto tabs-scroll pb-1">
-          <div className="flex gap-2 min-w-max">
-            {sortedMaps.map(([mapKey, mapData]) => {
+        <div className="overflow-x-auto pb-1">
+          <div className="flex gap-1.5 min-w-max flex-wrap">
+            {sortedMaps.map(([mapKey]) => {
               const active = selectedMap === mapKey;
               return (
                 <button
                   key={mapKey}
                   onClick={() => setSelectedMap(mapKey)}
-                  className={`flex items-center gap-2 pl-1 pr-3 py-1 rounded-lg text-sm font-medium transition-colors whitespace-nowrap ${
-                    active
-                      ? 'bg-amber-500 text-stone-950 shadow-sm'
-                      : 'bg-stone-800 text-stone-400 hover:bg-stone-700 hover:text-stone-200'
-                  }`}
+                  className="px-3 py-1.5 rounded-lg text-sm font-medium transition-all whitespace-nowrap"
+                  style={{
+                    background: active ? '#00cec9' : 'rgba(255,255,255,0.07)',
+                    color: active ? '#1a1a2e' : 'rgba(255,255,255,0.6)',
+                  }}
+                  onMouseEnter={(e) => {
+                    if (!active) {
+                      (e.currentTarget as HTMLButtonElement).style.background = 'rgba(255,255,255,0.13)';
+                      (e.currentTarget as HTMLButtonElement).style.color = '#eee';
+                    }
+                  }}
+                  onMouseLeave={(e) => {
+                    if (!active) {
+                      (e.currentTarget as HTMLButtonElement).style.background = 'rgba(255,255,255,0.07)';
+                      (e.currentTarget as HTMLButtonElement).style.color = 'rgba(255,255,255,0.6)';
+                    }
+                  }}
                 >
-                  <MapThumb mapKey={mapKey} width={48} height={36} className="rounded-md" />
-                  <div className="text-left">
-                    <div className="leading-tight">{formatMapName(mapKey)}</div>
-                    <div className={`text-xs tabular-nums leading-tight ${active ? 'text-stone-800' : 'text-stone-600'}`}>
-                      {(mapData.total_appearances / 1000).toFixed(1)}k
-                    </div>
-                  </div>
+                  {formatMapName(mapKey)}
                 </button>
               );
             })}
           </div>
         </div>
 
-        {/* Selected map hero */}
+        {/* Table */}
         {currentMap && (
           <div>
-            <div className="flex items-center gap-4 mb-4">
-              <MapThumb mapKey={selectedMap} width={80} height={60} className="rounded-lg ring-1 ring-stone-700" />
-              <div>
-                <h2 className="text-lg font-semibold text-stone-100">
-                  {formatMapName(selectedMap)}
-                </h2>
-                <p className="text-stone-500 text-sm">
-                  {currentMap.total_appearances.toLocaleString()} team appearances ·{' '}
-                  Top {currentMap.teams.length} by play rate
-                </p>
-              </div>
+            <div className="flex items-baseline justify-between mb-3">
+              <h2 className="text-base font-semibold" style={{ color: '#eee' }}>
+                {formatMapName(selectedMap)}
+              </h2>
+              <span className="text-xs" style={{ color: 'rgba(255,255,255,0.35)' }}>
+                {currentMap.total_appearances.toLocaleString()} team appearances
+              </span>
             </div>
 
-            <div className="bg-stone-900 rounded-xl border border-stone-800 overflow-hidden">
+            <div
+              className="rounded-xl overflow-hidden"
+              style={{ border: '1px solid rgba(255,255,255,0.09)', background: 'rgba(255,255,255,0.03)' }}
+            >
               <div className="overflow-x-auto">
-                <table className="w-full text-sm min-w-[560px]">
+                <table className="w-full text-sm min-w-[520px]">
                   <thead>
-                    <tr className="border-b border-stone-800 bg-stone-900/50">
-                      <th className="text-left py-2.5 px-4 text-stone-500 text-xs font-medium uppercase tracking-wider w-8">#</th>
-                      <th className="text-left py-2.5 px-4 text-stone-500 text-xs font-medium uppercase tracking-wider">Team</th>
-                      <th className="text-right py-2.5 px-4 text-stone-500 text-xs font-medium uppercase tracking-wider">Games</th>
-                      <th className="text-right py-2.5 px-4 text-stone-500 text-xs font-medium uppercase tracking-wider">Play Rate</th>
-                      <th className="text-right py-2.5 px-4 text-stone-500 text-xs font-medium uppercase tracking-wider pr-4">Win Rate</th>
+                    <tr style={{ background: 'rgba(255,255,255,0.08)' }}>
+                      <th className="text-left py-2.5 px-4 text-xs font-semibold uppercase tracking-wider w-8" style={{ color: 'rgba(255,255,255,0.45)' }}>#</th>
+                      <th className="text-left py-2.5 px-4 text-xs font-semibold uppercase tracking-wider" style={{ color: 'rgba(255,255,255,0.45)' }}>Team</th>
+                      <th className="text-right py-2.5 px-4 text-xs font-semibold uppercase tracking-wider" style={{ color: 'rgba(255,255,255,0.45)' }}>Games</th>
+                      <th className="text-right py-2.5 px-4 text-xs font-semibold uppercase tracking-wider" style={{ color: 'rgba(255,255,255,0.45)' }}>Play Rate</th>
+                      <th className="text-right py-2.5 px-4 text-xs font-semibold uppercase tracking-wider" style={{ color: 'rgba(255,255,255,0.45)' }}>Win Rate</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -305,7 +269,7 @@ export default function StatsView() {
               </div>
             </div>
 
-            <p className="text-stone-700 text-xs mt-3">
+            <p className="text-xs mt-2.5" style={{ color: 'rgba(255,255,255,0.22)' }}>
               Play rate = share of all 2v2 team slots on this map. Win rate = games won by this civ pair.
             </p>
           </div>
