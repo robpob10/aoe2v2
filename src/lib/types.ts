@@ -12,7 +12,8 @@ export interface MapData {
 }
 
 export interface StatsData {
-  dump_date: string;
+  crawled_at: string;
+  days_back: number;
   total_matches: number;
   maps: Record<string, MapData>;
 }

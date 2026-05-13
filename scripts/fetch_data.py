@@ -195,7 +195,8 @@ def main() -> None:
 
     # ── 9. Build output JSON ──────────────────────────────────────────────────
     output: dict = {
-        "dump_date": latest_end_date,
+        "crawled_at": latest_end_date,
+        "days_back": WEEKS_TO_USE * 7,
         "total_matches": len(matches_filtered),
         "maps": {},
     }

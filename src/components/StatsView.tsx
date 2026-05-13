@@ -186,8 +186,8 @@ export default function StatsView() {
           </div>
           {data && (
             <div className="text-right shrink-0">
-              <div className="text-stone-500 text-xs">Data through {data.dump_date}</div>
-              <div className="text-stone-600 text-xs mt-0.5">All rated players · rolling 4 weeks</div>
+              <div className="text-stone-500 text-xs">Updated {data.crawled_at}</div>
+              <div className="text-stone-600 text-xs mt-0.5">Rolling {data.days_back} days · live data</div>
             </div>
           )}
         </div>
