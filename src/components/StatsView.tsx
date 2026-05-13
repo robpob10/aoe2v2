@@ -60,18 +60,18 @@ function TeamRow({ team }: { team: TeamStat }) {
       onMouseEnter={(e) => { (e.currentTarget as HTMLTableRowElement).style.background = 'rgba(255,255,255,0.04)'; }}
       onMouseLeave={(e) => { (e.currentTarget as HTMLTableRowElement).style.background = ''; }}
     >
-      <td className="py-2.5 px-2 font-medium text-sm" style={{ color: '#eee' }}>
+      <td className="py-2 pl-2 pr-1 font-medium text-sm" style={{ color: '#eee' }}>
         {team.civs[0]}
-        <span style={{ color: 'rgba(255,255,255,0.3)', margin: '0 3px' }}>+</span>
+        <span style={{ color: 'rgba(255,255,255,0.3)', margin: '0 2px' }}>+</span>
         {team.civs[1]}
       </td>
-      <td className="py-2.5 px-2 text-right font-mono tabular-nums text-sm" style={{ color: 'rgba(255,255,255,0.5)' }}>
+      <td className="py-2 px-2 text-right font-mono tabular-nums text-sm" style={{ color: 'rgba(255,255,255,0.5)' }}>
         {team.games}
       </td>
-      <td className="py-2.5 px-2 text-right font-mono tabular-nums text-sm" style={{ color: 'rgba(255,255,255,0.55)' }}>
+      <td className="py-2 px-2 text-right font-mono tabular-nums text-sm" style={{ color: 'rgba(255,255,255,0.55)' }}>
         {playPct}%
       </td>
-      <td className="py-2.5 px-2 text-right font-mono font-semibold tabular-nums text-sm" style={{ color: winRateColor(winPct) }}>
+      <td className="py-2 px-2 text-right font-mono font-semibold tabular-nums text-sm" style={{ color: winRateColor(winPct) }}>
         {winPct.toFixed(1)}%
       </td>
     </tr>
@@ -218,7 +218,7 @@ export default function StatsView() {
                 <table className="w-full text-sm">
                   <thead>
                     <tr style={{ background: 'rgba(255,255,255,0.08)' }}>
-                      <th className="text-left py-2 px-2 text-xs font-semibold uppercase tracking-wider" style={{ color: 'rgba(255,255,255,0.45)' }}>Team</th>
+                      <th className="text-left py-2 pl-2 pr-1 text-xs font-semibold uppercase tracking-wider" style={{ color: 'rgba(255,255,255,0.45)' }}>Team</th>
                       <th className="text-right py-2 px-2 text-xs font-semibold uppercase tracking-wider" style={{ color: 'rgba(255,255,255,0.45)' }}>G</th>
                       <th className="text-right py-2 px-2 text-xs font-semibold uppercase tracking-wider" style={{ color: 'rgba(255,255,255,0.45)' }}>Play%</th>
                       <th className="text-right py-2 px-2 text-xs font-semibold uppercase tracking-wider" style={{ color: 'rgba(255,255,255,0.45)' }}>Win%</th>
