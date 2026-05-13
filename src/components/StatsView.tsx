@@ -91,7 +91,7 @@ function TeamRow({ rank, team }: { rank: number; team: TeamStat }) {
       <td className="py-3 px-4 font-mono text-xs tabular-nums w-8" style={{ color: 'rgba(255,255,255,0.3)' }}>
         {rank}
       </td>
-      <td className="py-3 px-4 font-medium" style={{ minWidth: '260px', color: '#eee' }}>
+      <td className="py-3 px-4 font-medium" style={{ color: '#eee' }}>
         {team.civs[0]}
         <span style={{ color: 'rgba(255,255,255,0.3)', margin: '0 6px' }}>+</span>
         {team.civs[1]}
@@ -246,7 +246,7 @@ export default function StatsView() {
               style={{ border: '1px solid rgba(255,255,255,0.09)', background: 'rgba(255,255,255,0.03)' }}
             >
               <div className="overflow-x-auto">
-                <table className="w-full text-sm min-w-[520px]">
+                <table className="w-full text-sm">
                   <thead>
                     <tr style={{ background: 'rgba(255,255,255,0.08)' }}>
                       <th className="text-left py-2.5 px-4 text-xs font-semibold uppercase tracking-wider w-8" style={{ color: 'rgba(255,255,255,0.45)' }}>#</th>

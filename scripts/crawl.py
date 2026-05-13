@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Crawl the Relic/WorldsEdge Community API for recent AoE2 2v2 ranked matches.
-Outputs public/data/maps.json for the Next.js frontend.
+Outputs public/data/maps_live.json for the Next.js frontend.
 
 Run locally:  python3 scripts/crawl.py
 CI:           runs daily via .github/workflows/crawl.yml
@@ -12,7 +12,7 @@ Strategy:
   3. For each player: GET getRecentMatchHistory, keep matchtype_id=7 (2v2 RM)
      within the last DAYS_BACK days, dedup by match id
   4. For each unique match extract 4 players → 2 civ pairs → aggregate
-  5. Write maps.json
+  5. Write maps_live.json
 """
 
 import datetime
@@ -32,13 +32,13 @@ DAYS_BACK = 30          # Rolling window
 REQUEST_DELAY = 0.35    # ~170 req/min, under the 200/min rate limit
 MIN_MAP_APPEARANCES = 30
 TOP_N = 20
-OUTPUT_PATH = Path("public/data/maps.json")
+OUTPUT_PATH = Path("public/data/maps_live.json")
 
 SESSION = requests.Session()
 SESSION.headers["User-Agent"] = "aoe2v2-stats/1.0 (github.com/robpob10/aoe2v2)"
 
 
-# ── API helpers ───────────────────────────────────────────────────────────────
+# ── API helpers ────────────────────────────────────────────────────────────────
 
 def get_civ_map() -> dict[int, str]:
     """Fetch civilization ID → name from the metadata endpoint."""
@@ -95,20 +95,20 @@ def fetch_match_history(profile_id: int) -> list[dict]:
     return resp.json().get("matchHistoryStats", [])
 
 
-# ── Main ──────────────────────────────────────────────────────────────────────
+# ── Main ────────────────────────────────────────────────────────────────────────
 
 def main() -> None:
     cutoff_ts = int(
         (datetime.datetime.utcnow() - datetime.timedelta(days=DAYS_BACK)).timestamp()
     )
 
-    # 1. Civ metadata ─────────────────────────────────────────────────────────
+    # 1. Civ metadata ─────────────────────────────────────────────────────
     print("Fetching civ metadata …")
     civ_map = get_civ_map()
     print(f"  {len(civ_map)} civs loaded")
     time.sleep(REQUEST_DELAY)
 
-    # 2. Seed player list ─────────────────────────────────────────────────────
+    # 2. Seed player list ──────────────────────────────────────────────────
     print(f"\nFetching top {SEED_PLAYERS} team RM players …")
     seed_ids: list[int] = []
     for start in range(1, SEED_PLAYERS + 1, 200):
@@ -120,7 +120,7 @@ def main() -> None:
             break
     print(f"  Total seed players: {len(seed_ids)}")
 
-    # 3. Crawl match histories ────────────────────────────────────────────────
+    # 3. Crawl match histories ──────────────────────────────────────────────
     print(f"\nCrawling match histories ({DAYS_BACK}-day window) …")
     seen: set[int] = set()
     # (map_key, civ1, civ2) → {games, wins}

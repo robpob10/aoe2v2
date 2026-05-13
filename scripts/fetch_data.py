@@ -2,7 +2,7 @@
 """
 Fetch and process AoE2 2v2 team win-rate data from aoestats.io weekly Parquet dumps.
 
-Outputs: public/data/maps.json  (read by the Next.js frontend)
+Outputs: public/data/maps_historical.json  (merged by merge_data.py)
 
 Usage:
     python3 scripts/fetch_data.py
@@ -20,7 +20,7 @@ import requests
 DUMPS_API = "https://aoestats.io/api/db_dumps"
 BASE_URL = "https://aoestats.io"
 CACHE_DIR = Path(".data_cache")
-OUTPUT_PATH = Path("public/data/maps.json")
+OUTPUT_PATH = Path("public/data/maps_historical.json")
 
 # How many of the most recent non-empty weekly dumps to combine.
 # More weeks = larger sample size but longer download time.
@@ -83,11 +83,11 @@ def download_file(url: str, dest: Path) -> None:
 def main() -> None:
     CACHE_DIR.mkdir(exist_ok=True)
 
-    # ── 1. Get recent dump URLs ───────────────────────────────────────────────
+    # ── 1. Get recent dump URLs ────────────────────────────────────────────────
     dumps = get_recent_dumps(WEEKS_TO_USE)
     latest_end_date = dumps[0]["end_date"]
 
-    # ── 2. Download Parquet files ─────────────────────────────────────────────
+    # ── 2. Download Parquet files ─────────────────────────────────────────────────
     print("\nDownloading data files …")
     matches_frames: list[pd.DataFrame] = []
     players_frames: list[pd.DataFrame] = []
@@ -111,7 +111,7 @@ def main() -> None:
             )
         )
 
-    # ── 3. Combine weeks ──────────────────────────────────────────────────────
+    # ── 3. Combine weeks ──────────────────────────────────────────────────────────
     print("\nCombining data …")
     matches_df = pd.concat(matches_frames, ignore_index=True).drop_duplicates("game_id")
     players_df = pd.concat(players_frames, ignore_index=True).drop_duplicates(
@@ -130,7 +130,7 @@ def main() -> None:
         .replace("\n", "\n    ")
     )
 
-    # ── 4. Filter to 2v2 Random Map ───────────────────────────────────────────
+    # ── 4. Filter to 2v2 Random Map ────────────────────────────────────────────────
     matches_2v2 = matches_df[
         (matches_df["num_players"] == 4)
         & (matches_df["raw_match_type"].isin(RM_2V2_TYPES))
@@ -144,20 +144,20 @@ def main() -> None:
         )
         matches_2v2 = four_player.copy()
 
-    # ── 5. Filter players to relevant games ──────────────────────────────────
+    # ── 5. Filter players to relevant games ─────────────────────────────────────────
     print(f"\n  Total player rows: {len(players_df):,}")
     matches_filtered = matches_2v2.copy()
     game_ids = set(matches_filtered["game_id"])
     players_filtered = players_df[players_df["game_id"].isin(game_ids)].copy()
     print(f"  Player rows for filtered matches: {len(players_filtered):,}")
 
-    # ── 6. Join ───────────────────────────────────────────────────────────────
+    # ── 6. Join ────────────────────────────────────────────────────────────────────
     print("\nJoining match metadata to player rows …")
     merged = matches_filtered[["game_id", "map"]].merge(
         players_filtered, on="game_id", how="inner"
     )
 
-    # ── 7. Build per-team rows (one row = one team's civ pair + result) ───────
+    # ── 7. Build per-team rows (one row = one team's civ pair + result) ─────────
     print("Extracting team compositions …")
 
     # Sort civs within each (game_id, team) group so civ1 <= civ2 alphabetically
@@ -185,7 +185,7 @@ def main() -> None:
 
     print(f"  Team appearances: {len(team_df):,}")
 
-    # ── 8. Aggregate by map + civ pair ────────────────────────────────────────
+    # ── 8. Aggregate by map + civ pair ───────────────────────────────────────────────
     print("\nAggregating stats …")
     agg = (
         team_df.groupby(["map", "civ1", "civ2"], observed=True)
@@ -193,7 +193,7 @@ def main() -> None:
         .reset_index()
     )
 
-    # ── 9. Build output JSON ──────────────────────────────────────────────────
+    # ── 9. Build output JSON ─────────────────────────────────────────────────────────
     output: dict = {
         "crawled_at": latest_end_date,
         "days_back": WEEKS_TO_USE * 7,
