@@ -60,9 +60,9 @@ function TeamRow({ team }: { team: TeamStat }) {
       onMouseEnter={(e) => { (e.currentTarget as HTMLTableRowElement).style.background = 'rgba(255,255,255,0.04)'; }}
       onMouseLeave={(e) => { (e.currentTarget as HTMLTableRowElement).style.background = ''; }}
     >
-      <td className="py-3 px-4 font-medium" style={{ color: '#eee' }}>
+      <td className="py-3 px-2 font-medium" style={{ color: '#eee' }}>
         {team.civs[0]}
-        <span style={{ color: 'rgba(255,255,255,0.3)', margin: '0 6px' }}>+</span>
+        <span style={{ color: 'rgba(255,255,255,0.3)', margin: '0 4px' }}>+</span>
         {team.civs[1]}
       </td>
       <td className="py-3 px-4 text-right font-mono tabular-nums text-sm" style={{ color: 'rgba(255,255,255,0.5)' }}>
@@ -218,7 +218,7 @@ export default function StatsView() {
                 <table className="w-full text-sm">
                   <thead>
                     <tr style={{ background: 'rgba(255,255,255,0.08)' }}>
-                      <th className="text-left py-2.5 px-4 text-xs font-semibold uppercase tracking-wider" style={{ color: 'rgba(255,255,255,0.45)' }}>Team</th>
+                      <th className="text-left py-2.5 px-2 text-xs font-semibold uppercase tracking-wider" style={{ color: 'rgba(255,255,255,0.45)' }}>Team</th>
                       <th className="text-right py-2.5 px-4 text-xs font-semibold uppercase tracking-wider" style={{ color: 'rgba(255,255,255,0.45)' }}>Games</th>
                       <th className="text-right py-2.5 px-4 text-xs font-semibold uppercase tracking-wider" style={{ color: 'rgba(255,255,255,0.45)' }}>Play Rate</th>
                       <th className="text-right py-2.5 px-4 text-xs font-semibold uppercase tracking-wider" style={{ color: 'rgba(255,255,255,0.45)' }}>Win Rate</th>
