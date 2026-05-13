@@ -107,7 +107,7 @@ def main() -> None:
         players_frames.append(
             pd.read_parquet(
                 players_path,
-                columns=["game_id", "civ", "winner", "team", "old_rating"],
+                columns=["game_id", "civ", "winner", "team"],
             )
         )
 
@@ -144,22 +144,12 @@ def main() -> None:
         )
         matches_2v2 = four_player.copy()
 
-    # ── 5. Filter players: drop any game containing a player with rating < 1200 ─
+    # ── 5. Filter players to relevant games ──────────────────────────────────
     print(f"\n  Total player rows: {len(players_df):,}")
-    game_ids_2v2 = set(matches_2v2["game_id"])
-    players_2v2 = players_df[players_df["game_id"].isin(game_ids_2v2)].copy()
-
-    low_elo_games = set(
-        players_2v2.loc[players_2v2["old_rating"] < 1200, "game_id"]
-    )
-    print(f"  Games with a player rated <1200: {len(low_elo_games):,} (dropping)")
-
-    matches_filtered = matches_2v2[~matches_2v2["game_id"].isin(low_elo_games)].copy()
-    print(f"  Matches after elo filter: {len(matches_filtered):,}")
-
+    matches_filtered = matches_2v2.copy()
     game_ids = set(matches_filtered["game_id"])
-    players_filtered = players_2v2[players_2v2["game_id"].isin(game_ids)].copy()
-    print(f"  Player rows after elo filter: {len(players_filtered):,}")
+    players_filtered = players_df[players_df["game_id"].isin(game_ids)].copy()
+    print(f"  Player rows for filtered matches: {len(players_filtered):,}")
 
     # ── 6. Join ───────────────────────────────────────────────────────────────
     print("\nJoining match metadata to player rows …")
