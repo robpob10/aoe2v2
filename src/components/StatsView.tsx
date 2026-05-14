@@ -40,18 +40,6 @@ const AOE2_QUOTES = [
   'It depends',
   'Auto-everything',
   "Burgundians? They must be making Cavalier",
-  'Faster speed is faster',
-  'Walls are free',
-  'Never not click up',
-  'Heresy is a great tech',
-  'Just Drush FC it',
-  'Throw a castle down',
-  "Mangonels don't splash",
-  'Siege Engineers fixes everything',
-  'Lean on your pocket',
-  'Boyars are actually good',
-  "Frank boar is a myth",
-  "Don't make archers into spearmen",
 ];
 
 // ── Win rate helpers ──────────────────────────────────────────────────────────
