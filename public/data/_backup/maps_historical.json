@@ -1,1 +1,212 @@
-PLACEHOLDER_MAPS_HISTORICAL_JSON
+{
+  "crawled_at": "2026-02-07",
+  "days_back": 91,
+  "total_matches": 30052,
+  "maps": {
+    "african_clearing": {
+      "total_appearances": 5016,
+      "teams": [
+        {
+          "civs": [
+            "huns",
+            "mongols"
+          ],
+          "games": 113,
+          "wins": 71,
+          "playrate": 0.022528,
+          "winrate": 0.6283
+        },
+        {
+          "civs": [
+            "mongols",
+            "spanish"
+          ],
+          "games": 70,
+          "wins": 45,
+          "playrate": 0.013955,
+          "winrate": 0.6429
+        },
+        {
+          "civs": [
+            "chinese",
+            "mongols"
+          ],
+          "games": 56,
+          "wins": 35,
+          "playrate": 0.011164,
+          "winrate": 0.625
+        },
+        {
+          "civs": [
+            "berbers",
+            "huns"
+          ],
+          "games": 53,
+          "wins": 28,
+          "playrate": 0.010566,
+          "winrate": 0.5283
+        },
+        {
+          "civs": [
+            "huns",
+            "spanish"
+          ],
+          "games": 51,
+          "wins": 24,
+          "playrate": 0.010167,
+          "winrate": 0.4706
+        },
+        {
+          "civs": [
+            "mongols",
+            "vietnamese"
+          ],
+          "games": 48,
+          "wins": 24,
+          "playrate": 0.009569,
+          "winrate": 0.5
+        },
+        {
+          "civs": [
+            "berbers",
+            "mongols"
+          ],
+          "games": 47,
+          "wins": 20,
+          "playrate": 0.00937,
+          "winrate": 0.4255
+        },
+        {
+          "civs": [
+            "mongols",
+            "persians"
+          ],
+          "games": 47,
+          "wins": 23,
+          "playrate": 0.00937,
+          "winrate": 0.4894
+        },
+        {
+          "civs": [
+            "huns",
+            "vietnamese"
+          ],
+          "games": 42,
+          "wins": 22,
+          "playrate": 0.008373,
+          "winrate": 0.5238
+        },
+        {
+          "civs": [
+            "khmer",
+            "mongols"
+          ],
+          "games": 38,
+          "wins": 18,
+          "playrate": 0.007576,
+          "winrate": 0.4737
+        },
+        {
+          "civs": [
+            "chinese",
+            "huns"
+          ],
+          "games": 37,
+          "wins": 24,
+          "playrate": 0.007376,
+          "winrate": 0.6486
+        },
+        {
+          "civs": [
+            "koreans",
+            "mongols"
+          ],
+          "games": 37,
+          "wins": 20,
+          "playrate": 0.007376,
+          "winrate": 0.5405
+        },
+        {
+          "civs": [
+            "hindustanis",
+            "mongols"
+          ],
+          "games": 33,
+          "wins": 19,
+          "playrate": 0.006579,
+          "winrate": 0.5758
+        },
+        {
+          "civs": [
+            "huns",
+            "persians"
+          ],
+          "games": 33,
+          "wins": 19,
+          "playrate": 0.006579,
+          "winrate": 0.5758
+        },
+        {
+          "civs": [
+            "huns",
+            "magyars"
+          ],
+          "games": 32,
+          "wins": 21,
+          "playrate": 0.00638,
+          "winrate": 0.6562
+        },
+        {
+          "civs": [
+            "gurjaras",
+            "huns"
+          ],
+          "games": 31,
+          "wins": 18,
+          "playrate": 0.00618,
+          "winrate": 0.5806
+        },
+        {
+          "civs": [
+            "magyars",
+            "mongols"
+          ],
+          "games": 29,
+          "wins": 17,
+          "playrate": 0.005781,
+          "winrate": 0.5862
+        },
+        {
+          "civs": [
+            "berbers",
+            "chinese"
+          ],
+          "games": 28,
+          "wins": 18,
+          "playrate": 0.005582,
+          "winrate": 0.6429
+        },
+        {
+          "civs": [
+            "berbers",
+            "vietnamese"
+          ],
+          "games": 24,
+          "wins": 11,
+          "playrate": 0.004785,
+          "winrate": 0.4583
+        },
+        {
+          "civs": [
+            "spanish",
+            "vietnamese"
+          ],
+          "games": 23,
+          "wins": 11,
+          "playrate": 0.004585,
+          "winrate": 0.4783
+        }
+      ]
+    }
+  }
+}
