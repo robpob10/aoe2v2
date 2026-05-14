@@ -59,7 +59,6 @@ function winRateColor(pct: number): string {
 
 function TeamRow({ team }: { team: TeamStat }) {
   const winPct = team.winrate * 100;
-  const playPct = (team.playrate * 100).toFixed(1);
 
   return (
     <tr
@@ -73,8 +72,8 @@ function TeamRow({ team }: { team: TeamStat }) {
         <span style={{ color: 'rgba(255,255,255,0.3)', margin: '0 3px' }}>+</span>
         {team.civs[1]}
       </td>
-      <td className="py-2.5 px-3 text-right font-mono tabular-nums text-sm" style={{ color: 'rgba(255,255,255,0.55)' }}>
-        {playPct}%
+      <td className="py-2.5 px-3 text-right font-mono tabular-nums text-sm" style={{ color: 'rgba(255,255,255,0.45)' }}>
+        {team.games}
       </td>
       <td className="py-2.5 pr-4 pl-3 text-right font-mono font-semibold tabular-nums text-sm" style={{ color: winRateColor(winPct) }}>
         {winPct.toFixed(1)}%
@@ -162,60 +161,49 @@ export default function StatsView() {
 
   return (
     <div className="min-h-screen" style={{ ...pageBg, color: '#eee' }}>
-      {/* Quote banner */}
-      <div
-        className="w-full text-center px-4 py-3"
-        style={{ background: 'rgba(0,0,0,0.35)', borderBottom: '1px solid rgba(255,255,255,0.06)' }}
-      >
-        <span
-          className="text-base italic"
-          style={{ color: '#f9ca24', letterSpacing: '0.01em' }}
-        >
-          {AOE2_QUOTES[quoteIndex]}
-        </span>
-      </div>
-
-      {/* Header */}
+      {/* Slim sticky header */}
       <header
         className="border-b sticky top-0 z-10"
         style={{ borderColor: 'rgba(255,255,255,0.08)', background: 'rgba(26,26,46,0.95)', backdropFilter: 'blur(8px)' }}
       >
-        <div className="max-w-3xl mx-auto px-4 sm:px-8 py-3 flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+        <div className="max-w-3xl mx-auto px-4 sm:px-8 py-3 flex items-center justify-between">
           <p className="text-xs" style={{ color: 'rgba(255,255,255,0.4)' }}>
             Ranked Random Map · 2v2 · {data?.total_matches.toLocaleString()} matches
           </p>
           {data && (
-            <div className="text-right shrink-0 text-xs" style={{ color: 'rgba(255,255,255,0.35)' }}>
+            <div className="text-right text-xs" style={{ color: 'rgba(255,255,255,0.35)' }}>
               <div>Updated {data.crawled_at}</div>
-              <div className="mt-0.5">Rolling {data.days_back} days · live data</div>
+              <div className="mt-0.5">Rolling {data.days_back} days</div>
             </div>
           )}
         </div>
       </header>
 
       <main className="max-w-3xl mx-auto px-4 sm:px-8 py-6 space-y-5">
-        {/* Best value combo highlight */}
+        {/* Quote banner — contained rectangle */}
+        <div
+          className="rounded-lg px-6 py-4 text-center"
+          style={{ background: 'rgba(0,0,0,0.4)', border: '1px solid rgba(255,255,255,0.1)' }}
+        >
+          <span className="text-base italic" style={{ color: '#f9ca24' }}>
+            {AOE2_QUOTES[quoteIndex]}
+          </span>
+        </div>
+
+        {/* Best value combo — no label, light grey */}
         {bestValueCombo && (
-          <div
-            className="rounded-xl px-6 py-4"
-            style={{ background: 'rgba(0,0,0,0.25)', border: '1px solid rgba(255,255,255,0.08)' }}
-          >
-            <div className="text-xs uppercase tracking-widest mb-2" style={{ color: 'rgba(255,255,255,0.35)' }}>
-              Best value · top 20 plays · {formatMapName(selectedMap)}
-            </div>
-            <div className="flex items-baseline gap-3 flex-wrap">
-              <span className="text-lg font-bold" style={{ color: '#00cec9' }}>
-                {bestValueCombo.civs[0]}
-                <span style={{ color: 'rgba(255,255,255,0.3)', margin: '0 6px' }}>+</span>
-                {bestValueCombo.civs[1]}
-              </span>
-              <span className="font-mono font-semibold text-base" style={{ color: winRateColor(bestValueCombo.winrate * 100) }}>
-                {(bestValueCombo.winrate * 100).toFixed(1)}% win rate
-              </span>
-              <span className="text-xs" style={{ color: 'rgba(255,255,255,0.3)' }}>
-                {bestValueCombo.games.toLocaleString()} games
-              </span>
-            </div>
+          <div className="text-center py-1">
+            <span className="text-lg font-semibold" style={{ color: '#c8cdd2' }}>
+              {bestValueCombo.civs[0]}
+              <span style={{ color: 'rgba(255,255,255,0.25)', margin: '0 8px' }}>+</span>
+              {bestValueCombo.civs[1]}
+            </span>
+            <span
+              className="ml-4 font-mono font-bold text-lg"
+              style={{ color: winRateColor(bestValueCombo.winrate * 100) }}
+            >
+              {(bestValueCombo.winrate * 100).toFixed(1)}%
+            </span>
           </div>
         )}
 
@@ -274,7 +262,7 @@ export default function StatsView() {
                   <thead>
                     <tr style={{ background: 'rgba(255,255,255,0.08)' }}>
                       <th className="text-left py-3 pl-4 pr-2 text-xs font-semibold uppercase tracking-wider" style={{ color: 'rgba(255,255,255,0.45)' }}>Team</th>
-                      <th className="text-right py-3 px-3 text-xs font-semibold uppercase tracking-wider" style={{ color: 'rgba(255,255,255,0.45)' }}>Play%</th>
+                      <th className="text-right py-3 px-3 text-xs font-semibold uppercase tracking-wider" style={{ color: 'rgba(255,255,255,0.45)' }}>#</th>
                       <th className="text-right py-3 pr-4 pl-3 text-xs font-semibold uppercase tracking-wider" style={{ color: 'rgba(255,255,255,0.45)' }}>Win%</th>
                     </tr>
                   </thead>
@@ -291,7 +279,7 @@ export default function StatsView() {
             </div>
 
             <p className="text-xs mt-3" style={{ color: 'rgba(255,255,255,0.22)' }}>
-              Play rate = share of all 2v2 team slots on this map. Win rate = games won by this civ pair.
+              Win rate = games won by this civ pair on this map.
             </p>
           </div>
         )}
