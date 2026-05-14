@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
 """
 Crawl the Relic/WorldsEdge Community API for recent AoE2 2v2 ranked matches.
-Outputs public/data/maps_live.json for the Next.js frontend.
+Outputs public/data/maps.json for the Next.js frontend.
 
 Run locally:  python3 scripts/crawl.py
-Batch mode:   python3 scripts/crawl.py --start-rank 3000
-              python3 scripts/crawl.py --start-rank 6000
-CI:           runs daily via .github/workflows/crawl.yml
+Batch mode:   python3 scripts/crawl.py --start-rank 500
+              python3 scripts/crawl.py --start-rank 1000  ... etc
+CI:           python3 scripts/crawl.py --count 3000
+              (runs daily via .github/workflows/crawl.yml)
 
 Batch runs accumulate into a shared state cache (.data_cache/crawl_state.pkl)
 so match deduplication is preserved across batches.  Pass --fresh to wipe the
@@ -23,17 +24,17 @@ from pathlib import Path
 
 import requests
 
-# ── Config ──────────────────────────────────────────────────────────────────────────────
+# ── Config ────────────────────────────────────────────────────────────────────
 API_BASE = "https://aoe-api.worldsedgelink.com/community/leaderboard"
-LEADERBOARD_ID = 4      # TEAM_RM_RANKED (2v2/3v3/4v4 combined)
+LEADERBOARD_ID = 4      # TEAM_RM_RANKED — ratings here are team ELO
 MATCH_TYPE_2V2 = 7      # 2v2 RM ranked
-DAYS_BACK = 2           # Rolling window (48 h keeps CI under ~1 h)
-MIN_ELO = 1400          # Only seed players at or above this team RM rating
-BATCH_SIZE = 2500       # Players per batch (default; override via --count)
+DAYS_BACK = 30          # Rolling window
+MIN_ELO = 1400          # Team ELO floor (leaderboard_id=4 ratings)
+BATCH_SIZE = 500        # Players per batch
 REQUEST_DELAY = 0.35    # ~170 req/min, under the 200/min rate limit
 MIN_MAP_APPEARANCES = 10
 TOP_N = 20
-OUTPUT_PATH = Path("public/data/maps_live.json")
+OUTPUT_PATH = Path("public/data/maps.json")
 STATE_PATH = Path(".data_cache/crawl_state.pkl")
 CHECKPOINT_EVERY = 500
 
@@ -41,7 +42,7 @@ SESSION = requests.Session()
 SESSION.headers["User-Agent"] = "aoe2v2-stats/1.0 (github.com/robpob10/aoe2v2)"
 
 
-# ── API helpers ──────────────────────────────────────────────────────────────────────────
+# ── API helpers ───────────────────────────────────────────────────────────────
 
 def get_civ_map() -> dict[int, str]:
     resp = SESSION.get(
@@ -93,7 +94,7 @@ def fetch_match_history(profile_id: int) -> list[dict]:
     return resp.json().get("matchHistoryStats", [])
 
 
-# ── State persistence ───────────────────────────────────────────────────────────────────
+# ── State persistence ─────────────────────────────────────────────────────────
 
 def load_state() -> tuple[set, dict]:
     if STATE_PATH.exists():
@@ -115,7 +116,7 @@ def save_state(seen: set, stats: dict) -> None:
         pickle.dump({"seen": seen, "stats": dict(stats)}, f)
 
 
-# ── Output ─────────────────────────────────────────────────────────────────────────────────
+# ── Output ────────────────────────────────────────────────────────────────────
 
 def write_output(stats: dict, seen: set, label: str = "") -> None:
     map_rows: dict[str, list] = defaultdict(list)
@@ -159,7 +160,7 @@ def write_output(stats: dict, seen: set, label: str = "") -> None:
     )
 
 
-# ── Main ──────────────────────────────────────────────────────────────────────────────────
+# ── Main ──────────────────────────────────────────────────────────────────────
 
 def main() -> None:
     parser = argparse.ArgumentParser()
@@ -175,14 +176,14 @@ def main() -> None:
         (datetime.datetime.utcnow() - datetime.timedelta(days=DAYS_BACK)).timestamp()
     )
 
-    # 1. Civ metadata ──────────────────────────────────────────────────────
+    # 1. Civ metadata ──────────────────────────────────────────────────────────
     print("Fetching civ metadata …")
     civ_map = get_civ_map()
     print(f"  {len(civ_map)} civs loaded")
     time.sleep(REQUEST_DELAY)
 
-    # 2. Full seed player list ─────────────────────────────────────────────────
-    print(f"\nFetching team RM leaderboard (ELO ≥ {MIN_ELO}) …")
+    # 2. Full seed player list (team ELO ≥ MIN_ELO) ───────────────────────────
+    print(f"\nFetching team RM leaderboard (team ELO ≥ {MIN_ELO}) …")
     all_ids: list[int] = []
     start = 1
     while True:
@@ -200,16 +201,21 @@ def main() -> None:
 
     total_players = len(all_ids)
     batch_ids = all_ids[args.start_rank: args.start_rank + args.count]
-    print(f"  Total players: {total_players:,}  |  This batch: ranks {args.start_rank + 1}–{args.start_rank + len(batch_ids)} ({len(batch_ids)} players)")
+    end_rank = args.start_rank + len(batch_ids)
+    print(f"  Total eligible players: {total_players:,}  |  This batch: ranks {args.start_rank + 1}–{end_rank} ({len(batch_ids)} players)")
 
-    # 3. Load (or reset) accumulated state ──────────────────────────────────────
+    if not batch_ids:
+        print("  No players in this batch range — done.")
+        return
+
+    # 3. Load (or reset) accumulated state ────────────────────────────────────
     print()
     if args.fresh:
         STATE_PATH.unlink(missing_ok=True)
         print("  Cleared state cache")
     seen, stats = load_state()
 
-    # 4. Crawl this batch ───────────────────────────────────────────────────────────────────
+    # 4. Crawl this batch ─────────────────────────────────────────────────────
     print(f"\nCrawling match histories ({DAYS_BACK}-day window) …")
     for i, pid in enumerate(batch_ids):
         if i % 100 == 0:
@@ -263,9 +269,9 @@ def main() -> None:
 
     print(f"\n  Batch done. Total unique 2v2 matches so far: {len(seen):,}")
 
-    # 5. Save state + write output ───────────────────────────────────────────────────
+    # 5. Save state + write final output ──────────────────────────────────────
     save_state(seen, stats)
-    write_output(stats, seen, label=f"ranks {args.start_rank + 1}–{args.start_rank + len(batch_ids)}")
+    write_output(stats, seen, label=f"ranks {args.start_rank + 1}–{end_rank} of {total_players}")
     print("Done.")
 
 
