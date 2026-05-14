@@ -90,6 +90,7 @@ export default function StatsView() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [quoteIndex, setQuoteIndex] = useState(() => Math.floor(Math.random() * AOE2_QUOTES.length));
+  const [showInfo, setShowInfo] = useState(false);
 
   useEffect(() => {
     const id = setInterval(() => setQuoteIndex((i) => (i + 1) % AOE2_QUOTES.length), 6000);
@@ -161,23 +162,47 @@ export default function StatsView() {
 
   return (
     <div className="min-h-screen" style={{ ...pageBg, color: '#eee' }}>
-      {/* Slim sticky header */}
-      <header
-        className="border-b sticky top-0 z-10"
-        style={{ borderColor: 'rgba(255,255,255,0.08)', background: 'rgba(26,26,46,0.95)', backdropFilter: 'blur(8px)' }}
+      {/* ⓘ button */}
+      <button
+        onClick={() => setShowInfo(true)}
+        className="fixed top-3 right-4 z-20 w-6 h-6 flex items-center justify-center rounded-full text-xs font-bold transition-colors"
+        style={{ color: 'rgba(255,255,255,0.35)', border: '1.5px solid rgba(255,255,255,0.2)' }}
+        onMouseEnter={(e) => { (e.currentTarget as HTMLButtonElement).style.color = '#eee'; (e.currentTarget as HTMLButtonElement).style.borderColor = 'rgba(255,255,255,0.5)'; }}
+        onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.color = 'rgba(255,255,255,0.35)'; (e.currentTarget as HTMLButtonElement).style.borderColor = 'rgba(255,255,255,0.2)'; }}
+        aria-label="Info"
       >
-        <div className="max-w-3xl mx-auto px-4 sm:px-8 py-3 flex items-center justify-between">
-          <p className="text-xs" style={{ color: 'rgba(255,255,255,0.4)' }}>
-            Ranked Random Map · 2v2 · {data?.total_matches.toLocaleString()} matches
-          </p>
-          {data && (
-            <div className="text-right text-xs" style={{ color: 'rgba(255,255,255,0.35)' }}>
-              <div>Updated {data.crawled_at}</div>
-              <div className="mt-0.5">Rolling {data.days_back} days</div>
+        i
+      </button>
+
+      {/* Info modal */}
+      {showInfo && (
+        <div
+          className="fixed inset-0 z-30 flex items-center justify-center p-6"
+          style={{ background: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(4px)' }}
+          onClick={() => setShowInfo(false)}
+        >
+          <div
+            className="rounded-xl p-6 max-w-sm w-full space-y-3"
+            style={{ background: '#1a1a2e', border: '1px solid rgba(255,255,255,0.12)' }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="font-semibold text-base" style={{ color: '#eee' }}>AoE2 2v2 Team Win Rates</div>
+            <div className="text-sm space-y-2" style={{ color: 'rgba(255,255,255,0.55)' }}>
+              <p>Ranked Random Map · 2v2 · ELO ≥ 1400</p>
+              {data && <p>{data.total_matches.toLocaleString()} matches · rolling {data.days_back} days · updated {data.crawled_at}</p>}
+              <p>Data sourced from aoestats.io weekly dumps + live player crawl.</p>
+              <p>The highlighted combo is the highest win rate among the 20 most-played pairs on the selected map.</p>
             </div>
-          )}
+            <button
+              onClick={() => setShowInfo(false)}
+              className="mt-2 text-xs"
+              style={{ color: 'rgba(255,255,255,0.3)' }}
+            >
+              close
+            </button>
+          </div>
         </div>
-      </header>
+      )}
 
       <main className="max-w-3xl mx-auto px-4 sm:px-8 py-6 space-y-5">
         {/* Quote banner — contained rectangle */}
