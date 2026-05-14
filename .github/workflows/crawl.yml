@@ -11,6 +11,7 @@ permissions:
 jobs:
   crawl:
     runs-on: ubuntu-latest
+    timeout-minutes: 90
 
     steps:
       - uses: actions/checkout@v4
@@ -38,6 +39,7 @@ jobs:
 
       - name: Run live crawler (Relic API)
         run: python3 scripts/crawl.py
+        continue-on-error: true
 
       - name: Merge historical + live data
         run: python3 scripts/merge_data.py

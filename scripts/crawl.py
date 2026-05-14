@@ -23,17 +23,18 @@ from pathlib import Path
 
 import requests
 
-# ── Config ──────────────────────────────────────────────────────────────────────────────
+# ── Config ──────────────────────────────────────────────────────────────────────────────────
 API_BASE = "https://aoe-api.worldsedgelink.com/community/leaderboard"
 LEADERBOARD_ID = 4      # TEAM_RM_RANKED (2v2/3v3/4v4 combined)
 MATCH_TYPE_2V2 = 7      # 2v2 RM ranked
-DAYS_BACK = 90          # Rolling window
+DAYS_BACK = 2           # Rolling window (48 h keeps CI under ~1 h)
 MIN_ELO = 1400          # Only seed players at or above this team RM rating
+MAX_SEED_PLAYERS = 3000 # Cap player pool so the crawl finishes in CI time
 REQUEST_DELAY = 0.35    # ~170 req/min, under the 200/min rate limit
-MIN_MAP_APPEARANCES = 30
+MIN_MAP_APPEARANCES = 10
 TOP_N = 20
 OUTPUT_PATH = Path("public/data/maps_live.json")
-CHECKPOINT_EVERY = 1000  # Write partial output every N players
+CHECKPOINT_EVERY = 500  # Write partial output every N players
 
 SESSION = requests.Session()
 SESSION.headers["User-Agent"] = "aoe2v2-stats/1.0 (github.com/robpob10/aoe2v2)"
@@ -96,7 +97,7 @@ def fetch_match_history(profile_id: int) -> list[dict]:
     return resp.json().get("matchHistoryStats", [])
 
 
-# ── Helpers ─────────────────────────────────────────────────────────────────────────────
+# ── Helpers ─────────────────────────────────────────────────────────────────────────────────
 
 def write_output(stats: dict, seen: set, label: str = "") -> None:
     map_rows: dict[str, list] = defaultdict(list)
@@ -140,14 +141,14 @@ def write_output(stats: dict, seen: set, label: str = "") -> None:
     )
 
 
-# ── Main ────────────────────────────────────────────────────────────────────────────────
+# ── Main ────────────────────────────────────────────────────────────────────────────────────
 
 def main() -> None:
     cutoff_ts = int(
         (datetime.datetime.utcnow() - datetime.timedelta(days=DAYS_BACK)).timestamp()
     )
 
-    # 1. Civ metadata ─────────────────────────────────────────────────────
+    # 1. Civ metadata ─────────────────────────────────────────────────
     print("Fetching civ metadata …")
     civ_map = get_civ_map()
     print(f"  {len(civ_map)} civs loaded")
@@ -169,9 +170,10 @@ def main() -> None:
         if len(above) < len(batch):
             break  # hit the ELO floor
         start += len(batch)
-    print(f"  Total seed players (ELO ≥ {MIN_ELO}): {len(seed_ids)}")
+    seed_ids = seed_ids[:MAX_SEED_PLAYERS]
+    print(f"  Total seed players (ELO ≥ {MIN_ELO}, cap {MAX_SEED_PLAYERS}): {len(seed_ids)}")
 
-    # 3. Crawl match histories ──────────────────────────────────────────────────
+    # 3. Crawl match histories ──────────────────────────────────────────────
     print(f"\nCrawling match histories ({DAYS_BACK}-day window) …")
     seen: set[int] = set()
     # (map_key, civ1, civ2) → {games, wins}
@@ -233,7 +235,7 @@ def main() -> None:
 
     print(f"\n  Total unique 2v2 matches: {len(seen)}")
 
-    # 4. Final output ─────────────────────────────────────────────────────────────
+    # 4. Final output ────────────────────────────────────────────────────────
     print("Writing final output …")
     write_output(stats, seen)
     print(f"Done.")
