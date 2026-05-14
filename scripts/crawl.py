@@ -8,11 +8,11 @@ CI:           runs daily via .github/workflows/crawl.yml
 
 Strategy:
   1. GET GetAvailableLeaderboards → civ ID→name table
-  2. GET getLeaderBoard2 (team RM) → top SEED_PLAYERS profile_ids
+  2. GET getLeaderBoard2 (team RM) → players with rating ≥ MIN_ELO
   3. For each player: GET getRecentMatchHistory, keep matchtype_id=7 (2v2 RM)
      within the last DAYS_BACK days, dedup by match id
   4. For each unique match extract 4 players → 2 civ pairs → aggregate
-  5. Write maps_live.json
+  5. Write maps_live.json (and checkpoints every CHECKPOINT_EVERY players)
 """
 
 import datetime
@@ -23,22 +23,23 @@ from pathlib import Path
 
 import requests
 
-# ── Config ────────────────────────────────────────────────────────────────────
+# ── Config ──────────────────────────────────────────────────────────────────────────────
 API_BASE = "https://aoe-api.worldsedgelink.com/community/leaderboard"
 LEADERBOARD_ID = 4      # TEAM_RM_RANKED (2v2/3v3/4v4 combined)
 MATCH_TYPE_2V2 = 7      # 2v2 RM ranked
-SEED_PLAYERS = 50000    # Top-N leaderboard players to seed from
 DAYS_BACK = 90          # Rolling window
+MIN_ELO = 1400          # Only seed players at or above this team RM rating
 REQUEST_DELAY = 0.35    # ~170 req/min, under the 200/min rate limit
 MIN_MAP_APPEARANCES = 30
 TOP_N = 20
 OUTPUT_PATH = Path("public/data/maps_live.json")
+CHECKPOINT_EVERY = 1000  # Write partial output every N players
 
 SESSION = requests.Session()
 SESSION.headers["User-Agent"] = "aoe2v2-stats/1.0 (github.com/robpob10/aoe2v2)"
 
 
-# ── API helpers ────────────────────────────────────────────────────────────────
+# ── API helpers ──────────────────────────────────────────────────────────────────────────
 
 def get_civ_map() -> dict[int, str]:
     """Fetch civilization ID → name from the metadata endpoint."""
@@ -52,8 +53,8 @@ def get_civ_map() -> dict[int, str]:
     return {r["id"]: r["name"] for r in races}
 
 
-def fetch_leaderboard_page(start: int, count: int = 200) -> list[int]:
-    """Return profile_ids for one page of the team RM leaderboard, in rank order."""
+def fetch_leaderboard_page(start: int, count: int = 200) -> list[tuple[int, int]]:
+    """Return (profile_id, rating) pairs for one leaderboard page, sorted by rank."""
     resp = SESSION.get(
         f"{API_BASE}/getLeaderBoard2",
         params={
@@ -75,7 +76,7 @@ def fetch_leaderboard_page(start: int, count: int = 200) -> list[int]:
         for sg in data.get("statGroups", [])
     }
     return [
-        pid
+        (pid, stat.get("rating", 0))
         for stat in data.get("leaderboardStats", [])
         for pid in sg_to_profiles.get(stat["statgroup_id"], [])
     ]
@@ -95,7 +96,51 @@ def fetch_match_history(profile_id: int) -> list[dict]:
     return resp.json().get("matchHistoryStats", [])
 
 
-# ── Main ────────────────────────────────────────────────────────────────────────
+# ── Helpers ─────────────────────────────────────────────────────────────────────────────
+
+def write_output(stats: dict, seen: set, label: str = "") -> None:
+    map_rows: dict[str, list] = defaultdict(list)
+    for (map_key, civ1, civ2), s in stats.items():
+        map_rows[map_key].append((civ1, civ2, s["games"], s["wins"]))
+
+    output: dict = {
+        "crawled_at": datetime.datetime.utcnow().strftime("%Y-%m-%d"),
+        "days_back": DAYS_BACK,
+        "total_matches": len(seen),
+        "maps": {},
+    }
+
+    for map_key, rows in sorted(map_rows.items()):
+        total = sum(r[2] for r in rows)
+        if total < MIN_MAP_APPEARANCES:
+            continue
+        top = sorted(rows, key=lambda r: r[2], reverse=True)[:TOP_N]
+        output["maps"][map_key] = {
+            "total_appearances": total,
+            "teams": [
+                {
+                    "civs": [r[0], r[1]],
+                    "games": r[2],
+                    "wins": r[3],
+                    "playrate": round(r[2] / total, 6),
+                    "winrate": round(r[3] / r[2], 4),
+                }
+                for r in top
+            ],
+        }
+
+    OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
+    with open(OUTPUT_PATH, "w") as f:
+        json.dump(output, f, indent=2)
+
+    tag = f" [{label}]" if label else ""
+    print(
+        f"  Checkpoint{tag}: {len(output['maps'])} maps, "
+        f"{output['total_matches']:,} matches → {OUTPUT_PATH}"
+    )
+
+
+# ── Main ────────────────────────────────────────────────────────────────────────────────
 
 def main() -> None:
     cutoff_ts = int(
@@ -108,19 +153,25 @@ def main() -> None:
     print(f"  {len(civ_map)} civs loaded")
     time.sleep(REQUEST_DELAY)
 
-    # 2. Seed player list ──────────────────────────────────────────────────
-    print(f"\nFetching top {SEED_PLAYERS} team RM players …")
+    # 2. Seed player list (stop when rating drops below MIN_ELO) ───────────
+    print(f"\nFetching team RM leaderboard (ELO ≥ {MIN_ELO}) …")
     seed_ids: list[int] = []
-    for start in range(1, SEED_PLAYERS + 1, 200):
-        batch = fetch_leaderboard_page(start, min(200, SEED_PLAYERS - len(seed_ids)))
-        seed_ids.extend(batch)
-        print(f"  Ranks {start}–{start + len(batch) - 1}: {len(batch)} players")
-        time.sleep(REQUEST_DELAY)
-        if len(seed_ids) >= SEED_PLAYERS:
+    start = 1
+    while True:
+        batch = fetch_leaderboard_page(start)
+        if not batch:
             break
-    print(f"  Total seed players: {len(seed_ids)}")
+        above = [(pid, elo) for pid, elo in batch if elo >= MIN_ELO]
+        seed_ids.extend(pid for pid, _ in above)
+        min_elo_in_page = min(elo for _, elo in batch)
+        print(f"  Ranks {start}–{start + len(batch) - 1}: {len(above)}/{len(batch)} above {MIN_ELO} (min ELO {min_elo_in_page})")
+        time.sleep(REQUEST_DELAY)
+        if len(above) < len(batch):
+            break  # hit the ELO floor
+        start += len(batch)
+    print(f"  Total seed players (ELO ≥ {MIN_ELO}): {len(seed_ids)}")
 
-    # 3. Crawl match histories ──────────────────────────────────────────────
+    # 3. Crawl match histories ──────────────────────────────────────────────────
     print(f"\nCrawling match histories ({DAYS_BACK}-day window) …")
     seen: set[int] = set()
     # (map_key, civ1, civ2) → {games, wins}
@@ -177,48 +228,15 @@ def main() -> None:
 
         time.sleep(REQUEST_DELAY)
 
+        if (i + 1) % CHECKPOINT_EVERY == 0:
+            write_output(stats, seen, label=f"{i + 1}/{len(seed_ids)}")
+
     print(f"\n  Total unique 2v2 matches: {len(seen)}")
 
-    # 4. Aggregate per map ────────────────────────────────────────────────────
-    print("Aggregating …")
-    map_rows: dict[str, list] = defaultdict(list)
-    for (map_key, civ1, civ2), s in stats.items():
-        map_rows[map_key].append((civ1, civ2, s["games"], s["wins"]))
-
-    output: dict = {
-        "crawled_at": datetime.datetime.utcnow().strftime("%Y-%m-%d"),
-        "days_back": DAYS_BACK,
-        "total_matches": len(seen),
-        "maps": {},
-    }
-
-    for map_key, rows in sorted(map_rows.items()):
-        total = sum(r[2] for r in rows)
-        if total < MIN_MAP_APPEARANCES:
-            continue
-        top = sorted(rows, key=lambda r: r[2], reverse=True)[:TOP_N]
-        output["maps"][map_key] = {
-            "total_appearances": total,
-            "teams": [
-                {
-                    "civs": [r[0], r[1]],
-                    "games": r[2],
-                    "wins": r[3],
-                    "playrate": round(r[2] / total, 6),
-                    "winrate": round(r[3] / r[2], 4),
-                }
-                for r in top
-            ],
-        }
-
-    OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
-    with open(OUTPUT_PATH, "w") as f:
-        json.dump(output, f, indent=2)
-
-    print(
-        f"\nSaved {len(output['maps'])} maps → {OUTPUT_PATH}\n"
-        f"Matches: {output['total_matches']:,}  |  Date: {output['crawled_at']}"
-    )
+    # 4. Final output ─────────────────────────────────────────────────────────────
+    print("Writing final output …")
+    write_output(stats, seen)
+    print(f"Done.")
 
 
 if __name__ == "__main__":
