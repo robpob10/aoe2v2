@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import type { StatsData, TeamStat } from '@/lib/types';
 
 // ── Map name formatting ───────────────────────────────────────────────────────
@@ -34,6 +34,26 @@ function formatMapName(key: string): string {
     .join(' ');
 }
 
+// ── Quotes ────────────────────────────────────────────────────────────────────
+
+const AOE2_QUOTES = [
+  'It depends',
+  'Auto-everything',
+  "Burgundians? They must be making Cavalier",
+  'Faster speed is faster',
+  'Walls are free',
+  'Never not click up',
+  'Heresy is a great tech',
+  'Just Drush FC it',
+  'Throw a castle down',
+  "Mangonels don't splash",
+  'Siege Engineers fixes everything',
+  'Lean on your pocket',
+  'Boyars are actually good',
+  "Frank boar is a myth",
+  "Don't make archers into spearmen",
+];
+
 // ── Win rate helpers ──────────────────────────────────────────────────────────
 
 function winRateColor(pct: number): string {
@@ -60,15 +80,15 @@ function TeamRow({ team }: { team: TeamStat }) {
       onMouseEnter={(e) => { (e.currentTarget as HTMLTableRowElement).style.background = 'rgba(255,255,255,0.04)'; }}
       onMouseLeave={(e) => { (e.currentTarget as HTMLTableRowElement).style.background = ''; }}
     >
-      <td className="py-2 pl-2 pr-1 font-medium text-sm" style={{ color: '#eee' }}>
+      <td className="py-2.5 pl-4 pr-2 font-medium text-sm" style={{ color: '#eee' }}>
         {team.civs[0]}
-        <span style={{ color: 'rgba(255,255,255,0.3)', margin: '0 2px' }}>+</span>
+        <span style={{ color: 'rgba(255,255,255,0.3)', margin: '0 3px' }}>+</span>
         {team.civs[1]}
       </td>
-      <td className="py-2 px-2 text-right font-mono tabular-nums text-sm" style={{ color: 'rgba(255,255,255,0.55)' }}>
+      <td className="py-2.5 px-3 text-right font-mono tabular-nums text-sm" style={{ color: 'rgba(255,255,255,0.55)' }}>
         {playPct}%
       </td>
-      <td className="py-2 px-2 text-right font-mono font-semibold tabular-nums text-sm" style={{ color: winRateColor(winPct) }}>
+      <td className="py-2.5 pr-4 pl-3 text-right font-mono font-semibold tabular-nums text-sm" style={{ color: winRateColor(winPct) }}>
         {winPct.toFixed(1)}%
       </td>
     </tr>
@@ -82,6 +102,12 @@ export default function StatsView() {
   const [selectedMap, setSelectedMap] = useState<string>('');
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [quoteIndex, setQuoteIndex] = useState(() => Math.floor(Math.random() * AOE2_QUOTES.length));
+
+  useEffect(() => {
+    const id = setInterval(() => setQuoteIndex((i) => (i + 1) % AOE2_QUOTES.length), 6000);
+    return () => clearInterval(id);
+  }, []);
 
   useEffect(() => {
     fetch('/data/maps.json')
@@ -108,6 +134,17 @@ export default function StatsView() {
     : [];
 
   const currentMap = data && selectedMap ? data.maps[selectedMap] : null;
+
+  const bestValueCombo = useMemo((): TeamStat | null => {
+    if (!currentMap) return null;
+    const top20 = [...currentMap.teams]
+      .sort((a, b) => b.playrate - a.playrate)
+      .slice(0, 20);
+    return top20.reduce(
+      (best, t) => (!best || t.winrate > best.winrate ? t : best),
+      null as TeamStat | null,
+    );
+  }, [currentMap]);
 
   const pageBg = { background: 'linear-gradient(135deg, #1a1a2e 0%, #16213e 100%)' };
 
@@ -137,20 +174,28 @@ export default function StatsView() {
 
   return (
     <div className="min-h-screen" style={{ ...pageBg, color: '#eee' }}>
+      {/* Quote banner */}
+      <div
+        className="w-full text-center px-4 py-3"
+        style={{ background: 'rgba(0,0,0,0.35)', borderBottom: '1px solid rgba(255,255,255,0.06)' }}
+      >
+        <span
+          className="text-base italic"
+          style={{ color: '#f9ca24', letterSpacing: '0.01em' }}
+        >
+          {AOE2_QUOTES[quoteIndex]}
+        </span>
+      </div>
+
       {/* Header */}
       <header
         className="border-b sticky top-0 z-10"
         style={{ borderColor: 'rgba(255,255,255,0.08)', background: 'rgba(26,26,46,0.95)', backdropFilter: 'blur(8px)' }}
       >
-        <div className="max-w-3xl mx-auto px-3 sm:px-6 py-3 flex flex-col sm:flex-row sm:items-center justify-between gap-1">
-          <div>
-            <h1 className="text-xl font-bold tracking-tight" style={{ color: '#00cec9' }}>
-              AoE2 2v2 Team Win Rates
-            </h1>
-            <p className="text-xs mt-0.5" style={{ color: 'rgba(255,255,255,0.4)' }}>
-              Ranked Random Map · 2v2 · {data?.total_matches.toLocaleString()} matches
-            </p>
-          </div>
+        <div className="max-w-3xl mx-auto px-4 sm:px-8 py-3 flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+          <p className="text-xs" style={{ color: 'rgba(255,255,255,0.4)' }}>
+            Ranked Random Map · 2v2 · {data?.total_matches.toLocaleString()} matches
+          </p>
           {data && (
             <div className="text-right shrink-0 text-xs" style={{ color: 'rgba(255,255,255,0.35)' }}>
               <div>Updated {data.crawled_at}</div>
@@ -160,7 +205,32 @@ export default function StatsView() {
         </div>
       </header>
 
-      <main className="max-w-3xl mx-auto px-3 sm:px-6 py-4 space-y-4">
+      <main className="max-w-3xl mx-auto px-4 sm:px-8 py-6 space-y-5">
+        {/* Best value combo highlight */}
+        {bestValueCombo && (
+          <div
+            className="rounded-xl px-6 py-4"
+            style={{ background: 'rgba(0,0,0,0.25)', border: '1px solid rgba(255,255,255,0.08)' }}
+          >
+            <div className="text-xs uppercase tracking-widest mb-2" style={{ color: 'rgba(255,255,255,0.35)' }}>
+              Best value · top 20 plays · {formatMapName(selectedMap)}
+            </div>
+            <div className="flex items-baseline gap-3 flex-wrap">
+              <span className="text-lg font-bold" style={{ color: '#00cec9' }}>
+                {bestValueCombo.civs[0]}
+                <span style={{ color: 'rgba(255,255,255,0.3)', margin: '0 6px' }}>+</span>
+                {bestValueCombo.civs[1]}
+              </span>
+              <span className="font-mono font-semibold text-base" style={{ color: winRateColor(bestValueCombo.winrate * 100) }}>
+                {(bestValueCombo.winrate * 100).toFixed(1)}% win rate
+              </span>
+              <span className="text-xs" style={{ color: 'rgba(255,255,255,0.3)' }}>
+                {bestValueCombo.games.toLocaleString()} games
+              </span>
+            </div>
+          </div>
+        )}
+
         {/* Map tabs */}
         <div className="overflow-x-auto pb-1">
           <div className="flex gap-1.5 min-w-max flex-wrap">
@@ -198,7 +268,7 @@ export default function StatsView() {
         {/* Table */}
         {currentMap && (
           <div>
-            <div className="flex items-baseline justify-between mb-3">
+            <div className="flex items-baseline justify-between mb-4">
               <h2 className="text-base font-semibold" style={{ color: '#eee' }}>
                 {formatMapName(selectedMap)}
               </h2>
@@ -215,9 +285,9 @@ export default function StatsView() {
                 <table className="w-full text-sm">
                   <thead>
                     <tr style={{ background: 'rgba(255,255,255,0.08)' }}>
-                      <th className="text-left py-2 pl-2 pr-1 text-xs font-semibold uppercase tracking-wider" style={{ color: 'rgba(255,255,255,0.45)' }}>Team</th>
-                      <th className="text-right py-2 px-2 text-xs font-semibold uppercase tracking-wider" style={{ color: 'rgba(255,255,255,0.45)' }}>Play%</th>
-                      <th className="text-right py-2 px-2 text-xs font-semibold uppercase tracking-wider" style={{ color: 'rgba(255,255,255,0.45)' }}>Win%</th>
+                      <th className="text-left py-3 pl-4 pr-2 text-xs font-semibold uppercase tracking-wider" style={{ color: 'rgba(255,255,255,0.45)' }}>Team</th>
+                      <th className="text-right py-3 px-3 text-xs font-semibold uppercase tracking-wider" style={{ color: 'rgba(255,255,255,0.45)' }}>Play%</th>
+                      <th className="text-right py-3 pr-4 pl-3 text-xs font-semibold uppercase tracking-wider" style={{ color: 'rgba(255,255,255,0.45)' }}>Win%</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -232,7 +302,7 @@ export default function StatsView() {
               </div>
             </div>
 
-            <p className="text-xs mt-2.5" style={{ color: 'rgba(255,255,255,0.22)' }}>
+            <p className="text-xs mt-3" style={{ color: 'rgba(255,255,255,0.22)' }}>
               Play rate = share of all 2v2 team slots on this map. Win rate = games won by this civ pair.
             </p>
           </div>
