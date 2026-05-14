@@ -24,7 +24,7 @@ OUTPUT_PATH = Path("public/data/maps_historical.json")
 
 # How many of the most recent non-empty weekly dumps to combine.
 # More weeks = larger sample size but longer download time.
-WEEKS_TO_USE = 4
+WEEKS_TO_USE = 13
 
 # 2v2 Random Map leaderboard match type on aoestats.io
 # raw_match_type 7  = 2v2 RM (standard)
