@@ -1,10 +1,10 @@
 {
   "crawled_at": "2026-05-14",
   "days_back": 30,
-  "total_matches": 10702,
+  "total_matches": 11659,
   "maps": {
     "africanclearing": {
-      "total_appearances": 336,
+      "total_appearances": 366,
       "teams": [
         {
           "civs": [
@@ -13,7 +13,7 @@
           ],
           "games": 8,
           "wins": 5,
-          "playrate": 0.02381,
+          "playrate": 0.021858,
           "winrate": 0.625
         },
         {
@@ -23,7 +23,7 @@
           ],
           "games": 6,
           "wins": 2,
-          "playrate": 0.017857,
+          "playrate": 0.016393,
           "winrate": 0.3333
         },
         {
@@ -33,8 +33,18 @@
           ],
           "games": 5,
           "wins": 3,
-          "playrate": 0.014881,
+          "playrate": 0.013661,
           "winrate": 0.6
+        },
+        {
+          "civs": [
+            "Ethiopians",
+            "Magyars"
+          ],
+          "games": 4,
+          "wins": 2,
+          "playrate": 0.010929,
+          "winrate": 0.5
         },
         {
           "civs": [
@@ -43,7 +53,7 @@
           ],
           "games": 4,
           "wins": 3,
-          "playrate": 0.011905,
+          "playrate": 0.010929,
           "winrate": 0.75
         },
         {
@@ -53,17 +63,17 @@
           ],
           "games": 4,
           "wins": 3,
-          "playrate": 0.011905,
+          "playrate": 0.010929,
           "winrate": 0.75
         },
         {
           "civs": [
-            "Ethiopians",
-            "Magyars"
+            "Chinese",
+            "Huns"
           ],
           "games": 3,
           "wins": 1,
-          "playrate": 0.008929,
+          "playrate": 0.008197,
           "winrate": 0.3333
         },
         {
@@ -73,7 +83,7 @@
           ],
           "games": 3,
           "wins": 1,
-          "playrate": 0.008929,
+          "playrate": 0.008197,
           "winrate": 0.3333
         },
         {
@@ -83,7 +93,7 @@
           ],
           "games": 3,
           "wins": 1,
-          "playrate": 0.008929,
+          "playrate": 0.008197,
           "winrate": 0.3333
         },
         {
@@ -93,7 +103,7 @@
           ],
           "games": 3,
           "wins": 3,
-          "playrate": 0.008929,
+          "playrate": 0.008197,
           "winrate": 1.0
         },
         {
@@ -103,7 +113,7 @@
           ],
           "games": 3,
           "wins": 1,
-          "playrate": 0.008929,
+          "playrate": 0.008197,
           "winrate": 0.3333
         },
         {
@@ -113,7 +123,7 @@
           ],
           "games": 3,
           "wins": 2,
-          "playrate": 0.008929,
+          "playrate": 0.008197,
           "winrate": 0.6667
         },
         {
@@ -123,7 +133,17 @@
           ],
           "games": 3,
           "wins": 1,
-          "playrate": 0.008929,
+          "playrate": 0.008197,
+          "winrate": 0.3333
+        },
+        {
+          "civs": [
+            "Japanese",
+            "Mongols"
+          ],
+          "games": 3,
+          "wins": 1,
+          "playrate": 0.008197,
           "winrate": 0.3333
         },
         {
@@ -133,17 +153,37 @@
           ],
           "games": 3,
           "wins": 1,
-          "playrate": 0.008929,
+          "playrate": 0.008197,
           "winrate": 0.3333
         },
         {
           "civs": [
-            "Chinese",
-            "Huns"
+            "Ethiopians",
+            "Franks"
           ],
-          "games": 2,
+          "games": 3,
+          "wins": 2,
+          "playrate": 0.008197,
+          "winrate": 0.6667
+        },
+        {
+          "civs": [
+            "Italians",
+            "Spanish"
+          ],
+          "games": 3,
+          "wins": 2,
+          "playrate": 0.008197,
+          "winrate": 0.6667
+        },
+        {
+          "civs": [
+            "Saracens",
+            "Vietnamese"
+          ],
+          "games": 3,
           "wins": 0,
-          "playrate": 0.005952,
+          "playrate": 0.008197,
           "winrate": 0.0
         },
         {
@@ -153,7 +193,7 @@
           ],
           "games": 2,
           "wins": 1,
-          "playrate": 0.005952,
+          "playrate": 0.005464,
           "winrate": 0.5
         },
         {
@@ -163,73 +203,43 @@
           ],
           "games": 2,
           "wins": 1,
-          "playrate": 0.005952,
+          "playrate": 0.005464,
           "winrate": 0.5
-        },
-        {
-          "civs": [
-            "Khmer",
-            "Mongols"
-          ],
-          "games": 2,
-          "wins": 0,
-          "playrate": 0.005952,
-          "winrate": 0.0
-        },
-        {
-          "civs": [
-            "Koreans",
-            "Persians"
-          ],
-          "games": 2,
-          "wins": 0,
-          "playrate": 0.005952,
-          "winrate": 0.0
-        },
-        {
-          "civs": [
-            "Italians",
-            "Persians"
-          ],
-          "games": 2,
-          "wins": 1,
-          "playrate": 0.005952,
-          "winrate": 0.5
-        },
-        {
-          "civs": [
-            "Huns",
-            "Italians"
-          ],
-          "games": 2,
-          "wins": 0,
-          "playrate": 0.005952,
-          "winrate": 0.0
         }
       ]
     },
     "aftermath": {
-      "total_appearances": 994,
+      "total_appearances": 1106,
       "teams": [
-        {
-          "civs": [
-            "Ethiopians",
-            "Persians"
-          ],
-          "games": 12,
-          "wins": 7,
-          "playrate": 0.012072,
-          "winrate": 0.5833
-        },
         {
           "civs": [
             "Ethiopians",
             "Magyars"
           ],
+          "games": 15,
+          "wins": 9,
+          "playrate": 0.013562,
+          "winrate": 0.6
+        },
+        {
+          "civs": [
+            "Ethiopians",
+            "Persians"
+          ],
+          "games": 14,
+          "wins": 8,
+          "playrate": 0.012658,
+          "winrate": 0.5714
+        },
+        {
+          "civs": [
+            "Mayans",
+            "Persians"
+          ],
           "games": 10,
-          "wins": 5,
-          "playrate": 0.01006,
-          "winrate": 0.5
+          "wins": 3,
+          "playrate": 0.009042,
+          "winrate": 0.3
         },
         {
           "civs": [
@@ -238,7 +248,7 @@
           ],
           "games": 9,
           "wins": 6,
-          "playrate": 0.009054,
+          "playrate": 0.008137,
           "winrate": 0.6667
         },
         {
@@ -248,7 +258,7 @@
           ],
           "games": 8,
           "wins": 3,
-          "playrate": 0.008048,
+          "playrate": 0.007233,
           "winrate": 0.375
         },
         {
@@ -258,7 +268,7 @@
           ],
           "games": 7,
           "wins": 5,
-          "playrate": 0.007042,
+          "playrate": 0.006329,
           "winrate": 0.7143
         },
         {
@@ -268,8 +278,28 @@
           ],
           "games": 7,
           "wins": 6,
-          "playrate": 0.007042,
+          "playrate": 0.006329,
           "winrate": 0.8571
+        },
+        {
+          "civs": [
+            "Britons",
+            "Persians"
+          ],
+          "games": 7,
+          "wins": 5,
+          "playrate": 0.006329,
+          "winrate": 0.7143
+        },
+        {
+          "civs": [
+            "Bohemians",
+            "Spanish"
+          ],
+          "games": 6,
+          "wins": 0,
+          "playrate": 0.005425,
+          "winrate": 0.0
         },
         {
           "civs": [
@@ -278,28 +308,8 @@
           ],
           "games": 6,
           "wins": 3,
-          "playrate": 0.006036,
+          "playrate": 0.005425,
           "winrate": 0.5
-        },
-        {
-          "civs": [
-            "Britons",
-            "Persians"
-          ],
-          "games": 6,
-          "wins": 4,
-          "playrate": 0.006036,
-          "winrate": 0.6667
-        },
-        {
-          "civs": [
-            "Mayans",
-            "Persians"
-          ],
-          "games": 6,
-          "wins": 1,
-          "playrate": 0.006036,
-          "winrate": 0.1667
         },
         {
           "civs": [
@@ -308,113 +318,103 @@
           ],
           "games": 6,
           "wins": 3,
-          "playrate": 0.006036,
+          "playrate": 0.005425,
           "winrate": 0.5
-        },
-        {
-          "civs": [
-            "Bohemians",
-            "Spanish"
-          ],
-          "games": 5,
-          "wins": 0,
-          "playrate": 0.00503,
-          "winrate": 0.0
-        },
-        {
-          "civs": [
-            "Japanese",
-            "Mongols"
-          ],
-          "games": 5,
-          "wins": 2,
-          "playrate": 0.00503,
-          "winrate": 0.4
         },
         {
           "civs": [
             "Ethiopians",
             "Wei"
           ],
-          "games": 5,
-          "wins": 2,
-          "playrate": 0.00503,
-          "winrate": 0.4
-        },
-        {
-          "civs": [
-            "Huns",
-            "Mongols"
-          ],
-          "games": 5,
-          "wins": 1,
-          "playrate": 0.00503,
-          "winrate": 0.2
+          "games": 6,
+          "wins": 3,
+          "playrate": 0.005425,
+          "winrate": 0.5
         },
         {
           "civs": [
             "Burgundians",
             "Italians"
           ],
-          "games": 4,
+          "games": 5,
           "wins": 3,
-          "playrate": 0.004024,
-          "winrate": 0.75
-        },
-        {
-          "civs": [
-            "Persians",
-            "Tupi"
-          ],
-          "games": 4,
-          "wins": 1,
-          "playrate": 0.004024,
-          "winrate": 0.25
-        },
-        {
-          "civs": [
-            "Japanese",
-            "Magyars"
-          ],
-          "games": 4,
-          "wins": 2,
-          "playrate": 0.004024,
-          "winrate": 0.5
+          "playrate": 0.004521,
+          "winrate": 0.6
         },
         {
           "civs": [
             "Koreans",
             "Persians"
           ],
-          "games": 4,
+          "games": 5,
           "wins": 2,
-          "playrate": 0.004024,
-          "winrate": 0.5
+          "playrate": 0.004521,
+          "winrate": 0.4
         },
         {
           "civs": [
             "Magyars",
             "Mayans"
           ],
-          "games": 4,
-          "wins": 2,
-          "playrate": 0.004024,
-          "winrate": 0.5
+          "games": 5,
+          "wins": 3,
+          "playrate": 0.004521,
+          "winrate": 0.6
         },
         {
           "civs": [
             "Franks",
             "Mayans"
           ],
-          "games": 4,
+          "games": 5,
           "wins": 1,
-          "playrate": 0.004024,
-          "winrate": 0.25
+          "playrate": 0.004521,
+          "winrate": 0.2
+        },
+        {
+          "civs": [
+            "Japanese",
+            "Mongols"
+          ],
+          "games": 5,
+          "wins": 2,
+          "playrate": 0.004521,
+          "winrate": 0.4
+        },
+        {
+          "civs": [
+            "Mongols",
+            "Vietnamese"
+          ],
+          "games": 5,
+          "wins": 4,
+          "playrate": 0.004521,
+          "winrate": 0.8
+        },
+        {
+          "civs": [
+            "Ethiopians",
+            "Franks"
+          ],
+          "games": 5,
+          "wins": 4,
+          "playrate": 0.004521,
+          "winrate": 0.8
+        },
+        {
+          "civs": [
+            "Koreans",
+            "Spanish"
+          ],
+          "games": 5,
+          "wins": 4,
+          "playrate": 0.004521,
+          "winrate": 0.8
         }
       ]
     },
     "amazontunnel": {
-      "total_appearances": 162,
+      "total_appearances": 170,
       "teams": [
         {
           "civs": [
@@ -423,7 +423,7 @@
           ],
           "games": 3,
           "wins": 2,
-          "playrate": 0.018519,
+          "playrate": 0.017647,
           "winrate": 0.6667
         },
         {
@@ -433,7 +433,7 @@
           ],
           "games": 3,
           "wins": 2,
-          "playrate": 0.018519,
+          "playrate": 0.017647,
           "winrate": 0.6667
         },
         {
@@ -443,7 +443,7 @@
           ],
           "games": 2,
           "wins": 2,
-          "playrate": 0.012346,
+          "playrate": 0.011765,
           "winrate": 1.0
         },
         {
@@ -453,7 +453,7 @@
           ],
           "games": 2,
           "wins": 0,
-          "playrate": 0.012346,
+          "playrate": 0.011765,
           "winrate": 0.0
         },
         {
@@ -463,7 +463,7 @@
           ],
           "games": 2,
           "wins": 2,
-          "playrate": 0.012346,
+          "playrate": 0.011765,
           "winrate": 1.0
         },
         {
@@ -473,7 +473,7 @@
           ],
           "games": 2,
           "wins": 1,
-          "playrate": 0.012346,
+          "playrate": 0.011765,
           "winrate": 0.5
         },
         {
@@ -483,8 +483,28 @@
           ],
           "games": 2,
           "wins": 2,
-          "playrate": 0.012346,
+          "playrate": 0.011765,
           "winrate": 1.0
+        },
+        {
+          "civs": [
+            "Britons",
+            "Mongols"
+          ],
+          "games": 2,
+          "wins": 2,
+          "playrate": 0.011765,
+          "winrate": 1.0
+        },
+        {
+          "civs": [
+            "Ethiopians",
+            "Vietnamese"
+          ],
+          "games": 2,
+          "wins": 1,
+          "playrate": 0.011765,
+          "winrate": 0.5
         },
         {
           "civs": [
@@ -493,7 +513,7 @@
           ],
           "games": 2,
           "wins": 1,
-          "playrate": 0.012346,
+          "playrate": 0.011765,
           "winrate": 0.5
         },
         {
@@ -503,7 +523,7 @@
           ],
           "games": 2,
           "wins": 1,
-          "playrate": 0.012346,
+          "playrate": 0.011765,
           "winrate": 0.5
         },
         {
@@ -513,7 +533,7 @@
           ],
           "games": 2,
           "wins": 1,
-          "playrate": 0.012346,
+          "playrate": 0.011765,
           "winrate": 0.5
         },
         {
@@ -523,7 +543,7 @@
           ],
           "games": 2,
           "wins": 2,
-          "playrate": 0.012346,
+          "playrate": 0.011765,
           "winrate": 1.0
         },
         {
@@ -533,8 +553,18 @@
           ],
           "games": 2,
           "wins": 1,
-          "playrate": 0.012346,
+          "playrate": 0.011765,
           "winrate": 0.5
+        },
+        {
+          "civs": [
+            "Magyars",
+            "Mongols"
+          ],
+          "games": 2,
+          "wins": 2,
+          "playrate": 0.011765,
+          "winrate": 1.0
         },
         {
           "civs": [
@@ -543,7 +573,7 @@
           ],
           "games": 1,
           "wins": 1,
-          "playrate": 0.006173,
+          "playrate": 0.005882,
           "winrate": 1.0
         },
         {
@@ -553,7 +583,7 @@
           ],
           "games": 1,
           "wins": 0,
-          "playrate": 0.006173,
+          "playrate": 0.005882,
           "winrate": 0.0
         },
         {
@@ -563,7 +593,7 @@
           ],
           "games": 1,
           "wins": 1,
-          "playrate": 0.006173,
+          "playrate": 0.005882,
           "winrate": 1.0
         },
         {
@@ -573,7 +603,7 @@
           ],
           "games": 1,
           "wins": 0,
-          "playrate": 0.006173,
+          "playrate": 0.005882,
           "winrate": 0.0
         },
         {
@@ -583,53 +613,23 @@
           ],
           "games": 1,
           "wins": 0,
-          "playrate": 0.006173,
+          "playrate": 0.005882,
           "winrate": 0.0
-        },
-        {
-          "civs": [
-            "Burmese",
-            "Jurchens"
-          ],
-          "games": 1,
-          "wins": 1,
-          "playrate": 0.006173,
-          "winrate": 1.0
-        },
-        {
-          "civs": [
-            "Chinese",
-            "Khitans"
-          ],
-          "games": 1,
-          "wins": 0,
-          "playrate": 0.006173,
-          "winrate": 0.0
-        },
-        {
-          "civs": [
-            "Bengalis",
-            "Britons"
-          ],
-          "games": 1,
-          "wins": 1,
-          "playrate": 0.006173,
-          "winrate": 1.0
         }
       ]
     },
     "arabia": {
-      "total_appearances": 1698,
+      "total_appearances": 1864,
       "teams": [
         {
           "civs": [
             "Ethiopians",
             "Magyars"
           ],
-          "games": 63,
-          "wins": 29,
-          "playrate": 0.037102,
-          "winrate": 0.4603
+          "games": 67,
+          "wins": 32,
+          "playrate": 0.035944,
+          "winrate": 0.4776
         },
         {
           "civs": [
@@ -638,7 +638,7 @@
           ],
           "games": 38,
           "wins": 23,
-          "playrate": 0.022379,
+          "playrate": 0.020386,
           "winrate": 0.6053
         },
         {
@@ -648,7 +648,7 @@
           ],
           "games": 32,
           "wins": 20,
-          "playrate": 0.018846,
+          "playrate": 0.017167,
           "winrate": 0.625
         },
         {
@@ -656,10 +656,20 @@
             "Magyars",
             "Mayans"
           ],
-          "games": 21,
-          "wins": 10,
-          "playrate": 0.012367,
-          "winrate": 0.4762
+          "games": 22,
+          "wins": 11,
+          "playrate": 0.011803,
+          "winrate": 0.5
+        },
+        {
+          "civs": [
+            "Britons",
+            "Franks"
+          ],
+          "games": 19,
+          "wins": 12,
+          "playrate": 0.010193,
+          "winrate": 0.6316
         },
         {
           "civs": [
@@ -668,8 +678,38 @@
           ],
           "games": 18,
           "wins": 13,
-          "playrate": 0.010601,
+          "playrate": 0.009657,
           "winrate": 0.7222
+        },
+        {
+          "civs": [
+            "Britons",
+            "Magyars"
+          ],
+          "games": 18,
+          "wins": 5,
+          "playrate": 0.009657,
+          "winrate": 0.2778
+        },
+        {
+          "civs": [
+            "Mayans",
+            "Persians"
+          ],
+          "games": 17,
+          "wins": 10,
+          "playrate": 0.00912,
+          "winrate": 0.5882
+        },
+        {
+          "civs": [
+            "Magyars",
+            "Vietnamese"
+          ],
+          "games": 17,
+          "wins": 7,
+          "playrate": 0.00912,
+          "winrate": 0.4118
         },
         {
           "civs": [
@@ -678,58 +718,18 @@
           ],
           "games": 17,
           "wins": 11,
-          "playrate": 0.010012,
+          "playrate": 0.00912,
           "winrate": 0.6471
-        },
-        {
-          "civs": [
-            "Mayans",
-            "Persians"
-          ],
-          "games": 16,
-          "wins": 9,
-          "playrate": 0.009423,
-          "winrate": 0.5625
-        },
-        {
-          "civs": [
-            "Britons",
-            "Magyars"
-          ],
-          "games": 16,
-          "wins": 5,
-          "playrate": 0.009423,
-          "winrate": 0.3125
-        },
-        {
-          "civs": [
-            "Britons",
-            "Franks"
-          ],
-          "games": 15,
-          "wins": 10,
-          "playrate": 0.008834,
-          "winrate": 0.6667
-        },
-        {
-          "civs": [
-            "Magyars",
-            "Vietnamese"
-          ],
-          "games": 15,
-          "wins": 7,
-          "playrate": 0.008834,
-          "winrate": 0.4667
         },
         {
           "civs": [
             "Persians",
             "Vietnamese"
           ],
-          "games": 14,
-          "wins": 8,
-          "playrate": 0.008245,
-          "winrate": 0.5714
+          "games": 15,
+          "wins": 9,
+          "playrate": 0.008047,
+          "winrate": 0.6
         },
         {
           "civs": [
@@ -738,7 +738,7 @@
           ],
           "games": 13,
           "wins": 9,
-          "playrate": 0.007656,
+          "playrate": 0.006974,
           "winrate": 0.6923
         },
         {
@@ -748,8 +748,18 @@
           ],
           "games": 13,
           "wins": 8,
-          "playrate": 0.007656,
+          "playrate": 0.006974,
           "winrate": 0.6154
+        },
+        {
+          "civs": [
+            "Persians",
+            "Spanish"
+          ],
+          "games": 12,
+          "wins": 7,
+          "playrate": 0.006438,
+          "winrate": 0.5833
         },
         {
           "civs": [
@@ -758,38 +768,38 @@
           ],
           "games": 12,
           "wins": 8,
-          "playrate": 0.007067,
+          "playrate": 0.006438,
           "winrate": 0.6667
-        },
-        {
-          "civs": [
-            "Persians",
-            "Spanish"
-          ],
-          "games": 11,
-          "wins": 7,
-          "playrate": 0.006478,
-          "winrate": 0.6364
         },
         {
           "civs": [
             "Britons",
             "Mongols"
           ],
-          "games": 10,
-          "wins": 4,
-          "playrate": 0.005889,
-          "winrate": 0.4
+          "games": 11,
+          "wins": 5,
+          "playrate": 0.005901,
+          "winrate": 0.4545
         },
         {
           "civs": [
             "Ethiopians",
             "Khmer"
           ],
-          "games": 10,
-          "wins": 8,
-          "playrate": 0.005889,
-          "winrate": 0.8
+          "games": 11,
+          "wins": 9,
+          "playrate": 0.005901,
+          "winrate": 0.8182
+        },
+        {
+          "civs": [
+            "Berbers",
+            "Ethiopians"
+          ],
+          "games": 9,
+          "wins": 2,
+          "playrate": 0.004828,
+          "winrate": 0.2222
         },
         {
           "civs": [
@@ -798,53 +808,73 @@
           ],
           "games": 9,
           "wins": 7,
-          "playrate": 0.0053,
+          "playrate": 0.004828,
           "winrate": 0.7778
-        },
-        {
-          "civs": [
-            "Berbers",
-            "Ethiopians"
-          ],
-          "games": 8,
-          "wins": 2,
-          "playrate": 0.004711,
-          "winrate": 0.25
         },
         {
           "civs": [
             "Japanese",
             "Persians"
           ],
-          "games": 8,
-          "wins": 4,
-          "playrate": 0.004711,
-          "winrate": 0.5
+          "games": 9,
+          "wins": 5,
+          "playrate": 0.004828,
+          "winrate": 0.5556
         }
       ]
     },
     "arena": {
-      "total_appearances": 2208,
+      "total_appearances": 2356,
       "teams": [
         {
           "civs": [
             "Armenians",
             "Cumans"
           ],
-          "games": 40,
-          "wins": 27,
-          "playrate": 0.018116,
-          "winrate": 0.675
+          "games": 41,
+          "wins": 28,
+          "playrate": 0.017402,
+          "winrate": 0.6829
         },
         {
           "civs": [
             "Ethiopians",
             "Magyars"
           ],
-          "games": 19,
+          "games": 20,
           "wins": 10,
-          "playrate": 0.008605,
-          "winrate": 0.5263
+          "playrate": 0.008489,
+          "winrate": 0.5
+        },
+        {
+          "civs": [
+            "Italians",
+            "Spanish"
+          ],
+          "games": 17,
+          "wins": 6,
+          "playrate": 0.007216,
+          "winrate": 0.3529
+        },
+        {
+          "civs": [
+            "Spanish",
+            "Vietnamese"
+          ],
+          "games": 16,
+          "wins": 7,
+          "playrate": 0.006791,
+          "winrate": 0.4375
+        },
+        {
+          "civs": [
+            "Italians",
+            "Persians"
+          ],
+          "games": 16,
+          "wins": 8,
+          "playrate": 0.006791,
+          "winrate": 0.5
         },
         {
           "civs": [
@@ -853,7 +883,7 @@
           ],
           "games": 15,
           "wins": 10,
-          "playrate": 0.006793,
+          "playrate": 0.006367,
           "winrate": 0.6667
         },
         {
@@ -863,37 +893,17 @@
           ],
           "games": 15,
           "wins": 5,
-          "playrate": 0.006793,
+          "playrate": 0.006367,
           "winrate": 0.3333
         },
         {
           "civs": [
-            "Spanish",
-            "Vietnamese"
-          ],
-          "games": 14,
-          "wins": 7,
-          "playrate": 0.006341,
-          "winrate": 0.5
-        },
-        {
-          "civs": [
-            "Italians",
-            "Spanish"
-          ],
-          "games": 14,
-          "wins": 4,
-          "playrate": 0.006341,
-          "winrate": 0.2857
-        },
-        {
-          "civs": [
-            "Italians",
+            "Mongols",
             "Persians"
           ],
-          "games": 14,
-          "wins": 7,
-          "playrate": 0.006341,
+          "games": 12,
+          "wins": 6,
+          "playrate": 0.005093,
           "winrate": 0.5
         },
         {
@@ -903,7 +913,7 @@
           ],
           "games": 11,
           "wins": 7,
-          "playrate": 0.004982,
+          "playrate": 0.004669,
           "winrate": 0.6364
         },
         {
@@ -913,8 +923,48 @@
           ],
           "games": 11,
           "wins": 3,
-          "playrate": 0.004982,
+          "playrate": 0.004669,
           "winrate": 0.2727
+        },
+        {
+          "civs": [
+            "Mayans",
+            "Persians"
+          ],
+          "games": 10,
+          "wins": 8,
+          "playrate": 0.004244,
+          "winrate": 0.8
+        },
+        {
+          "civs": [
+            "Italians",
+            "Teutons"
+          ],
+          "games": 10,
+          "wins": 2,
+          "playrate": 0.004244,
+          "winrate": 0.2
+        },
+        {
+          "civs": [
+            "Bohemians",
+            "Spanish"
+          ],
+          "games": 10,
+          "wins": 9,
+          "playrate": 0.004244,
+          "winrate": 0.9
+        },
+        {
+          "civs": [
+            "Koreans",
+            "Spanish"
+          ],
+          "games": 10,
+          "wins": 5,
+          "playrate": 0.004244,
+          "winrate": 0.5
         },
         {
           "civs": [
@@ -923,8 +973,18 @@
           ],
           "games": 10,
           "wins": 4,
-          "playrate": 0.004529,
+          "playrate": 0.004244,
           "winrate": 0.4
+        },
+        {
+          "civs": [
+            "Bohemians",
+            "Poles"
+          ],
+          "games": 10,
+          "wins": 5,
+          "playrate": 0.004244,
+          "winrate": 0.5
         },
         {
           "civs": [
@@ -933,28 +993,28 @@
           ],
           "games": 9,
           "wins": 3,
-          "playrate": 0.004076,
+          "playrate": 0.00382,
           "winrate": 0.3333
         },
         {
           "civs": [
-            "Mayans",
-            "Persians"
+            "Khmer",
+            "Mongols"
           ],
           "games": 9,
-          "wins": 7,
-          "playrate": 0.004076,
-          "winrate": 0.7778
+          "wins": 3,
+          "playrate": 0.00382,
+          "winrate": 0.3333
         },
         {
           "civs": [
-            "Mongols",
-            "Persians"
+            "Cumans",
+            "Turks"
           ],
           "games": 9,
-          "wins": 6,
-          "playrate": 0.004076,
-          "winrate": 0.6667
+          "wins": 2,
+          "playrate": 0.00382,
+          "winrate": 0.2222
         },
         {
           "civs": [
@@ -963,83 +1023,23 @@
           ],
           "games": 9,
           "wins": 6,
-          "playrate": 0.004076,
+          "playrate": 0.00382,
           "winrate": 0.6667
-        },
-        {
-          "civs": [
-            "Italians",
-            "Teutons"
-          ],
-          "games": 9,
-          "wins": 2,
-          "playrate": 0.004076,
-          "winrate": 0.2222
-        },
-        {
-          "civs": [
-            "Koreans",
-            "Spanish"
-          ],
-          "games": 9,
-          "wins": 5,
-          "playrate": 0.004076,
-          "winrate": 0.5556
-        },
-        {
-          "civs": [
-            "Bohemians",
-            "Poles"
-          ],
-          "games": 9,
-          "wins": 4,
-          "playrate": 0.004076,
-          "winrate": 0.4444
-        },
-        {
-          "civs": [
-            "Franks",
-            "Mayans"
-          ],
-          "games": 9,
-          "wins": 5,
-          "playrate": 0.004076,
-          "winrate": 0.5556
-        },
-        {
-          "civs": [
-            "Koreans",
-            "Persians"
-          ],
-          "games": 8,
-          "wins": 5,
-          "playrate": 0.003623,
-          "winrate": 0.625
-        },
-        {
-          "civs": [
-            "Burgundians",
-            "Poles"
-          ],
-          "games": 8,
-          "wins": 6,
-          "playrate": 0.003623,
-          "winrate": 0.75
         }
       ]
     },
     "black_forest": {
-      "total_appearances": 1050,
+      "total_appearances": 1164,
       "teams": [
         {
           "civs": [
             "Armenians",
             "Cumans"
           ],
-          "games": 19,
-          "wins": 9,
-          "playrate": 0.018095,
-          "winrate": 0.4737
+          "games": 21,
+          "wins": 11,
+          "playrate": 0.018041,
+          "winrate": 0.5238
         },
         {
           "civs": [
@@ -1048,7 +1048,7 @@
           ],
           "games": 10,
           "wins": 5,
-          "playrate": 0.009524,
+          "playrate": 0.008591,
           "winrate": 0.5
         },
         {
@@ -1056,10 +1056,20 @@
             "Mongols",
             "Persians"
           ],
-          "games": 8,
-          "wins": 3,
-          "playrate": 0.007619,
-          "winrate": 0.375
+          "games": 9,
+          "wins": 4,
+          "playrate": 0.007732,
+          "winrate": 0.4444
+        },
+        {
+          "civs": [
+            "Japanese",
+            "Mongols"
+          ],
+          "games": 7,
+          "wins": 1,
+          "playrate": 0.006014,
+          "winrate": 0.1429
         },
         {
           "civs": [
@@ -1068,7 +1078,7 @@
           ],
           "games": 7,
           "wins": 3,
-          "playrate": 0.006667,
+          "playrate": 0.006014,
           "winrate": 0.4286
         },
         {
@@ -1078,7 +1088,7 @@
           ],
           "games": 7,
           "wins": 2,
-          "playrate": 0.006667,
+          "playrate": 0.006014,
           "winrate": 0.2857
         },
         {
@@ -1088,7 +1098,7 @@
           ],
           "games": 6,
           "wins": 2,
-          "playrate": 0.005714,
+          "playrate": 0.005155,
           "winrate": 0.3333
         },
         {
@@ -1098,18 +1108,18 @@
           ],
           "games": 6,
           "wins": 2,
-          "playrate": 0.005714,
+          "playrate": 0.005155,
           "winrate": 0.3333
         },
         {
           "civs": [
-            "Japanese",
-            "Mongols"
+            "Dravidians",
+            "Persians"
           ],
           "games": 6,
-          "wins": 1,
-          "playrate": 0.005714,
-          "winrate": 0.1667
+          "wins": 4,
+          "playrate": 0.005155,
+          "winrate": 0.6667
         },
         {
           "civs": [
@@ -1118,7 +1128,7 @@
           ],
           "games": 6,
           "wins": 4,
-          "playrate": 0.005714,
+          "playrate": 0.005155,
           "winrate": 0.6667
         },
         {
@@ -1128,7 +1138,7 @@
           ],
           "games": 6,
           "wins": 3,
-          "playrate": 0.005714,
+          "playrate": 0.005155,
           "winrate": 0.5
         },
         {
@@ -1138,7 +1148,7 @@
           ],
           "games": 6,
           "wins": 2,
-          "playrate": 0.005714,
+          "playrate": 0.005155,
           "winrate": 0.3333
         },
         {
@@ -1148,7 +1158,7 @@
           ],
           "games": 6,
           "wins": 2,
-          "playrate": 0.005714,
+          "playrate": 0.005155,
           "winrate": 0.3333
         },
         {
@@ -1158,7 +1168,7 @@
           ],
           "games": 6,
           "wins": 4,
-          "playrate": 0.005714,
+          "playrate": 0.005155,
           "winrate": 0.6667
         },
         {
@@ -1168,7 +1178,17 @@
           ],
           "games": 6,
           "wins": 5,
-          "playrate": 0.005714,
+          "playrate": 0.005155,
+          "winrate": 0.8333
+        },
+        {
+          "civs": [
+            "Bohemians",
+            "Indians"
+          ],
+          "games": 6,
+          "wins": 5,
+          "playrate": 0.005155,
           "winrate": 0.8333
         },
         {
@@ -1178,7 +1198,7 @@
           ],
           "games": 6,
           "wins": 4,
-          "playrate": 0.005714,
+          "playrate": 0.005155,
           "winrate": 0.6667
         },
         {
@@ -1188,7 +1208,7 @@
           ],
           "games": 5,
           "wins": 2,
-          "playrate": 0.004762,
+          "playrate": 0.004296,
           "winrate": 0.4
         },
         {
@@ -1198,43 +1218,23 @@
           ],
           "games": 5,
           "wins": 2,
-          "playrate": 0.004762,
+          "playrate": 0.004296,
           "winrate": 0.4
         },
         {
           "civs": [
             "Britons",
-            "Indians"
+            "Lithuanians"
           ],
           "games": 5,
-          "wins": 3,
-          "playrate": 0.004762,
-          "winrate": 0.6
-        },
-        {
-          "civs": [
-            "Dravidians",
-            "Persians"
-          ],
-          "games": 5,
-          "wins": 3,
-          "playrate": 0.004762,
-          "winrate": 0.6
-        },
-        {
-          "civs": [
-            "Khmer",
-            "Turks"
-          ],
-          "games": 5,
-          "wins": 2,
-          "playrate": 0.004762,
-          "winrate": 0.4
+          "wins": 4,
+          "playrate": 0.004296,
+          "winrate": 0.8
         }
       ]
     },
     "cliffbound": {
-      "total_appearances": 284,
+      "total_appearances": 292,
       "teams": [
         {
           "civs": [
@@ -1243,7 +1243,7 @@
           ],
           "games": 5,
           "wins": 2,
-          "playrate": 0.017606,
+          "playrate": 0.017123,
           "winrate": 0.4
         },
         {
@@ -1253,7 +1253,7 @@
           ],
           "games": 5,
           "wins": 4,
-          "playrate": 0.017606,
+          "playrate": 0.017123,
           "winrate": 0.8
         },
         {
@@ -1263,7 +1263,7 @@
           ],
           "games": 5,
           "wins": 2,
-          "playrate": 0.017606,
+          "playrate": 0.017123,
           "winrate": 0.4
         },
         {
@@ -1273,7 +1273,7 @@
           ],
           "games": 4,
           "wins": 2,
-          "playrate": 0.014085,
+          "playrate": 0.013699,
           "winrate": 0.5
         },
         {
@@ -1283,7 +1283,7 @@
           ],
           "games": 4,
           "wins": 3,
-          "playrate": 0.014085,
+          "playrate": 0.013699,
           "winrate": 0.75
         },
         {
@@ -1293,7 +1293,7 @@
           ],
           "games": 4,
           "wins": 3,
-          "playrate": 0.014085,
+          "playrate": 0.013699,
           "winrate": 0.75
         },
         {
@@ -1303,7 +1303,7 @@
           ],
           "games": 4,
           "wins": 3,
-          "playrate": 0.014085,
+          "playrate": 0.013699,
           "winrate": 0.75
         },
         {
@@ -1313,7 +1313,7 @@
           ],
           "games": 3,
           "wins": 1,
-          "playrate": 0.010563,
+          "playrate": 0.010274,
           "winrate": 0.3333
         },
         {
@@ -1323,7 +1323,17 @@
           ],
           "games": 3,
           "wins": 1,
-          "playrate": 0.010563,
+          "playrate": 0.010274,
+          "winrate": 0.3333
+        },
+        {
+          "civs": [
+            "Persians",
+            "Slavs"
+          ],
+          "games": 3,
+          "wins": 1,
+          "playrate": 0.010274,
           "winrate": 0.3333
         },
         {
@@ -1333,7 +1343,7 @@
           ],
           "games": 3,
           "wins": 2,
-          "playrate": 0.010563,
+          "playrate": 0.010274,
           "winrate": 0.6667
         },
         {
@@ -1343,7 +1353,7 @@
           ],
           "games": 3,
           "wins": 2,
-          "playrate": 0.010563,
+          "playrate": 0.010274,
           "winrate": 0.6667
         },
         {
@@ -1353,7 +1363,7 @@
           ],
           "games": 3,
           "wins": 1,
-          "playrate": 0.010563,
+          "playrate": 0.010274,
           "winrate": 0.3333
         },
         {
@@ -1363,7 +1373,7 @@
           ],
           "games": 3,
           "wins": 2,
-          "playrate": 0.010563,
+          "playrate": 0.010274,
           "winrate": 0.6667
         },
         {
@@ -1373,7 +1383,7 @@
           ],
           "games": 2,
           "wins": 1,
-          "playrate": 0.007042,
+          "playrate": 0.006849,
           "winrate": 0.5
         },
         {
@@ -1383,7 +1393,7 @@
           ],
           "games": 2,
           "wins": 2,
-          "playrate": 0.007042,
+          "playrate": 0.006849,
           "winrate": 1.0
         },
         {
@@ -1393,7 +1403,7 @@
           ],
           "games": 2,
           "wins": 1,
-          "playrate": 0.007042,
+          "playrate": 0.006849,
           "winrate": 0.5
         },
         {
@@ -1403,7 +1413,7 @@
           ],
           "games": 2,
           "wins": 2,
-          "playrate": 0.007042,
+          "playrate": 0.006849,
           "winrate": 1.0
         },
         {
@@ -1413,18 +1423,8 @@
           ],
           "games": 2,
           "wins": 0,
-          "playrate": 0.007042,
+          "playrate": 0.006849,
           "winrate": 0.0
-        },
-        {
-          "civs": [
-            "Persians",
-            "Slavs"
-          ],
-          "games": 2,
-          "wins": 1,
-          "playrate": 0.007042,
-          "winrate": 0.5
         },
         {
           "civs": [
@@ -1433,13 +1433,13 @@
           ],
           "games": 2,
           "wins": 1,
-          "playrate": 0.007042,
+          "playrate": 0.006849,
           "winrate": 0.5
         }
       ]
     },
     "fortified_clearing": {
-      "total_appearances": 308,
+      "total_appearances": 326,
       "teams": [
         {
           "civs": [
@@ -1448,7 +1448,7 @@
           ],
           "games": 5,
           "wins": 3,
-          "playrate": 0.016234,
+          "playrate": 0.015337,
           "winrate": 0.6
         },
         {
@@ -1458,7 +1458,7 @@
           ],
           "games": 4,
           "wins": 2,
-          "playrate": 0.012987,
+          "playrate": 0.01227,
           "winrate": 0.5
         },
         {
@@ -1468,7 +1468,17 @@
           ],
           "games": 3,
           "wins": 2,
-          "playrate": 0.00974,
+          "playrate": 0.009202,
+          "winrate": 0.6667
+        },
+        {
+          "civs": [
+            "Celts",
+            "Spanish"
+          ],
+          "games": 3,
+          "wins": 2,
+          "playrate": 0.009202,
           "winrate": 0.6667
         },
         {
@@ -1478,7 +1488,7 @@
           ],
           "games": 3,
           "wins": 3,
-          "playrate": 0.00974,
+          "playrate": 0.009202,
           "winrate": 1.0
         },
         {
@@ -1488,7 +1498,7 @@
           ],
           "games": 3,
           "wins": 2,
-          "playrate": 0.00974,
+          "playrate": 0.009202,
           "winrate": 0.6667
         },
         {
@@ -1498,7 +1508,7 @@
           ],
           "games": 3,
           "wins": 3,
-          "playrate": 0.00974,
+          "playrate": 0.009202,
           "winrate": 1.0
         },
         {
@@ -1508,7 +1518,7 @@
           ],
           "games": 3,
           "wins": 2,
-          "playrate": 0.00974,
+          "playrate": 0.009202,
           "winrate": 0.6667
         },
         {
@@ -1518,7 +1528,7 @@
           ],
           "games": 3,
           "wins": 2,
-          "playrate": 0.00974,
+          "playrate": 0.009202,
           "winrate": 0.6667
         },
         {
@@ -1528,7 +1538,7 @@
           ],
           "games": 3,
           "wins": 0,
-          "playrate": 0.00974,
+          "playrate": 0.009202,
           "winrate": 0.0
         },
         {
@@ -1538,7 +1548,7 @@
           ],
           "games": 3,
           "wins": 1,
-          "playrate": 0.00974,
+          "playrate": 0.009202,
           "winrate": 0.3333
         },
         {
@@ -1548,7 +1558,7 @@
           ],
           "games": 3,
           "wins": 0,
-          "playrate": 0.00974,
+          "playrate": 0.009202,
           "winrate": 0.0
         },
         {
@@ -1558,7 +1568,7 @@
           ],
           "games": 2,
           "wins": 1,
-          "playrate": 0.006494,
+          "playrate": 0.006135,
           "winrate": 0.5
         },
         {
@@ -1568,7 +1578,7 @@
           ],
           "games": 2,
           "wins": 2,
-          "playrate": 0.006494,
+          "playrate": 0.006135,
           "winrate": 1.0
         },
         {
@@ -1578,7 +1588,7 @@
           ],
           "games": 2,
           "wins": 1,
-          "playrate": 0.006494,
+          "playrate": 0.006135,
           "winrate": 0.5
         },
         {
@@ -1588,7 +1598,7 @@
           ],
           "games": 2,
           "wins": 1,
-          "playrate": 0.006494,
+          "playrate": 0.006135,
           "winrate": 0.5
         },
         {
@@ -1598,7 +1608,7 @@
           ],
           "games": 2,
           "wins": 0,
-          "playrate": 0.006494,
+          "playrate": 0.006135,
           "winrate": 0.0
         },
         {
@@ -1608,18 +1618,8 @@
           ],
           "games": 2,
           "wins": 2,
-          "playrate": 0.006494,
+          "playrate": 0.006135,
           "winrate": 1.0
-        },
-        {
-          "civs": [
-            "Celts",
-            "Spanish"
-          ],
-          "games": 2,
-          "wins": 1,
-          "playrate": 0.006494,
-          "winrate": 0.5
         },
         {
           "civs": [
@@ -1628,7 +1628,7 @@
           ],
           "games": 2,
           "wins": 0,
-          "playrate": 0.006494,
+          "playrate": 0.006135,
           "winrate": 0.0
         },
         {
@@ -1638,23 +1638,23 @@
           ],
           "games": 2,
           "wins": 2,
-          "playrate": 0.006494,
+          "playrate": 0.006135,
           "winrate": 1.0
         }
       ]
     },
     "fortress": {
-      "total_appearances": 1088,
+      "total_appearances": 1212,
       "teams": [
         {
           "civs": [
             "Mongols",
             "Persians"
           ],
-          "games": 10,
-          "wins": 5,
-          "playrate": 0.009191,
-          "winrate": 0.5
+          "games": 11,
+          "wins": 6,
+          "playrate": 0.009076,
+          "winrate": 0.5455
         },
         {
           "civs": [
@@ -1663,7 +1663,17 @@
           ],
           "games": 10,
           "wins": 5,
-          "playrate": 0.009191,
+          "playrate": 0.008251,
+          "winrate": 0.5
+        },
+        {
+          "civs": [
+            "Mongols",
+            "Spanish"
+          ],
+          "games": 10,
+          "wins": 5,
+          "playrate": 0.008251,
           "winrate": 0.5
         },
         {
@@ -1671,20 +1681,40 @@
             "Gurjaras",
             "Spanish"
           ],
-          "games": 8,
+          "games": 9,
           "wins": 5,
-          "playrate": 0.007353,
-          "winrate": 0.625
+          "playrate": 0.007426,
+          "winrate": 0.5556
         },
         {
           "civs": [
             "Armenians",
             "Cumans"
           ],
+          "games": 9,
+          "wins": 5,
+          "playrate": 0.007426,
+          "winrate": 0.5556
+        },
+        {
+          "civs": [
+            "Ethiopians",
+            "Persians"
+          ],
           "games": 8,
           "wins": 5,
-          "playrate": 0.007353,
+          "playrate": 0.006601,
           "winrate": 0.625
+        },
+        {
+          "civs": [
+            "Persians",
+            "Vietnamese"
+          ],
+          "games": 8,
+          "wins": 3,
+          "playrate": 0.006601,
+          "winrate": 0.375
         },
         {
           "civs": [
@@ -1693,7 +1723,7 @@
           ],
           "games": 7,
           "wins": 5,
-          "playrate": 0.006434,
+          "playrate": 0.005776,
           "winrate": 0.7143
         },
         {
@@ -1703,8 +1733,28 @@
           ],
           "games": 7,
           "wins": 5,
-          "playrate": 0.006434,
+          "playrate": 0.005776,
           "winrate": 0.7143
+        },
+        {
+          "civs": [
+            "Dravidians",
+            "Persians"
+          ],
+          "games": 7,
+          "wins": 3,
+          "playrate": 0.005776,
+          "winrate": 0.4286
+        },
+        {
+          "civs": [
+            "Persians",
+            "Spanish"
+          ],
+          "games": 6,
+          "wins": 1,
+          "playrate": 0.00495,
+          "winrate": 0.1667
         },
         {
           "civs": [
@@ -1713,27 +1763,37 @@
           ],
           "games": 6,
           "wins": 3,
-          "playrate": 0.005515,
+          "playrate": 0.00495,
           "winrate": 0.5
         },
         {
           "civs": [
-            "Ethiopians",
-            "Persians"
+            "Britons",
+            "Khmer"
           ],
           "games": 6,
-          "wins": 4,
-          "playrate": 0.005515,
-          "winrate": 0.6667
+          "wins": 3,
+          "playrate": 0.00495,
+          "winrate": 0.5
         },
         {
           "civs": [
-            "Persians",
-            "Vietnamese"
+            "Bohemians",
+            "Persians"
+          ],
+          "games": 6,
+          "wins": 3,
+          "playrate": 0.00495,
+          "winrate": 0.5
+        },
+        {
+          "civs": [
+            "Koreans",
+            "Spanish"
           ],
           "games": 6,
           "wins": 2,
-          "playrate": 0.005515,
+          "playrate": 0.00495,
           "winrate": 0.3333
         },
         {
@@ -1743,18 +1803,18 @@
           ],
           "games": 6,
           "wins": 4,
-          "playrate": 0.005515,
+          "playrate": 0.00495,
           "winrate": 0.6667
         },
         {
           "civs": [
-            "Mongols",
-            "Spanish"
+            "Cumans",
+            "Japanese"
           ],
           "games": 6,
-          "wins": 2,
-          "playrate": 0.005515,
-          "winrate": 0.3333
+          "wins": 3,
+          "playrate": 0.00495,
+          "winrate": 0.5
         },
         {
           "civs": [
@@ -1763,17 +1823,7 @@
           ],
           "games": 6,
           "wins": 3,
-          "playrate": 0.005515,
-          "winrate": 0.5
-        },
-        {
-          "civs": [
-            "Dravidians",
-            "Persians"
-          ],
-          "games": 6,
-          "wins": 3,
-          "playrate": 0.005515,
+          "playrate": 0.00495,
           "winrate": 0.5
         },
         {
@@ -1783,18 +1833,8 @@
           ],
           "games": 6,
           "wins": 3,
-          "playrate": 0.005515,
+          "playrate": 0.00495,
           "winrate": 0.5
-        },
-        {
-          "civs": [
-            "Persians",
-            "Spanish"
-          ],
-          "games": 5,
-          "wins": 1,
-          "playrate": 0.004596,
-          "winrate": 0.2
         },
         {
           "civs": [
@@ -1803,63 +1843,23 @@
           ],
           "games": 5,
           "wins": 2,
-          "playrate": 0.004596,
+          "playrate": 0.004125,
           "winrate": 0.4
-        },
-        {
-          "civs": [
-            "Britons",
-            "Persians"
-          ],
-          "games": 5,
-          "wins": 2,
-          "playrate": 0.004596,
-          "winrate": 0.4
-        },
-        {
-          "civs": [
-            "Khmer",
-            "Spanish"
-          ],
-          "games": 5,
-          "wins": 3,
-          "playrate": 0.004596,
-          "winrate": 0.6
-        },
-        {
-          "civs": [
-            "Huns",
-            "Spanish"
-          ],
-          "games": 5,
-          "wins": 4,
-          "playrate": 0.004596,
-          "winrate": 0.8
-        },
-        {
-          "civs": [
-            "Magyars",
-            "Mayans"
-          ],
-          "games": 5,
-          "wins": 3,
-          "playrate": 0.004596,
-          "winrate": 0.6
         }
       ]
     },
     "ghost_lake": {
-      "total_appearances": 1638,
+      "total_appearances": 1774,
       "teams": [
         {
           "civs": [
             "Britons",
             "Magyars"
           ],
-          "games": 33,
-          "wins": 22,
-          "playrate": 0.020147,
-          "winrate": 0.6667
+          "games": 35,
+          "wins": 24,
+          "playrate": 0.019729,
+          "winrate": 0.6857
         },
         {
           "civs": [
@@ -1868,8 +1868,18 @@
           ],
           "games": 29,
           "wins": 17,
-          "playrate": 0.017705,
+          "playrate": 0.016347,
           "winrate": 0.5862
+        },
+        {
+          "civs": [
+            "Ethiopians",
+            "Magyars"
+          ],
+          "games": 26,
+          "wins": 18,
+          "playrate": 0.014656,
+          "winrate": 0.6923
         },
         {
           "civs": [
@@ -1878,28 +1888,18 @@
           ],
           "games": 25,
           "wins": 15,
-          "playrate": 0.015263,
+          "playrate": 0.014092,
           "winrate": 0.6
-        },
-        {
-          "civs": [
-            "Ethiopians",
-            "Magyars"
-          ],
-          "games": 24,
-          "wins": 16,
-          "playrate": 0.014652,
-          "winrate": 0.6667
         },
         {
           "civs": [
             "Britons",
             "Mongols"
           ],
-          "games": 17,
+          "games": 19,
           "wins": 9,
-          "playrate": 0.010379,
-          "winrate": 0.5294
+          "playrate": 0.01071,
+          "winrate": 0.4737
         },
         {
           "civs": [
@@ -1908,8 +1908,18 @@
           ],
           "games": 15,
           "wins": 9,
-          "playrate": 0.009158,
+          "playrate": 0.008455,
           "winrate": 0.6
+        },
+        {
+          "civs": [
+            "Persians",
+            "Vietnamese"
+          ],
+          "games": 14,
+          "wins": 9,
+          "playrate": 0.007892,
+          "winrate": 0.6429
         },
         {
           "civs": [
@@ -1918,7 +1928,7 @@
           ],
           "games": 13,
           "wins": 6,
-          "playrate": 0.007937,
+          "playrate": 0.007328,
           "winrate": 0.4615
         },
         {
@@ -1928,7 +1938,7 @@
           ],
           "games": 13,
           "wins": 7,
-          "playrate": 0.007937,
+          "playrate": 0.007328,
           "winrate": 0.5385
         },
         {
@@ -1936,30 +1946,50 @@
             "Franks",
             "Vietnamese"
           ],
-          "games": 11,
+          "games": 12,
           "wins": 7,
-          "playrate": 0.006716,
-          "winrate": 0.6364
+          "playrate": 0.006764,
+          "winrate": 0.5833
         },
         {
           "civs": [
             "Armenians",
             "Cumans"
           ],
-          "games": 11,
+          "games": 12,
           "wins": 3,
-          "playrate": 0.006716,
-          "winrate": 0.2727
+          "playrate": 0.006764,
+          "winrate": 0.25
         },
         {
           "civs": [
-            "Persians",
-            "Vietnamese"
+            "Ethiopians",
+            "Franks"
           ],
-          "games": 11,
-          "wins": 7,
-          "playrate": 0.006716,
-          "winrate": 0.6364
+          "games": 10,
+          "wins": 6,
+          "playrate": 0.005637,
+          "winrate": 0.6
+        },
+        {
+          "civs": [
+            "Mongols",
+            "Persians"
+          ],
+          "games": 10,
+          "wins": 6,
+          "playrate": 0.005637,
+          "winrate": 0.6
+        },
+        {
+          "civs": [
+            "Magyars",
+            "Mayans"
+          ],
+          "games": 9,
+          "wins": 4,
+          "playrate": 0.005073,
+          "winrate": 0.4444
         },
         {
           "civs": [
@@ -1968,38 +1998,18 @@
           ],
           "games": 9,
           "wins": 4,
-          "playrate": 0.005495,
+          "playrate": 0.005073,
           "winrate": 0.4444
         },
         {
           "civs": [
-            "Magyars",
-            "Mayans"
+            "Britons",
+            "Saracens"
           ],
-          "games": 8,
-          "wins": 4,
-          "playrate": 0.004884,
-          "winrate": 0.5
-        },
-        {
-          "civs": [
-            "Ethiopians",
-            "Franks"
-          ],
-          "games": 8,
-          "wins": 4,
-          "playrate": 0.004884,
-          "winrate": 0.5
-        },
-        {
-          "civs": [
-            "Mongols",
-            "Persians"
-          ],
-          "games": 8,
+          "games": 9,
           "wins": 5,
-          "playrate": 0.004884,
-          "winrate": 0.625
+          "playrate": 0.005073,
+          "winrate": 0.5556
         },
         {
           "civs": [
@@ -2008,8 +2018,18 @@
           ],
           "games": 8,
           "wins": 5,
-          "playrate": 0.004884,
+          "playrate": 0.00451,
           "winrate": 0.625
+        },
+        {
+          "civs": [
+            "Ethiopians",
+            "Teutons"
+          ],
+          "games": 8,
+          "wins": 7,
+          "playrate": 0.00451,
+          "winrate": 0.875
         },
         {
           "civs": [
@@ -2018,7 +2038,7 @@
           ],
           "games": 8,
           "wins": 5,
-          "playrate": 0.004884,
+          "playrate": 0.00451,
           "winrate": 0.625
         },
         {
@@ -2028,73 +2048,73 @@
           ],
           "games": 8,
           "wins": 5,
-          "playrate": 0.004884,
+          "playrate": 0.00451,
           "winrate": 0.625
-        },
-        {
-          "civs": [
-            "Britons",
-            "Saracens"
-          ],
-          "games": 8,
-          "wins": 4,
-          "playrate": 0.004884,
-          "winrate": 0.5
-        },
-        {
-          "civs": [
-            "Franks",
-            "Mongols"
-          ],
-          "games": 7,
-          "wins": 3,
-          "playrate": 0.004274,
-          "winrate": 0.4286
         }
       ]
     },
     "glade": {
-      "total_appearances": 1214,
+      "total_appearances": 1330,
       "teams": [
-        {
-          "civs": [
-            "Armenians",
-            "Cumans"
-          ],
-          "games": 14,
-          "wins": 9,
-          "playrate": 0.011532,
-          "winrate": 0.6429
-        },
         {
           "civs": [
             "Ethiopians",
             "Magyars"
           ],
-          "games": 14,
-          "wins": 8,
-          "playrate": 0.011532,
-          "winrate": 0.5714
+          "games": 16,
+          "wins": 10,
+          "playrate": 0.01203,
+          "winrate": 0.625
+        },
+        {
+          "civs": [
+            "Armenians",
+            "Cumans"
+          ],
+          "games": 15,
+          "wins": 9,
+          "playrate": 0.011278,
+          "winrate": 0.6
         },
         {
           "civs": [
             "Mongols",
             "Persians"
           ],
-          "games": 12,
-          "wins": 8,
-          "playrate": 0.009885,
-          "winrate": 0.6667
+          "games": 13,
+          "wins": 9,
+          "playrate": 0.009774,
+          "winrate": 0.6923
         },
         {
           "civs": [
             "Britons",
             "Persians"
           ],
+          "games": 11,
+          "wins": 6,
+          "playrate": 0.008271,
+          "winrate": 0.5455
+        },
+        {
+          "civs": [
+            "Ethiopians",
+            "Persians"
+          ],
           "games": 10,
-          "wins": 5,
-          "playrate": 0.008237,
-          "winrate": 0.5
+          "wins": 2,
+          "playrate": 0.007519,
+          "winrate": 0.2
+        },
+        {
+          "civs": [
+            "Britons",
+            "Spanish"
+          ],
+          "games": 10,
+          "wins": 6,
+          "playrate": 0.007519,
+          "winrate": 0.6
         },
         {
           "civs": [
@@ -2103,28 +2123,68 @@
           ],
           "games": 10,
           "wins": 7,
-          "playrate": 0.008237,
+          "playrate": 0.007519,
           "winrate": 0.7
         },
         {
           "civs": [
-            "Britons",
+            "Mayans",
+            "Persians"
+          ],
+          "games": 9,
+          "wins": 3,
+          "playrate": 0.006767,
+          "winrate": 0.3333
+        },
+        {
+          "civs": [
+            "Italians",
             "Spanish"
           ],
           "games": 9,
-          "wins": 5,
-          "playrate": 0.007414,
-          "winrate": 0.5556
+          "wins": 3,
+          "playrate": 0.006767,
+          "winrate": 0.3333
         },
         {
           "civs": [
             "Ethiopians",
-            "Persians"
+            "Mongols"
           ],
           "games": 8,
-          "wins": 2,
-          "playrate": 0.00659,
-          "winrate": 0.25
+          "wins": 7,
+          "playrate": 0.006015,
+          "winrate": 0.875
+        },
+        {
+          "civs": [
+            "Khmer",
+            "Turks"
+          ],
+          "games": 8,
+          "wins": 4,
+          "playrate": 0.006015,
+          "winrate": 0.5
+        },
+        {
+          "civs": [
+            "Ethiopians",
+            "Saracens"
+          ],
+          "games": 8,
+          "wins": 3,
+          "playrate": 0.006015,
+          "winrate": 0.375
+        },
+        {
+          "civs": [
+            "Khmer",
+            "Mayans"
+          ],
+          "games": 8,
+          "wins": 6,
+          "playrate": 0.006015,
+          "winrate": 0.75
         },
         {
           "civs": [
@@ -2133,7 +2193,7 @@
           ],
           "games": 8,
           "wins": 7,
-          "playrate": 0.00659,
+          "playrate": 0.006015,
           "winrate": 0.875
         },
         {
@@ -2143,7 +2203,7 @@
           ],
           "games": 8,
           "wins": 4,
-          "playrate": 0.00659,
+          "playrate": 0.006015,
           "winrate": 0.5
         },
         {
@@ -2153,38 +2213,8 @@
           ],
           "games": 8,
           "wins": 3,
-          "playrate": 0.00659,
+          "playrate": 0.006015,
           "winrate": 0.375
-        },
-        {
-          "civs": [
-            "Italians",
-            "Spanish"
-          ],
-          "games": 8,
-          "wins": 3,
-          "playrate": 0.00659,
-          "winrate": 0.375
-        },
-        {
-          "civs": [
-            "Ethiopians",
-            "Mongols"
-          ],
-          "games": 7,
-          "wins": 6,
-          "playrate": 0.005766,
-          "winrate": 0.8571
-        },
-        {
-          "civs": [
-            "Khmer",
-            "Turks"
-          ],
-          "games": 7,
-          "wins": 4,
-          "playrate": 0.005766,
-          "winrate": 0.5714
         },
         {
           "civs": [
@@ -2193,17 +2223,27 @@
           ],
           "games": 7,
           "wins": 4,
-          "playrate": 0.005766,
+          "playrate": 0.005263,
           "winrate": 0.5714
         },
         {
           "civs": [
-            "Mayans",
-            "Persians"
+            "Koreans",
+            "Spanish"
           ],
           "games": 7,
           "wins": 2,
-          "playrate": 0.005766,
+          "playrate": 0.005263,
+          "winrate": 0.2857
+        },
+        {
+          "civs": [
+            "Ethiopians",
+            "Franks"
+          ],
+          "games": 7,
+          "wins": 2,
+          "playrate": 0.005263,
           "winrate": 0.2857
         },
         {
@@ -2213,63 +2253,43 @@
           ],
           "games": 6,
           "wins": 4,
-          "playrate": 0.004942,
+          "playrate": 0.004511,
           "winrate": 0.6667
-        },
-        {
-          "civs": [
-            "Ethiopians",
-            "Saracens"
-          ],
-          "games": 6,
-          "wins": 2,
-          "playrate": 0.004942,
-          "winrate": 0.3333
-        },
-        {
-          "civs": [
-            "Bohemians",
-            "Mongols"
-          ],
-          "games": 6,
-          "wins": 2,
-          "playrate": 0.004942,
-          "winrate": 0.3333
-        },
-        {
-          "civs": [
-            "Khmer",
-            "Mayans"
-          ],
-          "games": 6,
-          "wins": 4,
-          "playrate": 0.004942,
-          "winrate": 0.6667
-        },
-        {
-          "civs": [
-            "Britons",
-            "Khmer"
-          ],
-          "games": 6,
-          "wins": 1,
-          "playrate": 0.004942,
-          "winrate": 0.1667
         }
       ]
     },
     "hideout": {
-      "total_appearances": 2158,
+      "total_appearances": 2330,
       "teams": [
         {
           "civs": [
             "Persians",
             "Spanish"
           ],
-          "games": 21,
-          "wins": 10,
-          "playrate": 0.009731,
-          "winrate": 0.4762
+          "games": 23,
+          "wins": 11,
+          "playrate": 0.009871,
+          "winrate": 0.4783
+        },
+        {
+          "civs": [
+            "Britons",
+            "Franks"
+          ],
+          "games": 17,
+          "wins": 12,
+          "playrate": 0.007296,
+          "winrate": 0.7059
+        },
+        {
+          "civs": [
+            "Mongols",
+            "Persians"
+          ],
+          "games": 17,
+          "wins": 4,
+          "playrate": 0.007296,
+          "winrate": 0.2353
         },
         {
           "civs": [
@@ -2278,18 +2298,18 @@
           ],
           "games": 16,
           "wins": 10,
-          "playrate": 0.007414,
+          "playrate": 0.006867,
           "winrate": 0.625
         },
         {
           "civs": [
-            "Britons",
-            "Franks"
+            "Italians",
+            "Persians"
           ],
           "games": 15,
-          "wins": 11,
-          "playrate": 0.006951,
-          "winrate": 0.7333
+          "wins": 10,
+          "playrate": 0.006438,
+          "winrate": 0.6667
         },
         {
           "civs": [
@@ -2298,28 +2318,18 @@
           ],
           "games": 15,
           "wins": 9,
-          "playrate": 0.006951,
+          "playrate": 0.006438,
           "winrate": 0.6
         },
         {
           "civs": [
-            "Italians",
-            "Persians"
+            "Ethiopians",
+            "Khmer"
           ],
           "games": 14,
-          "wins": 9,
-          "playrate": 0.006487,
-          "winrate": 0.6429
-        },
-        {
-          "civs": [
-            "Mongols",
-            "Persians"
-          ],
-          "games": 14,
-          "wins": 4,
-          "playrate": 0.006487,
-          "winrate": 0.2857
+          "wins": 7,
+          "playrate": 0.006009,
+          "winrate": 0.5
         },
         {
           "civs": [
@@ -2328,28 +2338,38 @@
           ],
           "games": 14,
           "wins": 9,
-          "playrate": 0.006487,
+          "playrate": 0.006009,
           "winrate": 0.6429
-        },
-        {
-          "civs": [
-            "Ethiopians",
-            "Khmer"
-          ],
-          "games": 13,
-          "wins": 7,
-          "playrate": 0.006024,
-          "winrate": 0.5385
         },
         {
           "civs": [
             "Magyars",
             "Saracens"
           ],
+          "games": 14,
+          "wins": 12,
+          "playrate": 0.006009,
+          "winrate": 0.8571
+        },
+        {
+          "civs": [
+            "Japanese",
+            "Saracens"
+          ],
+          "games": 14,
+          "wins": 9,
+          "playrate": 0.006009,
+          "winrate": 0.6429
+        },
+        {
+          "civs": [
+            "Mongols",
+            "Spanish"
+          ],
           "games": 13,
-          "wins": 11,
-          "playrate": 0.006024,
-          "winrate": 0.8462
+          "wins": 6,
+          "playrate": 0.005579,
+          "winrate": 0.4615
         },
         {
           "civs": [
@@ -2358,7 +2378,7 @@
           ],
           "games": 13,
           "wins": 7,
-          "playrate": 0.006024,
+          "playrate": 0.005579,
           "winrate": 0.5385
         },
         {
@@ -2368,28 +2388,28 @@
           ],
           "games": 12,
           "wins": 7,
-          "playrate": 0.005561,
+          "playrate": 0.00515,
           "winrate": 0.5833
         },
         {
           "civs": [
-            "Mongols",
-            "Spanish"
+            "Dravidians",
+            "Persians"
           ],
           "games": 12,
-          "wins": 6,
-          "playrate": 0.005561,
-          "winrate": 0.5
+          "wins": 5,
+          "playrate": 0.00515,
+          "winrate": 0.4167
         },
         {
           "civs": [
-            "Japanese",
-            "Saracens"
+            "Persians",
+            "Vietnamese"
           ],
-          "games": 12,
-          "wins": 8,
-          "playrate": 0.005561,
-          "winrate": 0.6667
+          "games": 11,
+          "wins": 7,
+          "playrate": 0.004721,
+          "winrate": 0.6364
         },
         {
           "civs": [
@@ -2398,8 +2418,28 @@
           ],
           "games": 11,
           "wins": 7,
-          "playrate": 0.005097,
+          "playrate": 0.004721,
           "winrate": 0.6364
+        },
+        {
+          "civs": [
+            "Britons",
+            "Mongols"
+          ],
+          "games": 10,
+          "wins": 6,
+          "playrate": 0.004292,
+          "winrate": 0.6
+        },
+        {
+          "civs": [
+            "Cumans",
+            "Romans"
+          ],
+          "games": 10,
+          "wins": 7,
+          "playrate": 0.004292,
+          "winrate": 0.7
         },
         {
           "civs": [
@@ -2408,63 +2448,23 @@
           ],
           "games": 10,
           "wins": 7,
-          "playrate": 0.004634,
+          "playrate": 0.004292,
           "winrate": 0.7
         },
         {
           "civs": [
-            "Dravidians",
-            "Persians"
+            "Mongols",
+            "Saracens"
           ],
           "games": 10,
           "wins": 5,
-          "playrate": 0.004634,
+          "playrate": 0.004292,
           "winrate": 0.5
-        },
-        {
-          "civs": [
-            "Cumans",
-            "Japanese"
-          ],
-          "games": 10,
-          "wins": 4,
-          "playrate": 0.004634,
-          "winrate": 0.4
-        },
-        {
-          "civs": [
-            "Saracens",
-            "Spanish"
-          ],
-          "games": 10,
-          "wins": 2,
-          "playrate": 0.004634,
-          "winrate": 0.2
-        },
-        {
-          "civs": [
-            "Khmer",
-            "Spanish"
-          ],
-          "games": 10,
-          "wins": 5,
-          "playrate": 0.004634,
-          "winrate": 0.5
-        },
-        {
-          "civs": [
-            "Cumans",
-            "Romans"
-          ],
-          "games": 9,
-          "wins": 6,
-          "playrate": 0.004171,
-          "winrate": 0.6667
         }
       ]
     },
     "highland": {
-      "total_appearances": 12,
+      "total_appearances": 14,
       "teams": [
         {
           "civs": [
@@ -2473,7 +2473,7 @@
           ],
           "games": 1,
           "wins": 0,
-          "playrate": 0.083333,
+          "playrate": 0.071429,
           "winrate": 0.0
         },
         {
@@ -2483,7 +2483,7 @@
           ],
           "games": 1,
           "wins": 1,
-          "playrate": 0.083333,
+          "playrate": 0.071429,
           "winrate": 1.0
         },
         {
@@ -2493,7 +2493,7 @@
           ],
           "games": 1,
           "wins": 1,
-          "playrate": 0.083333,
+          "playrate": 0.071429,
           "winrate": 1.0
         },
         {
@@ -2503,7 +2503,7 @@
           ],
           "games": 1,
           "wins": 0,
-          "playrate": 0.083333,
+          "playrate": 0.071429,
           "winrate": 0.0
         },
         {
@@ -2513,7 +2513,7 @@
           ],
           "games": 1,
           "wins": 0,
-          "playrate": 0.083333,
+          "playrate": 0.071429,
           "winrate": 0.0
         },
         {
@@ -2523,7 +2523,7 @@
           ],
           "games": 1,
           "wins": 1,
-          "playrate": 0.083333,
+          "playrate": 0.071429,
           "winrate": 1.0
         },
         {
@@ -2533,7 +2533,7 @@
           ],
           "games": 1,
           "wins": 1,
-          "playrate": 0.083333,
+          "playrate": 0.071429,
           "winrate": 1.0
         },
         {
@@ -2543,7 +2543,7 @@
           ],
           "games": 1,
           "wins": 0,
-          "playrate": 0.083333,
+          "playrate": 0.071429,
           "winrate": 0.0
         },
         {
@@ -2553,7 +2553,7 @@
           ],
           "games": 1,
           "wins": 0,
-          "playrate": 0.083333,
+          "playrate": 0.071429,
           "winrate": 0.0
         },
         {
@@ -2563,7 +2563,7 @@
           ],
           "games": 1,
           "wins": 1,
-          "playrate": 0.083333,
+          "playrate": 0.071429,
           "winrate": 1.0
         },
         {
@@ -2573,7 +2573,7 @@
           ],
           "games": 1,
           "wins": 0,
-          "playrate": 0.083333,
+          "playrate": 0.071429,
           "winrate": 0.0
         },
         {
@@ -2583,13 +2583,33 @@
           ],
           "games": 1,
           "wins": 1,
-          "playrate": 0.083333,
+          "playrate": 0.071429,
+          "winrate": 1.0
+        },
+        {
+          "civs": [
+            "Franks",
+            "Vietnamese"
+          ],
+          "games": 1,
+          "wins": 0,
+          "playrate": 0.071429,
+          "winrate": 0.0
+        },
+        {
+          "civs": [
+            "Persians",
+            "Vietnamese"
+          ],
+          "games": 1,
+          "wins": 1,
+          "playrate": 0.071429,
           "winrate": 1.0
         }
       ]
     },
     "hillfort": {
-      "total_appearances": 22,
+      "total_appearances": 24,
       "teams": [
         {
           "civs": [
@@ -2598,7 +2618,7 @@
           ],
           "games": 2,
           "wins": 2,
-          "playrate": 0.090909,
+          "playrate": 0.083333,
           "winrate": 1.0
         },
         {
@@ -2608,7 +2628,7 @@
           ],
           "games": 1,
           "wins": 0,
-          "playrate": 0.045455,
+          "playrate": 0.041667,
           "winrate": 0.0
         },
         {
@@ -2618,7 +2638,7 @@
           ],
           "games": 1,
           "wins": 1,
-          "playrate": 0.045455,
+          "playrate": 0.041667,
           "winrate": 1.0
         },
         {
@@ -2628,7 +2648,7 @@
           ],
           "games": 1,
           "wins": 1,
-          "playrate": 0.045455,
+          "playrate": 0.041667,
           "winrate": 1.0
         },
         {
@@ -2638,7 +2658,7 @@
           ],
           "games": 1,
           "wins": 0,
-          "playrate": 0.045455,
+          "playrate": 0.041667,
           "winrate": 0.0
         },
         {
@@ -2648,7 +2668,7 @@
           ],
           "games": 1,
           "wins": 1,
-          "playrate": 0.045455,
+          "playrate": 0.041667,
           "winrate": 1.0
         },
         {
@@ -2658,7 +2678,7 @@
           ],
           "games": 1,
           "wins": 0,
-          "playrate": 0.045455,
+          "playrate": 0.041667,
           "winrate": 0.0
         },
         {
@@ -2668,7 +2688,7 @@
           ],
           "games": 1,
           "wins": 0,
-          "playrate": 0.045455,
+          "playrate": 0.041667,
           "winrate": 0.0
         },
         {
@@ -2678,7 +2698,7 @@
           ],
           "games": 1,
           "wins": 1,
-          "playrate": 0.045455,
+          "playrate": 0.041667,
           "winrate": 1.0
         },
         {
@@ -2688,7 +2708,7 @@
           ],
           "games": 1,
           "wins": 0,
-          "playrate": 0.045455,
+          "playrate": 0.041667,
           "winrate": 0.0
         },
         {
@@ -2698,7 +2718,7 @@
           ],
           "games": 1,
           "wins": 1,
-          "playrate": 0.045455,
+          "playrate": 0.041667,
           "winrate": 1.0
         },
         {
@@ -2708,7 +2728,7 @@
           ],
           "games": 1,
           "wins": 0,
-          "playrate": 0.045455,
+          "playrate": 0.041667,
           "winrate": 0.0
         },
         {
@@ -2718,7 +2738,7 @@
           ],
           "games": 1,
           "wins": 1,
-          "playrate": 0.045455,
+          "playrate": 0.041667,
           "winrate": 1.0
         },
         {
@@ -2728,7 +2748,7 @@
           ],
           "games": 1,
           "wins": 1,
-          "playrate": 0.045455,
+          "playrate": 0.041667,
           "winrate": 1.0
         },
         {
@@ -2738,7 +2758,7 @@
           ],
           "games": 1,
           "wins": 0,
-          "playrate": 0.045455,
+          "playrate": 0.041667,
           "winrate": 0.0
         },
         {
@@ -2748,7 +2768,7 @@
           ],
           "games": 1,
           "wins": 0,
-          "playrate": 0.045455,
+          "playrate": 0.041667,
           "winrate": 0.0
         },
         {
@@ -2758,7 +2778,7 @@
           ],
           "games": 1,
           "wins": 1,
-          "playrate": 0.045455,
+          "playrate": 0.041667,
           "winrate": 1.0
         },
         {
@@ -2768,7 +2788,7 @@
           ],
           "games": 1,
           "wins": 0,
-          "playrate": 0.045455,
+          "playrate": 0.041667,
           "winrate": 0.0
         },
         {
@@ -2778,7 +2798,7 @@
           ],
           "games": 1,
           "wins": 1,
-          "playrate": 0.045455,
+          "playrate": 0.041667,
           "winrate": 1.0
         },
         {
@@ -2788,53 +2808,83 @@
           ],
           "games": 1,
           "wins": 0,
-          "playrate": 0.045455,
+          "playrate": 0.041667,
           "winrate": 0.0
         }
       ]
     },
     "megarandom": {
-      "total_appearances": 2758,
+      "total_appearances": 3028,
       "teams": [
         {
           "civs": [
             "Mongols",
             "Persians"
           ],
-          "games": 44,
-          "wins": 23,
-          "playrate": 0.015954,
-          "winrate": 0.5227
+          "games": 49,
+          "wins": 25,
+          "playrate": 0.016182,
+          "winrate": 0.5102
         },
         {
           "civs": [
             "Persians",
             "Vietnamese"
           ],
-          "games": 28,
-          "wins": 14,
-          "playrate": 0.010152,
-          "winrate": 0.5
-        },
-        {
-          "civs": [
-            "Ethiopians",
-            "Persians"
-          ],
-          "games": 24,
-          "wins": 9,
-          "playrate": 0.008702,
-          "winrate": 0.375
+          "games": 31,
+          "wins": 17,
+          "playrate": 0.010238,
+          "winrate": 0.5484
         },
         {
           "civs": [
             "Italians",
             "Persians"
           ],
-          "games": 24,
-          "wins": 17,
-          "playrate": 0.008702,
-          "winrate": 0.7083
+          "games": 26,
+          "wins": 18,
+          "playrate": 0.008587,
+          "winrate": 0.6923
+        },
+        {
+          "civs": [
+            "Ethiopians",
+            "Persians"
+          ],
+          "games": 25,
+          "wins": 10,
+          "playrate": 0.008256,
+          "winrate": 0.4
+        },
+        {
+          "civs": [
+            "Britons",
+            "Mongols"
+          ],
+          "games": 23,
+          "wins": 13,
+          "playrate": 0.007596,
+          "winrate": 0.5652
+        },
+        {
+          "civs": [
+            "Persians",
+            "Spanish"
+          ],
+          "games": 22,
+          "wins": 7,
+          "playrate": 0.007266,
+          "winrate": 0.3182
+        },
+        {
+          "civs": [
+            "Mayans",
+            "Persians"
+          ],
+          "games": 21,
+          "wins": 16,
+          "playrate": 0.006935,
+          "winrate": 0.7619
         },
         {
           "civs": [
@@ -2843,38 +2893,38 @@
           ],
           "games": 20,
           "wins": 11,
-          "playrate": 0.007252,
+          "playrate": 0.006605,
           "winrate": 0.55
         },
         {
           "civs": [
-            "Persians",
-            "Spanish"
-          ],
-          "games": 20,
-          "wins": 6,
-          "playrate": 0.007252,
-          "winrate": 0.3
-        },
-        {
-          "civs": [
             "Britons",
-            "Mongols"
+            "Persians"
           ],
           "games": 20,
-          "wins": 10,
-          "playrate": 0.007252,
-          "winrate": 0.5
+          "wins": 8,
+          "playrate": 0.006605,
+          "winrate": 0.4
         },
         {
           "civs": [
             "Ethiopians",
             "Magyars"
           ],
-          "games": 19,
+          "games": 20,
           "wins": 10,
-          "playrate": 0.006889,
-          "winrate": 0.5263
+          "playrate": 0.006605,
+          "winrate": 0.5
+        },
+        {
+          "civs": [
+            "Italians",
+            "Spanish"
+          ],
+          "games": 19,
+          "wins": 8,
+          "playrate": 0.006275,
+          "winrate": 0.4211
         },
         {
           "civs": [
@@ -2883,38 +2933,8 @@
           ],
           "games": 18,
           "wins": 8,
-          "playrate": 0.006526,
+          "playrate": 0.005945,
           "winrate": 0.4444
-        },
-        {
-          "civs": [
-            "Mayans",
-            "Persians"
-          ],
-          "games": 17,
-          "wins": 12,
-          "playrate": 0.006164,
-          "winrate": 0.7059
-        },
-        {
-          "civs": [
-            "Britons",
-            "Persians"
-          ],
-          "games": 17,
-          "wins": 8,
-          "playrate": 0.006164,
-          "winrate": 0.4706
-        },
-        {
-          "civs": [
-            "Italians",
-            "Spanish"
-          ],
-          "games": 17,
-          "wins": 7,
-          "playrate": 0.006164,
-          "winrate": 0.4118
         },
         {
           "civs": [
@@ -2923,7 +2943,7 @@
           ],
           "games": 16,
           "wins": 9,
-          "playrate": 0.005801,
+          "playrate": 0.005284,
           "winrate": 0.5625
         },
         {
@@ -2933,7 +2953,7 @@
           ],
           "games": 16,
           "wins": 9,
-          "playrate": 0.005801,
+          "playrate": 0.005284,
           "winrate": 0.5625
         },
         {
@@ -2943,8 +2963,18 @@
           ],
           "games": 15,
           "wins": 7,
-          "playrate": 0.005439,
+          "playrate": 0.004954,
           "winrate": 0.4667
+        },
+        {
+          "civs": [
+            "Britons",
+            "Magyars"
+          ],
+          "games": 15,
+          "wins": 3,
+          "playrate": 0.004954,
+          "winrate": 0.2
         },
         {
           "civs": [
@@ -2953,7 +2983,7 @@
           ],
           "games": 14,
           "wins": 6,
-          "playrate": 0.005076,
+          "playrate": 0.004624,
           "winrate": 0.4286
         },
         {
@@ -2963,43 +2993,33 @@
           ],
           "games": 14,
           "wins": 6,
-          "playrate": 0.005076,
+          "playrate": 0.004624,
           "winrate": 0.4286
-        },
-        {
-          "civs": [
-            "Britons",
-            "Magyars"
-          ],
-          "games": 14,
-          "wins": 3,
-          "playrate": 0.005076,
-          "winrate": 0.2143
-        },
-        {
-          "civs": [
-            "Dravidians",
-            "Persians"
-          ],
-          "games": 14,
-          "wins": 7,
-          "playrate": 0.005076,
-          "winrate": 0.5
         },
         {
           "civs": [
             "Italians",
             "Mongols"
           ],
-          "games": 13,
+          "games": 14,
           "wins": 3,
-          "playrate": 0.004714,
-          "winrate": 0.2308
+          "playrate": 0.004624,
+          "winrate": 0.2143
+        },
+        {
+          "civs": [
+            "Ethiopians",
+            "Franks"
+          ],
+          "games": 14,
+          "wins": 9,
+          "playrate": 0.004624,
+          "winrate": 0.6429
         }
       ]
     },
     "mountain_dunes": {
-      "total_appearances": 14,
+      "total_appearances": 16,
       "teams": [
         {
           "civs": [
@@ -3008,7 +3028,7 @@
           ],
           "games": 2,
           "wins": 1,
-          "playrate": 0.142857,
+          "playrate": 0.125,
           "winrate": 0.5
         },
         {
@@ -3018,7 +3038,7 @@
           ],
           "games": 1,
           "wins": 0,
-          "playrate": 0.071429,
+          "playrate": 0.0625,
           "winrate": 0.0
         },
         {
@@ -3028,7 +3048,7 @@
           ],
           "games": 1,
           "wins": 1,
-          "playrate": 0.071429,
+          "playrate": 0.0625,
           "winrate": 1.0
         },
         {
@@ -3038,7 +3058,7 @@
           ],
           "games": 1,
           "wins": 0,
-          "playrate": 0.071429,
+          "playrate": 0.0625,
           "winrate": 0.0
         },
         {
@@ -3048,7 +3068,7 @@
           ],
           "games": 1,
           "wins": 1,
-          "playrate": 0.071429,
+          "playrate": 0.0625,
           "winrate": 1.0
         },
         {
@@ -3058,7 +3078,7 @@
           ],
           "games": 1,
           "wins": 0,
-          "playrate": 0.071429,
+          "playrate": 0.0625,
           "winrate": 0.0
         },
         {
@@ -3068,7 +3088,7 @@
           ],
           "games": 1,
           "wins": 1,
-          "playrate": 0.071429,
+          "playrate": 0.0625,
           "winrate": 1.0
         },
         {
@@ -3078,7 +3098,7 @@
           ],
           "games": 1,
           "wins": 1,
-          "playrate": 0.071429,
+          "playrate": 0.0625,
           "winrate": 1.0
         },
         {
@@ -3088,7 +3108,7 @@
           ],
           "games": 1,
           "wins": 0,
-          "playrate": 0.071429,
+          "playrate": 0.0625,
           "winrate": 0.0
         },
         {
@@ -3098,7 +3118,7 @@
           ],
           "games": 1,
           "wins": 1,
-          "playrate": 0.071429,
+          "playrate": 0.0625,
           "winrate": 1.0
         },
         {
@@ -3108,7 +3128,7 @@
           ],
           "games": 1,
           "wins": 0,
-          "playrate": 0.071429,
+          "playrate": 0.0625,
           "winrate": 0.0
         },
         {
@@ -3118,7 +3138,7 @@
           ],
           "games": 1,
           "wins": 1,
-          "playrate": 0.071429,
+          "playrate": 0.0625,
           "winrate": 1.0
         },
         {
@@ -3128,53 +3148,83 @@
           ],
           "games": 1,
           "wins": 0,
-          "playrate": 0.071429,
+          "playrate": 0.0625,
+          "winrate": 0.0
+        },
+        {
+          "civs": [
+            "Magyars",
+            "Turks"
+          ],
+          "games": 1,
+          "wins": 1,
+          "playrate": 0.0625,
+          "winrate": 1.0
+        },
+        {
+          "civs": [
+            "Aztecs",
+            "Chinese"
+          ],
+          "games": 1,
+          "wins": 0,
+          "playrate": 0.0625,
           "winrate": 0.0
         }
       ]
     },
     "nomad": {
-      "total_appearances": 1898,
+      "total_appearances": 2062,
       "teams": [
         {
           "civs": [
             "Persians",
             "Spanish"
           ],
-          "games": 42,
-          "wins": 20,
-          "playrate": 0.022129,
-          "winrate": 0.4762
+          "games": 44,
+          "wins": 22,
+          "playrate": 0.021339,
+          "winrate": 0.5
         },
         {
           "civs": [
             "Italians",
             "Persians"
           ],
-          "games": 28,
-          "wins": 16,
-          "playrate": 0.014752,
-          "winrate": 0.5714
+          "games": 31,
+          "wins": 17,
+          "playrate": 0.015034,
+          "winrate": 0.5484
         },
         {
           "civs": [
             "Persians",
             "Vietnamese"
           ],
-          "games": 26,
-          "wins": 13,
-          "playrate": 0.013699,
-          "winrate": 0.5
+          "games": 30,
+          "wins": 17,
+          "playrate": 0.014549,
+          "winrate": 0.5667
         },
         {
           "civs": [
             "Italians",
             "Spanish"
           ],
-          "games": 23,
+          "games": 24,
           "wins": 11,
-          "playrate": 0.012118,
-          "winrate": 0.4783
+          "playrate": 0.011639,
+          "winrate": 0.4583
+        },
+        {
+          "civs": [
+            "Koreans",
+            "Persians"
+          ],
+          "games": 21,
+          "wins": 9,
+          "playrate": 0.010184,
+          "winrate": 0.4286
         },
         {
           "civs": [
@@ -3183,28 +3233,28 @@
           ],
           "games": 21,
           "wins": 11,
-          "playrate": 0.011064,
+          "playrate": 0.010184,
           "winrate": 0.5238
         },
         {
           "civs": [
-            "Koreans",
+            "Mongols",
             "Persians"
           ],
-          "games": 20,
+          "games": 18,
           "wins": 9,
-          "playrate": 0.010537,
-          "winrate": 0.45
+          "playrate": 0.008729,
+          "winrate": 0.5
         },
         {
           "civs": [
             "Spanish",
             "Vietnamese"
           ],
-          "games": 15,
-          "wins": 12,
-          "playrate": 0.007903,
-          "winrate": 0.8
+          "games": 16,
+          "wins": 13,
+          "playrate": 0.007759,
+          "winrate": 0.8125
         },
         {
           "civs": [
@@ -3213,27 +3263,37 @@
           ],
           "games": 14,
           "wins": 9,
-          "playrate": 0.007376,
+          "playrate": 0.00679,
           "winrate": 0.6429
         },
         {
           "civs": [
-            "Mongols",
-            "Persians"
+            "Huns",
+            "Spanish"
           ],
           "games": 14,
-          "wins": 6,
-          "playrate": 0.007376,
-          "winrate": 0.4286
+          "wins": 7,
+          "playrate": 0.00679,
+          "winrate": 0.5
         },
         {
           "civs": [
             "Koreans",
             "Spanish"
           ],
+          "games": 13,
+          "wins": 9,
+          "playrate": 0.006305,
+          "winrate": 0.6923
+        },
+        {
+          "civs": [
+            "Ethiopians",
+            "Persians"
+          ],
           "games": 12,
           "wins": 8,
-          "playrate": 0.006322,
+          "playrate": 0.00582,
           "winrate": 0.6667
         },
         {
@@ -3243,28 +3303,48 @@
           ],
           "games": 11,
           "wins": 6,
-          "playrate": 0.005796,
+          "playrate": 0.005335,
           "winrate": 0.5455
         },
         {
           "civs": [
-            "Huns",
-            "Spanish"
+            "Mongols",
+            "Vietnamese"
           ],
           "games": 10,
-          "wins": 4,
-          "playrate": 0.005269,
-          "winrate": 0.4
+          "wins": 6,
+          "playrate": 0.00485,
+          "winrate": 0.6
         },
         {
           "civs": [
-            "Ethiopians",
+            "Persians",
+            "Saracens"
+          ],
+          "games": 9,
+          "wins": 6,
+          "playrate": 0.004365,
+          "winrate": 0.6667
+        },
+        {
+          "civs": [
+            "Japanese",
+            "Spanish"
+          ],
+          "games": 9,
+          "wins": 4,
+          "playrate": 0.004365,
+          "winrate": 0.4444
+        },
+        {
+          "civs": [
+            "Britons",
             "Persians"
           ],
-          "games": 10,
-          "wins": 7,
-          "playrate": 0.005269,
-          "winrate": 0.7
+          "games": 8,
+          "wins": 1,
+          "playrate": 0.00388,
+          "winrate": 0.125
         },
         {
           "civs": [
@@ -3273,18 +3353,18 @@
           ],
           "games": 8,
           "wins": 3,
-          "playrate": 0.004215,
+          "playrate": 0.00388,
           "winrate": 0.375
         },
         {
           "civs": [
-            "Mongols",
+            "Japanese",
             "Vietnamese"
           ],
           "games": 8,
-          "wins": 5,
-          "playrate": 0.004215,
-          "winrate": 0.625
+          "wins": 3,
+          "playrate": 0.00388,
+          "winrate": 0.375
         },
         {
           "civs": [
@@ -3293,53 +3373,13 @@
           ],
           "games": 8,
           "wins": 4,
-          "playrate": 0.004215,
+          "playrate": 0.00388,
           "winrate": 0.5
-        },
-        {
-          "civs": [
-            "Malay",
-            "Spanish"
-          ],
-          "games": 8,
-          "wins": 5,
-          "playrate": 0.004215,
-          "winrate": 0.625
-        },
-        {
-          "civs": [
-            "Persians",
-            "Saracens"
-          ],
-          "games": 8,
-          "wins": 6,
-          "playrate": 0.004215,
-          "winrate": 0.75
-        },
-        {
-          "civs": [
-            "Japanese",
-            "Spanish"
-          ],
-          "games": 8,
-          "wins": 4,
-          "playrate": 0.004215,
-          "winrate": 0.5
-        },
-        {
-          "civs": [
-            "Britons",
-            "Persians"
-          ],
-          "games": 7,
-          "wins": 1,
-          "playrate": 0.003688,
-          "winrate": 0.1429
         }
       ]
     },
     "northernisles": {
-      "total_appearances": 122,
+      "total_appearances": 132,
       "teams": [
         {
           "civs": [
@@ -3348,7 +3388,7 @@
           ],
           "games": 3,
           "wins": 3,
-          "playrate": 0.02459,
+          "playrate": 0.022727,
           "winrate": 1.0
         },
         {
@@ -3358,7 +3398,7 @@
           ],
           "games": 2,
           "wins": 1,
-          "playrate": 0.016393,
+          "playrate": 0.015152,
           "winrate": 0.5
         },
         {
@@ -3368,7 +3408,7 @@
           ],
           "games": 2,
           "wins": 1,
-          "playrate": 0.016393,
+          "playrate": 0.015152,
           "winrate": 0.5
         },
         {
@@ -3378,7 +3418,7 @@
           ],
           "games": 2,
           "wins": 0,
-          "playrate": 0.016393,
+          "playrate": 0.015152,
           "winrate": 0.0
         },
         {
@@ -3388,8 +3428,18 @@
           ],
           "games": 2,
           "wins": 2,
-          "playrate": 0.016393,
+          "playrate": 0.015152,
           "winrate": 1.0
+        },
+        {
+          "civs": [
+            "Berbers",
+            "Chinese"
+          ],
+          "games": 2,
+          "wins": 0,
+          "playrate": 0.015152,
+          "winrate": 0.0
         },
         {
           "civs": [
@@ -3398,7 +3448,7 @@
           ],
           "games": 2,
           "wins": 0,
-          "playrate": 0.016393,
+          "playrate": 0.015152,
           "winrate": 0.0
         },
         {
@@ -3408,8 +3458,18 @@
           ],
           "games": 2,
           "wins": 2,
-          "playrate": 0.016393,
+          "playrate": 0.015152,
           "winrate": 1.0
+        },
+        {
+          "civs": [
+            "Britons",
+            "Spanish"
+          ],
+          "games": 2,
+          "wins": 0,
+          "playrate": 0.015152,
+          "winrate": 0.0
         },
         {
           "civs": [
@@ -3418,7 +3478,7 @@
           ],
           "games": 2,
           "wins": 0,
-          "playrate": 0.016393,
+          "playrate": 0.015152,
           "winrate": 0.0
         },
         {
@@ -3428,8 +3488,18 @@
           ],
           "games": 2,
           "wins": 2,
-          "playrate": 0.016393,
+          "playrate": 0.015152,
           "winrate": 1.0
+        },
+        {
+          "civs": [
+            "Dravidians",
+            "Persians"
+          ],
+          "games": 2,
+          "wins": 1,
+          "playrate": 0.015152,
+          "winrate": 0.5
         },
         {
           "civs": [
@@ -3438,7 +3508,7 @@
           ],
           "games": 2,
           "wins": 1,
-          "playrate": 0.016393,
+          "playrate": 0.015152,
           "winrate": 0.5
         },
         {
@@ -3448,7 +3518,7 @@
           ],
           "games": 1,
           "wins": 0,
-          "playrate": 0.008197,
+          "playrate": 0.007576,
           "winrate": 0.0
         },
         {
@@ -3458,7 +3528,7 @@
           ],
           "games": 1,
           "wins": 1,
-          "playrate": 0.008197,
+          "playrate": 0.007576,
           "winrate": 1.0
         },
         {
@@ -3468,7 +3538,7 @@
           ],
           "games": 1,
           "wins": 1,
-          "playrate": 0.008197,
+          "playrate": 0.007576,
           "winrate": 1.0
         },
         {
@@ -3478,7 +3548,7 @@
           ],
           "games": 1,
           "wins": 1,
-          "playrate": 0.008197,
+          "playrate": 0.007576,
           "winrate": 1.0
         },
         {
@@ -3488,7 +3558,7 @@
           ],
           "games": 1,
           "wins": 0,
-          "playrate": 0.008197,
+          "playrate": 0.007576,
           "winrate": 0.0
         },
         {
@@ -3498,7 +3568,7 @@
           ],
           "games": 1,
           "wins": 1,
-          "playrate": 0.008197,
+          "playrate": 0.007576,
           "winrate": 1.0
         },
         {
@@ -3508,53 +3578,23 @@
           ],
           "games": 1,
           "wins": 0,
-          "playrate": 0.008197,
+          "playrate": 0.007576,
           "winrate": 0.0
-        },
-        {
-          "civs": [
-            "Huns",
-            "Mongols"
-          ],
-          "games": 1,
-          "wins": 1,
-          "playrate": 0.008197,
-          "winrate": 1.0
-        },
-        {
-          "civs": [
-            "Huns",
-            "Spanish"
-          ],
-          "games": 1,
-          "wins": 0,
-          "playrate": 0.008197,
-          "winrate": 0.0
-        },
-        {
-          "civs": [
-            "Britons",
-            "Vikings"
-          ],
-          "games": 1,
-          "wins": 1,
-          "playrate": 0.008197,
-          "winrate": 1.0
         }
       ]
     },
     "pilgrims": {
-      "total_appearances": 746,
+      "total_appearances": 812,
       "teams": [
         {
           "civs": [
             "Persians",
             "Spanish"
           ],
-          "games": 14,
-          "wins": 6,
-          "playrate": 0.018767,
-          "winrate": 0.4286
+          "games": 16,
+          "wins": 7,
+          "playrate": 0.019704,
+          "winrate": 0.4375
         },
         {
           "civs": [
@@ -3563,7 +3603,7 @@
           ],
           "games": 9,
           "wins": 7,
-          "playrate": 0.012064,
+          "playrate": 0.011084,
           "winrate": 0.7778
         },
         {
@@ -3571,30 +3611,40 @@
             "Dravidians",
             "Spanish"
           ],
-          "games": 8,
-          "wins": 4,
-          "playrate": 0.010724,
-          "winrate": 0.5
+          "games": 9,
+          "wins": 5,
+          "playrate": 0.011084,
+          "winrate": 0.5556
         },
         {
           "civs": [
             "Italians",
             "Persians"
           ],
-          "games": 7,
+          "games": 8,
           "wins": 3,
-          "playrate": 0.009383,
-          "winrate": 0.4286
+          "playrate": 0.009852,
+          "winrate": 0.375
         },
         {
           "civs": [
             "Italians",
             "Spanish"
           ],
+          "games": 7,
+          "wins": 6,
+          "playrate": 0.008621,
+          "winrate": 0.8571
+        },
+        {
+          "civs": [
+            "Italians",
+            "Malians"
+          ],
           "games": 6,
-          "wins": 5,
-          "playrate": 0.008043,
-          "winrate": 0.8333
+          "wins": 3,
+          "playrate": 0.007389,
+          "winrate": 0.5
         },
         {
           "civs": [
@@ -3603,8 +3653,18 @@
           ],
           "games": 6,
           "wins": 6,
-          "playrate": 0.008043,
+          "playrate": 0.007389,
           "winrate": 1.0
+        },
+        {
+          "civs": [
+            "Persians",
+            "Vietnamese"
+          ],
+          "games": 6,
+          "wins": 2,
+          "playrate": 0.007389,
+          "winrate": 0.3333
         },
         {
           "civs": [
@@ -3613,7 +3673,7 @@
           ],
           "games": 6,
           "wins": 3,
-          "playrate": 0.008043,
+          "playrate": 0.007389,
           "winrate": 0.5
         },
         {
@@ -3623,7 +3683,7 @@
           ],
           "games": 5,
           "wins": 2,
-          "playrate": 0.006702,
+          "playrate": 0.006158,
           "winrate": 0.4
         },
         {
@@ -3633,18 +3693,18 @@
           ],
           "games": 5,
           "wins": 4,
-          "playrate": 0.006702,
+          "playrate": 0.006158,
           "winrate": 0.8
         },
         {
           "civs": [
-            "Persians",
-            "Vietnamese"
+            "Italians",
+            "Wu"
           ],
           "games": 5,
-          "wins": 1,
-          "playrate": 0.006702,
-          "winrate": 0.2
+          "wins": 2,
+          "playrate": 0.006158,
+          "winrate": 0.4
         },
         {
           "civs": [
@@ -3653,18 +3713,18 @@
           ],
           "games": 5,
           "wins": 4,
-          "playrate": 0.006702,
+          "playrate": 0.006158,
           "winrate": 0.8
         },
         {
           "civs": [
-            "Italians",
-            "Malians"
+            "Franks",
+            "Japanese"
           ],
-          "games": 4,
+          "games": 5,
           "wins": 2,
-          "playrate": 0.005362,
-          "winrate": 0.5
+          "playrate": 0.006158,
+          "winrate": 0.4
         },
         {
           "civs": [
@@ -3673,7 +3733,7 @@
           ],
           "games": 4,
           "wins": 0,
-          "playrate": 0.005362,
+          "playrate": 0.004926,
           "winrate": 0.0
         },
         {
@@ -3683,7 +3743,7 @@
           ],
           "games": 4,
           "wins": 3,
-          "playrate": 0.005362,
+          "playrate": 0.004926,
           "winrate": 0.75
         },
         {
@@ -3693,7 +3753,7 @@
           ],
           "games": 4,
           "wins": 3,
-          "playrate": 0.005362,
+          "playrate": 0.004926,
           "winrate": 0.75
         },
         {
@@ -3703,18 +3763,18 @@
           ],
           "games": 4,
           "wins": 1,
-          "playrate": 0.005362,
+          "playrate": 0.004926,
           "winrate": 0.25
         },
         {
           "civs": [
-            "Italians",
-            "Wu"
+            "Khmer",
+            "Persians"
           ],
           "games": 4,
-          "wins": 2,
-          "playrate": 0.005362,
-          "winrate": 0.5
+          "wins": 0,
+          "playrate": 0.004926,
+          "winrate": 0.0
         },
         {
           "civs": [
@@ -3723,34 +3783,24 @@
           ],
           "games": 4,
           "wins": 1,
-          "playrate": 0.005362,
+          "playrate": 0.004926,
           "winrate": 0.25
-        },
-        {
-          "civs": [
-            "Britons",
-            "Persians"
-          ],
-          "games": 4,
-          "wins": 2,
-          "playrate": 0.005362,
-          "winrate": 0.5
-        },
-        {
-          "civs": [
-            "Celts",
-            "Spanish"
-          ],
-          "games": 3,
-          "wins": 1,
-          "playrate": 0.004021,
-          "winrate": 0.3333
         }
       ]
     },
     "seasons": {
-      "total_appearances": 816,
+      "total_appearances": 892,
       "teams": [
+        {
+          "civs": [
+            "Ethiopians",
+            "Magyars"
+          ],
+          "games": 11,
+          "wins": 6,
+          "playrate": 0.012332,
+          "winrate": 0.5455
+        },
         {
           "civs": [
             "Mongols",
@@ -3758,38 +3808,28 @@
           ],
           "games": 11,
           "wins": 5,
-          "playrate": 0.01348,
+          "playrate": 0.012332,
           "winrate": 0.4545
-        },
-        {
-          "civs": [
-            "Ethiopians",
-            "Magyars"
-          ],
-          "games": 10,
-          "wins": 6,
-          "playrate": 0.012255,
-          "winrate": 0.6
         },
         {
           "civs": [
             "Ethiopians",
             "Persians"
           ],
-          "games": 8,
+          "games": 9,
           "wins": 7,
-          "playrate": 0.009804,
-          "winrate": 0.875
+          "playrate": 0.01009,
+          "winrate": 0.7778
         },
         {
           "civs": [
             "Italians",
             "Persians"
           ],
-          "games": 7,
-          "wins": 4,
-          "playrate": 0.008578,
-          "winrate": 0.5714
+          "games": 8,
+          "wins": 5,
+          "playrate": 0.008969,
+          "winrate": 0.625
         },
         {
           "civs": [
@@ -3798,7 +3838,7 @@
           ],
           "games": 7,
           "wins": 4,
-          "playrate": 0.008578,
+          "playrate": 0.007848,
           "winrate": 0.5714
         },
         {
@@ -3808,8 +3848,18 @@
           ],
           "games": 7,
           "wins": 5,
-          "playrate": 0.008578,
+          "playrate": 0.007848,
           "winrate": 0.7143
+        },
+        {
+          "civs": [
+            "Persians",
+            "Spanish"
+          ],
+          "games": 7,
+          "wins": 2,
+          "playrate": 0.007848,
+          "winrate": 0.2857
         },
         {
           "civs": [
@@ -3818,7 +3868,7 @@
           ],
           "games": 6,
           "wins": 5,
-          "playrate": 0.007353,
+          "playrate": 0.006726,
           "winrate": 0.8333
         },
         {
@@ -3828,8 +3878,18 @@
           ],
           "games": 6,
           "wins": 3,
-          "playrate": 0.007353,
+          "playrate": 0.006726,
           "winrate": 0.5
+        },
+        {
+          "civs": [
+            "Khmer",
+            "Mayans"
+          ],
+          "games": 5,
+          "wins": 2,
+          "playrate": 0.005605,
+          "winrate": 0.4
         },
         {
           "civs": [
@@ -3838,7 +3898,7 @@
           ],
           "games": 5,
           "wins": 4,
-          "playrate": 0.006127,
+          "playrate": 0.005605,
           "winrate": 0.8
         },
         {
@@ -3848,7 +3908,7 @@
           ],
           "games": 5,
           "wins": 4,
-          "playrate": 0.006127,
+          "playrate": 0.005605,
           "winrate": 0.8
         },
         {
@@ -3858,18 +3918,8 @@
           ],
           "games": 5,
           "wins": 2,
-          "playrate": 0.006127,
+          "playrate": 0.005605,
           "winrate": 0.4
-        },
-        {
-          "civs": [
-            "Persians",
-            "Spanish"
-          ],
-          "games": 5,
-          "wins": 1,
-          "playrate": 0.006127,
-          "winrate": 0.2
         },
         {
           "civs": [
@@ -3878,7 +3928,7 @@
           ],
           "games": 5,
           "wins": 3,
-          "playrate": 0.006127,
+          "playrate": 0.005605,
           "winrate": 0.6
         },
         {
@@ -3888,18 +3938,18 @@
           ],
           "games": 5,
           "wins": 3,
-          "playrate": 0.006127,
+          "playrate": 0.005605,
           "winrate": 0.6
         },
         {
           "civs": [
-            "Khmer",
-            "Mayans"
+            "Magyars",
+            "Vietnamese"
           ],
-          "games": 4,
-          "wins": 1,
-          "playrate": 0.004902,
-          "winrate": 0.25
+          "games": 5,
+          "wins": 2,
+          "playrate": 0.005605,
+          "winrate": 0.4
         },
         {
           "civs": [
@@ -3908,8 +3958,18 @@
           ],
           "games": 4,
           "wins": 2,
-          "playrate": 0.004902,
+          "playrate": 0.004484,
           "winrate": 0.5
+        },
+        {
+          "civs": [
+            "Lithuanians",
+            "Mongols"
+          ],
+          "games": 4,
+          "wins": 1,
+          "playrate": 0.004484,
+          "winrate": 0.25
         },
         {
           "civs": [
@@ -3918,7 +3978,7 @@
           ],
           "games": 4,
           "wins": 2,
-          "playrate": 0.004902,
+          "playrate": 0.004484,
           "winrate": 0.5
         },
         {
@@ -3928,33 +3988,13 @@
           ],
           "games": 4,
           "wins": 1,
-          "playrate": 0.004902,
-          "winrate": 0.25
-        },
-        {
-          "civs": [
-            "Ethiopians",
-            "Poles"
-          ],
-          "games": 4,
-          "wins": 1,
-          "playrate": 0.004902,
-          "winrate": 0.25
-        },
-        {
-          "civs": [
-            "Mongols",
-            "Turks"
-          ],
-          "games": 4,
-          "wins": 1,
-          "playrate": 0.004902,
+          "playrate": 0.004484,
           "winrate": 0.25
         }
       ]
     },
     "socotra": {
-      "total_appearances": 38,
+      "total_appearances": 40,
       "teams": [
         {
           "civs": [
@@ -3963,7 +4003,7 @@
           ],
           "games": 1,
           "wins": 1,
-          "playrate": 0.026316,
+          "playrate": 0.025,
           "winrate": 1.0
         },
         {
@@ -3973,7 +4013,7 @@
           ],
           "games": 1,
           "wins": 0,
-          "playrate": 0.026316,
+          "playrate": 0.025,
           "winrate": 0.0
         },
         {
@@ -3983,7 +4023,7 @@
           ],
           "games": 1,
           "wins": 0,
-          "playrate": 0.026316,
+          "playrate": 0.025,
           "winrate": 0.0
         },
         {
@@ -3993,7 +4033,7 @@
           ],
           "games": 1,
           "wins": 1,
-          "playrate": 0.026316,
+          "playrate": 0.025,
           "winrate": 1.0
         },
         {
@@ -4003,7 +4043,7 @@
           ],
           "games": 1,
           "wins": 1,
-          "playrate": 0.026316,
+          "playrate": 0.025,
           "winrate": 1.0
         },
         {
@@ -4013,7 +4053,7 @@
           ],
           "games": 1,
           "wins": 0,
-          "playrate": 0.026316,
+          "playrate": 0.025,
           "winrate": 0.0
         },
         {
@@ -4023,7 +4063,7 @@
           ],
           "games": 1,
           "wins": 0,
-          "playrate": 0.026316,
+          "playrate": 0.025,
           "winrate": 0.0
         },
         {
@@ -4033,7 +4073,7 @@
           ],
           "games": 1,
           "wins": 1,
-          "playrate": 0.026316,
+          "playrate": 0.025,
           "winrate": 1.0
         },
         {
@@ -4043,7 +4083,7 @@
           ],
           "games": 1,
           "wins": 1,
-          "playrate": 0.026316,
+          "playrate": 0.025,
           "winrate": 1.0
         },
         {
@@ -4053,7 +4093,7 @@
           ],
           "games": 1,
           "wins": 0,
-          "playrate": 0.026316,
+          "playrate": 0.025,
           "winrate": 0.0
         },
         {
@@ -4063,7 +4103,7 @@
           ],
           "games": 1,
           "wins": 1,
-          "playrate": 0.026316,
+          "playrate": 0.025,
           "winrate": 1.0
         },
         {
@@ -4073,7 +4113,7 @@
           ],
           "games": 1,
           "wins": 0,
-          "playrate": 0.026316,
+          "playrate": 0.025,
           "winrate": 0.0
         },
         {
@@ -4083,7 +4123,7 @@
           ],
           "games": 1,
           "wins": 1,
-          "playrate": 0.026316,
+          "playrate": 0.025,
           "winrate": 1.0
         },
         {
@@ -4093,7 +4133,7 @@
           ],
           "games": 1,
           "wins": 0,
-          "playrate": 0.026316,
+          "playrate": 0.025,
           "winrate": 0.0
         },
         {
@@ -4103,7 +4143,7 @@
           ],
           "games": 1,
           "wins": 0,
-          "playrate": 0.026316,
+          "playrate": 0.025,
           "winrate": 0.0
         },
         {
@@ -4113,7 +4153,7 @@
           ],
           "games": 1,
           "wins": 1,
-          "playrate": 0.026316,
+          "playrate": 0.025,
           "winrate": 1.0
         },
         {
@@ -4123,7 +4163,7 @@
           ],
           "games": 1,
           "wins": 1,
-          "playrate": 0.026316,
+          "playrate": 0.025,
           "winrate": 1.0
         },
         {
@@ -4133,7 +4173,7 @@
           ],
           "games": 1,
           "wins": 0,
-          "playrate": 0.026316,
+          "playrate": 0.025,
           "winrate": 0.0
         },
         {
@@ -4143,7 +4183,7 @@
           ],
           "games": 1,
           "wins": 1,
-          "playrate": 0.026316,
+          "playrate": 0.025,
           "winrate": 1.0
         },
         {
@@ -4153,53 +4193,53 @@
           ],
           "games": 1,
           "wins": 0,
-          "playrate": 0.026316,
+          "playrate": 0.025,
           "winrate": 0.0
         }
       ]
     },
     "steppe": {
-      "total_appearances": 1840,
+      "total_appearances": 2008,
       "teams": [
         {
           "civs": [
             "Mongols",
             "Persians"
           ],
-          "games": 28,
-          "wins": 15,
-          "playrate": 0.015217,
-          "winrate": 0.5357
+          "games": 29,
+          "wins": 16,
+          "playrate": 0.014442,
+          "winrate": 0.5517
         },
         {
           "civs": [
             "Ethiopians",
             "Magyars"
           ],
-          "games": 22,
+          "games": 23,
           "wins": 12,
-          "playrate": 0.011957,
-          "winrate": 0.5455
+          "playrate": 0.011454,
+          "winrate": 0.5217
         },
         {
           "civs": [
             "Persians",
             "Spanish"
           ],
-          "games": 21,
-          "wins": 10,
-          "playrate": 0.011413,
-          "winrate": 0.4762
+          "games": 23,
+          "wins": 11,
+          "playrate": 0.011454,
+          "winrate": 0.4783
         },
         {
           "civs": [
             "Magyars",
             "Mongols"
           ],
-          "games": 17,
-          "wins": 9,
-          "playrate": 0.009239,
-          "winrate": 0.5294
+          "games": 18,
+          "wins": 10,
+          "playrate": 0.008964,
+          "winrate": 0.5556
         },
         {
           "civs": [
@@ -4208,7 +4248,7 @@
           ],
           "games": 15,
           "wins": 7,
-          "playrate": 0.008152,
+          "playrate": 0.00747,
           "winrate": 0.4667
         },
         {
@@ -4216,50 +4256,50 @@
             "Ethiopians",
             "Franks"
           ],
-          "games": 14,
+          "games": 15,
           "wins": 8,
-          "playrate": 0.007609,
-          "winrate": 0.5714
+          "playrate": 0.00747,
+          "winrate": 0.5333
         },
         {
           "civs": [
             "Mongols",
             "Vietnamese"
           ],
-          "games": 13,
+          "games": 14,
           "wins": 6,
-          "playrate": 0.007065,
-          "winrate": 0.4615
+          "playrate": 0.006972,
+          "winrate": 0.4286
         },
         {
           "civs": [
             "Khmer",
             "Mongols"
           ],
-          "games": 13,
+          "games": 14,
           "wins": 5,
-          "playrate": 0.007065,
-          "winrate": 0.3846
+          "playrate": 0.006972,
+          "winrate": 0.3571
         },
         {
           "civs": [
             "Ethiopians",
             "Mongols"
           ],
-          "games": 12,
-          "wins": 7,
-          "playrate": 0.006522,
-          "winrate": 0.5833
+          "games": 13,
+          "wins": 8,
+          "playrate": 0.006474,
+          "winrate": 0.6154
         },
         {
           "civs": [
             "Georgians",
             "Mongols"
           ],
-          "games": 12,
+          "games": 13,
           "wins": 6,
-          "playrate": 0.006522,
-          "winrate": 0.5
+          "playrate": 0.006474,
+          "winrate": 0.4615
         },
         {
           "civs": [
@@ -4268,8 +4308,58 @@
           ],
           "games": 11,
           "wins": 4,
-          "playrate": 0.005978,
+          "playrate": 0.005478,
           "winrate": 0.3636
+        },
+        {
+          "civs": [
+            "Dravidians",
+            "Persians"
+          ],
+          "games": 11,
+          "wins": 6,
+          "playrate": 0.005478,
+          "winrate": 0.5455
+        },
+        {
+          "civs": [
+            "Franks",
+            "Mongols"
+          ],
+          "games": 11,
+          "wins": 5,
+          "playrate": 0.005478,
+          "winrate": 0.4545
+        },
+        {
+          "civs": [
+            "Italians",
+            "Spanish"
+          ],
+          "games": 11,
+          "wins": 9,
+          "playrate": 0.005478,
+          "winrate": 0.8182
+        },
+        {
+          "civs": [
+            "Britons",
+            "Persians"
+          ],
+          "games": 11,
+          "wins": 4,
+          "playrate": 0.005478,
+          "winrate": 0.3636
+        },
+        {
+          "civs": [
+            "Britons",
+            "Mongols"
+          ],
+          "games": 10,
+          "wins": 5,
+          "playrate": 0.00498,
+          "winrate": 0.5
         },
         {
           "civs": [
@@ -4278,28 +4368,28 @@
           ],
           "games": 10,
           "wins": 6,
-          "playrate": 0.005435,
+          "playrate": 0.00498,
           "winrate": 0.6
         },
         {
           "civs": [
             "Italians",
-            "Spanish"
-          ],
-          "games": 10,
-          "wins": 9,
-          "playrate": 0.005435,
-          "winrate": 0.9
-        },
-        {
-          "civs": [
-            "Britons",
             "Persians"
           ],
           "games": 10,
-          "wins": 3,
-          "playrate": 0.005435,
-          "winrate": 0.3
+          "wins": 6,
+          "playrate": 0.00498,
+          "winrate": 0.6
+        },
+        {
+          "civs": [
+            "Huns",
+            "Mongols"
+          ],
+          "games": 10,
+          "wins": 5,
+          "playrate": 0.00498,
+          "winrate": 0.5
         },
         {
           "civs": [
@@ -4308,58 +4398,8 @@
           ],
           "games": 9,
           "wins": 7,
-          "playrate": 0.004891,
+          "playrate": 0.004482,
           "winrate": 0.7778
-        },
-        {
-          "civs": [
-            "Dravidians",
-            "Persians"
-          ],
-          "games": 9,
-          "wins": 5,
-          "playrate": 0.004891,
-          "winrate": 0.5556
-        },
-        {
-          "civs": [
-            "Franks",
-            "Mongols"
-          ],
-          "games": 9,
-          "wins": 4,
-          "playrate": 0.004891,
-          "winrate": 0.4444
-        },
-        {
-          "civs": [
-            "Huns",
-            "Mongols"
-          ],
-          "games": 9,
-          "wins": 4,
-          "playrate": 0.004891,
-          "winrate": 0.4444
-        },
-        {
-          "civs": [
-            "Mayans",
-            "Mongols"
-          ],
-          "games": 8,
-          "wins": 5,
-          "playrate": 0.004348,
-          "winrate": 0.625
-        },
-        {
-          "civs": [
-            "Britons",
-            "Mongols"
-          ],
-          "games": 8,
-          "wins": 3,
-          "playrate": 0.004348,
-          "winrate": 0.375
         }
       ]
     }
