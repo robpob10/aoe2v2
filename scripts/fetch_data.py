@@ -31,6 +31,10 @@ WEEKS_TO_USE = 13
 # raw_match_type 67 = 2v2 RM (controller variant)
 RM_2V2_TYPES = {7, 67}
 
+# Only include matches where the average player ELO meets this floor,
+# matching the live crawl's MIN_ELO=1400 seed filter.
+MIN_AVG_ELO = 1400
+
 
 def get_recent_dumps(n: int) -> list[dict]:
     """Return the N most recent weekly dumps that actually contain data."""
@@ -104,7 +108,7 @@ def main() -> None:
         matches_frames.append(
             pd.read_parquet(
                 matches_path,
-                columns=["game_id", "map", "num_players", "raw_match_type"],
+                columns=["game_id", "map", "num_players", "raw_match_type", "avg_elo"],
             )
         )
         players_frames.append(
@@ -133,7 +137,7 @@ def main() -> None:
         .replace("\n", "\n    ")
     )
 
-    # ── 4. Filter to 2v2 Random Map ────────────────────────────────────────────────
+    # ── 4. Filter to 2v2 Random Map ≥ MIN_AVG_ELO ────────────────────────────────
     matches_2v2 = matches_df[
         (matches_df["num_players"] == 4)
         & (matches_df["raw_match_type"].isin(RM_2V2_TYPES))
@@ -146,6 +150,10 @@ def main() -> None:
             "Falling back to all 4-player games."
         )
         matches_2v2 = four_player.copy()
+
+    before_elo = len(matches_2v2)
+    matches_2v2 = matches_2v2[matches_2v2["avg_elo"] >= MIN_AVG_ELO]
+    print(f"  After ELO ≥ {MIN_AVG_ELO} filter: {len(matches_2v2):,} (dropped {before_elo - len(matches_2v2):,})")
 
     # ── 5. Filter players to relevant games ─────────────────────────────────────────
     print(f"\n  Total player rows: {len(players_df):,}")

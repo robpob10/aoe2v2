@@ -16,7 +16,7 @@ LIVE = Path("public/data/maps_live.json")
 OUTPUT = Path("public/data/maps.json")
 
 TOP_N = 20
-MIN_APPEARANCES = 50
+MIN_APPEARANCES = 50  # applied to true total_appearances (not top-20 game sum)
 
 
 def load(path: Path) -> dict:
@@ -36,11 +36,14 @@ def main() -> None:
         return
 
     # Accumulate (map_key, civ1, civ2) → {games, wins}
+    # and map_key → true total_appearances (summed across sources)
     stats: dict[tuple, dict] = defaultdict(lambda: {"games": 0, "wins": 0})
+    map_total: dict[str, int] = defaultdict(int)
 
     for label, source in [("historical", hist), ("live", live)]:
         n = 0
         for map_key, map_data in source.get("maps", {}).items():
+            map_total[map_key] += map_data.get("total_appearances", 0)
             for team in map_data.get("teams", []):
                 civs = sorted(team["civs"])
                 key = (map_key, civs[0], civs[1])
@@ -56,7 +59,7 @@ def main() -> None:
 
     output_maps: dict = {}
     for map_key, rows in sorted(map_rows.items()):
-        total = sum(r[2] for r in rows)
+        total = map_total[map_key]
         if total < MIN_APPEARANCES:
             continue
         top = sorted(rows, key=lambda r: r[2], reverse=True)[:TOP_N]
@@ -76,7 +79,7 @@ def main() -> None:
 
     output = {
         "crawled_at": live.get("crawled_at") or hist.get("crawled_at", "unknown"),
-        "days_back": live.get("days_back", 30),
+        "days_back": live.get("days_back") or hist.get("days_back", 30),
         "total_matches": live.get("total_matches", 0) + hist.get("total_matches", 0),
         "maps": output_maps,
     }
