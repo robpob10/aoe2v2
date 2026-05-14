@@ -24,7 +24,7 @@ from pathlib import Path
 
 import requests
 
-# ── Config ────────────────────────────────────────────────────────────────────
+# ── Config ────────────────────────────────────────────────────────────────────────────────
 API_BASE = "https://aoe-api.worldsedgelink.com/community/leaderboard"
 LEADERBOARD_ID = 4      # TEAM_RM_RANKED — ratings here are team ELO
 MATCH_TYPE_2V2 = 7      # 2v2 RM ranked
@@ -42,7 +42,7 @@ SESSION = requests.Session()
 SESSION.headers["User-Agent"] = "aoe2v2-stats/1.0 (github.com/robpob10/aoe2v2)"
 
 
-# ── API helpers ───────────────────────────────────────────────────────────────
+# ── API helpers ────────────────────────────────────────────────────────────────────────────
 
 def get_civ_map() -> dict[int, str]:
     resp = SESSION.get(
@@ -94,14 +94,14 @@ def fetch_match_history(profile_id: int) -> list[dict]:
     return resp.json().get("matchHistoryStats", [])
 
 
-# ── State persistence ─────────────────────────────────────────────────────────
+# ── State persistence ──────────────────────────────────────────────────────────────────────────
 
 def load_state() -> tuple[set, dict]:
     if STATE_PATH.exists():
         with open(STATE_PATH, "rb") as f:
             state = pickle.load(f)
         seen = state["seen"]
-        stats = state["stats"]
+        stats = defaultdict(lambda: {"games": 0, "wins": 0}, state["stats"])
         print(f"  Loaded state: {len(seen):,} seen matches, {len(stats):,} civ-pair keys")
     else:
         seen = set()
@@ -116,7 +116,7 @@ def save_state(seen: set, stats: dict) -> None:
         pickle.dump({"seen": seen, "stats": dict(stats)}, f)
 
 
-# ── Output ────────────────────────────────────────────────────────────────────
+# ── Output ────────────────────────────────────────────────────────────────────────────────
 
 def write_output(stats: dict, seen: set, label: str = "") -> None:
     map_rows: dict[str, list] = defaultdict(list)
@@ -160,7 +160,7 @@ def write_output(stats: dict, seen: set, label: str = "") -> None:
     )
 
 
-# ── Main ──────────────────────────────────────────────────────────────────────
+# ── Main ──────────────────────────────────────────────────────────────────────────────────
 
 def main() -> None:
     parser = argparse.ArgumentParser()
@@ -176,13 +176,13 @@ def main() -> None:
         (datetime.datetime.utcnow() - datetime.timedelta(days=DAYS_BACK)).timestamp()
     )
 
-    # 1. Civ metadata ──────────────────────────────────────────────────────────
+    # 1. Civ metadata ─────────────────────────────────────────────────────────────────────────
     print("Fetching civ metadata …")
     civ_map = get_civ_map()
     print(f"  {len(civ_map)} civs loaded")
     time.sleep(REQUEST_DELAY)
 
-    # 2. Full seed player list (team ELO ≥ MIN_ELO) ───────────────────────────
+    # 2. Full seed player list (team ELO ≥ MIN_ELO) ─────────────────────────────────
     print(f"\nFetching team RM leaderboard (team ELO ≥ {MIN_ELO}) …")
     all_ids: list[int] = []
     start = 1
@@ -208,14 +208,14 @@ def main() -> None:
         print("  No players in this batch range — done.")
         return
 
-    # 3. Load (or reset) accumulated state ────────────────────────────────────
+    # 3. Load (or reset) accumulated state ────────────────────────────────────────────
     print()
     if args.fresh:
         STATE_PATH.unlink(missing_ok=True)
         print("  Cleared state cache")
     seen, stats = load_state()
 
-    # 4. Crawl this batch ─────────────────────────────────────────────────────
+    # 4. Crawl this batch ───────────────────────────────────────────────────────────────────
     print(f"\nCrawling match histories ({DAYS_BACK}-day window) …")
     for i, pid in enumerate(batch_ids):
         if i % 100 == 0:
@@ -269,7 +269,7 @@ def main() -> None:
 
     print(f"\n  Batch done. Total unique 2v2 matches so far: {len(seen):,}")
 
-    # 5. Save state + write final output ──────────────────────────────────────
+    # 5. Save state + write final output ────────────────────────────────────────────
     save_state(seen, stats)
     write_output(stats, seen, label=f"ranks {args.start_rank + 1}–{end_rank} of {total_players}")
     print("Done.")
