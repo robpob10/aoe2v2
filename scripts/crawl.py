@@ -29,7 +29,7 @@ API_BASE = "https://aoe-api.worldsedgelink.com/community/leaderboard"
 LEADERBOARD_ID = 4      # TEAM_RM_RANKED — ratings here are team ELO
 MATCH_TYPE_2V2 = 7      # 2v2 RM ranked
 DAYS_BACK = 30          # Rolling window
-MIN_ELO = 1400          # Team ELO floor (leaderboard_id=4 ratings)
+MIN_ELO = 1200          # Team ELO floor (leaderboard_id=4 ratings)
 BATCH_SIZE = 500        # Players per batch
 REQUEST_DELAY = 0.35    # ~170 req/min, under the 200/min rate limit
 MIN_MAP_APPEARANCES = 10
