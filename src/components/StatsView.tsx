@@ -40,6 +40,11 @@ const AOE2_QUOTES = [
   'It depends',
   'Auto-everything',
   "Burgundians? They must be making Cavalier",
+  'vulaluuu vulaluuu',
+  'Larry will surely break the curse this time',
+  'start the game already',
+  'sec, need a wee',
+  'masmorra pls wash your laundry',
 ];
 
 // ── Win rate helpers ──────────────────────────────────────────────────────────
