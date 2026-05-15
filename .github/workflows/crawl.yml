@@ -25,7 +25,15 @@ jobs:
 
       - name: Run live crawler (Relic API, top 10000 players)
         run: python3 scripts/crawl.py --count 10000
-        continue-on-error: true
+
+      - name: Validate output
+        run: |
+          MATCHES=$(python3 -c "import json; print(json.load(open('public/data/maps.json'))['total_matches'])" 2>/dev/null || echo 0)
+          echo "total_matches=$MATCHES"
+          if [ "$MATCHES" -lt 1000 ]; then
+            echo "Too few matches ($MATCHES) — refusing to commit"
+            exit 1
+          fi
 
       - name: Commit and push updated data
         run: |
