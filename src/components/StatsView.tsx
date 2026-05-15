@@ -90,7 +90,6 @@ export default function StatsView() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [quoteIndex] = useState(() => Math.floor(Math.random() * AOE2_QUOTES.length));
-  const [showInfo, setShowInfo] = useState(false);
 
   useEffect(() => {
     fetch('/data/maps.json')
@@ -157,47 +156,6 @@ export default function StatsView() {
 
   return (
     <div className="min-h-screen" style={{ ...pageBg, color: '#eee' }}>
-      {/* ⓘ button */}
-      <button
-        onClick={() => setShowInfo(true)}
-        className="fixed top-3 right-4 z-20 w-6 h-6 flex items-center justify-center rounded-full text-xs font-bold transition-colors"
-        style={{ color: 'rgba(255,255,255,0.35)', border: '1.5px solid rgba(255,255,255,0.2)' }}
-        onMouseEnter={(e) => { (e.currentTarget as HTMLButtonElement).style.color = '#eee'; (e.currentTarget as HTMLButtonElement).style.borderColor = 'rgba(255,255,255,0.5)'; }}
-        onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.color = 'rgba(255,255,255,0.35)'; (e.currentTarget as HTMLButtonElement).style.borderColor = 'rgba(255,255,255,0.2)'; }}
-        aria-label="Info"
-      >
-        i
-      </button>
-
-      {/* Info modal */}
-      {showInfo && (
-        <div
-          className="fixed inset-0 z-30 flex items-center justify-center p-6"
-          style={{ background: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(4px)' }}
-          onClick={() => setShowInfo(false)}
-        >
-          <div
-            className="rounded-xl p-6 max-w-sm w-full space-y-3"
-            style={{ background: '#1a1a2e', border: '1px solid rgba(255,255,255,0.12)' }}
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="font-semibold text-base" style={{ color: '#eee' }}>AoE2 2v2 Team Win Rates</div>
-            <div className="text-sm space-y-2" style={{ color: 'rgba(255,255,255,0.55)' }}>
-              <p>Ranked Random Map · 2v2 · Team ELO ≥ 1200</p>
-              {data && <p>{data.total_matches.toLocaleString()} matches · updated {data.crawled_at}</p>}
-              <p>Data sourced from the Relic/WorldsEdge community API.</p>
-              <p>The highlighted combo is the highest win rate among the 10 most-played pairs on the selected map.</p>
-            </div>
-            <button
-              onClick={() => setShowInfo(false)}
-              className="mt-2 text-xs"
-              style={{ color: 'rgba(255,255,255,0.3)' }}
-            >
-              close
-            </button>
-          </div>
-        </div>
-      )}
 
       <main className="max-w-3xl mx-auto px-4 sm:px-8 py-6 space-y-5">
         {/* Quote banner — contained rectangle */}
