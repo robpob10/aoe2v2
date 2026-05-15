@@ -32,7 +32,7 @@ MIN_ELO = 1200          # Team ELO floor (leaderboard_id=4 ratings)
 BATCH_SIZE = 500        # Players per batch
 REQUEST_DELAY = 0.35    # ~170 req/min, under the 200/min rate limit
 MIN_MAP_APPEARANCES = 10
-TOP_N = 20
+TOP_N = 10
 OUTPUT_PATH = Path("public/data/maps.json")
 STATE_PATH = Path(".data_cache/crawl_state.pkl")
 CHECKPOINT_EVERY = 500

@@ -122,7 +122,7 @@ export default function StatsView() {
     if (!currentMap) return null;
     const top20 = [...currentMap.teams]
       .sort((a, b) => b.playrate - a.playrate)
-      .slice(0, 20);
+      .slice(0, 10);
     return top20.reduce(
       (best, t) => (!best || t.winrate > best.winrate ? t : best),
       null as TeamStat | null,
@@ -186,7 +186,7 @@ export default function StatsView() {
               <p>Ranked Random Map · 2v2 · Team ELO ≥ 1200</p>
               {data && <p>{data.total_matches.toLocaleString()} matches · updated {data.crawled_at}</p>}
               <p>Data sourced from the Relic/WorldsEdge community API.</p>
-              <p>The highlighted combo is the highest win rate among the 20 most-played pairs on the selected map.</p>
+              <p>The highlighted combo is the highest win rate among the 10 most-played pairs on the selected map.</p>
             </div>
             <button
               onClick={() => setShowInfo(false)}
