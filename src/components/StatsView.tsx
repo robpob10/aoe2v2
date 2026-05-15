@@ -89,13 +89,8 @@ export default function StatsView() {
   const [selectedMap, setSelectedMap] = useState<string>('');
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [quoteIndex, setQuoteIndex] = useState(() => Math.floor(Math.random() * AOE2_QUOTES.length));
+  const [quoteIndex] = useState(() => Math.floor(Math.random() * AOE2_QUOTES.length));
   const [showInfo, setShowInfo] = useState(false);
-
-  useEffect(() => {
-    const id = setInterval(() => setQuoteIndex((i) => (i + 1) % AOE2_QUOTES.length), 6000);
-    return () => clearInterval(id);
-  }, []);
 
   useEffect(() => {
     fetch('/data/maps.json')
@@ -188,9 +183,9 @@ export default function StatsView() {
           >
             <div className="font-semibold text-base" style={{ color: '#eee' }}>AoE2 2v2 Team Win Rates</div>
             <div className="text-sm space-y-2" style={{ color: 'rgba(255,255,255,0.55)' }}>
-              <p>Ranked Random Map · 2v2 · ELO ≥ 1400</p>
-              {data && <p>{data.total_matches.toLocaleString()} matches · rolling {data.days_back} days · updated {data.crawled_at}</p>}
-              <p>Data sourced from aoestats.io weekly dumps + live player crawl.</p>
+              <p>Ranked Random Map · 2v2 · Team ELO ≥ 1200</p>
+              {data && <p>{data.total_matches.toLocaleString()} matches · updated {data.crawled_at}</p>}
+              <p>Data sourced from the Relic/WorldsEdge community API.</p>
               <p>The highlighted combo is the highest win rate among the 20 most-played pairs on the selected map.</p>
             </div>
             <button
