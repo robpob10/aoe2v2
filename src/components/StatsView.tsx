@@ -287,7 +287,7 @@ export default function StatsView() {
                     </tr>
                   </thead>
                   <tbody>
-                    {currentMap.teams.map((team) => (
+                    {currentMap.teams.slice(0, 10).map((team) => (
                       <TeamRow
                         key={`${team.civs[0]}-${team.civs[1]}`}
                         team={team}
