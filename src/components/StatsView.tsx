@@ -224,6 +224,9 @@ export default function StatsView() {
             >
               {(bestValueCombo.winrate * 100).toFixed(1)}%
             </span>
+            <span className="ml-3 font-mono text-sm" style={{ color: 'rgba(255,255,255,0.35)' }}>
+              {bestValueCombo.games} games
+            </span>
           </div>
         )}
 
@@ -269,7 +272,7 @@ export default function StatsView() {
                 {formatMapName(selectedMap)}
               </h2>
               <span className="text-xs" style={{ color: 'rgba(255,255,255,0.35)' }}>
-                {currentMap.total_appearances.toLocaleString()} team appearances
+                {currentMap.total_appearances.toLocaleString()} games
               </span>
             </div>
 
@@ -298,11 +301,13 @@ export default function StatsView() {
               </div>
             </div>
 
-            <p className="text-xs mt-3" style={{ color: 'rgba(255,255,255,0.22)' }}>
-              Win rate = games won by this civ pair on this map.
-            </p>
           </div>
         )}
+
+        {/* Footer info bar */}
+        <p className="text-xs text-center pb-4" style={{ color: 'rgba(255,255,255,0.2)' }}>
+          2v2 winrate data from the top 10000 players
+        </p>
       </main>
     </div>
   );
