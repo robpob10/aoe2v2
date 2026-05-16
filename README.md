@@ -10,7 +10,7 @@ Live win-rate stats for 2v2 ranked random map, broken down by map and civ pair.
 
 - Top 10 civ pair combinations by play rate on each map, with win rates
 - The highlighted combo at the top is the highest win rate among the top 10 most-played pairs on the selected map
-- Data from the top 10,000 players on the Team RM leaderboard
+- Data from the top 15,000 players on the Team RM leaderboard
 - All available match history is included (no rolling time window)
 
 ## How the data is collected
@@ -26,7 +26,7 @@ State is persisted in `.data_cache/crawl_state.pkl` between batch runs so dedupl
 
 ### Daily CI
 
-`.github/workflows/crawl.yml` runs the crawler daily at 04:00 UTC, covering the top 10,000 players (up to 6h timeout). The commit is blocked if the crawl fails or produces fewer than 1,000 matches, so a bad run never overwrites good data.
+`.github/workflows/crawl.yml` runs the crawler daily at 04:00 UTC, covering the top 15,000 players (up to 6h timeout). The commit is blocked if the crawl fails or produces fewer than 1,000 matches, so a bad run never overwrites good data.
 
 ### Manual / backfill runs
 

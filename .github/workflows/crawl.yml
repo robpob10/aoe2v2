@@ -23,8 +23,8 @@ jobs:
       - name: Install dependencies
         run: pip install requests
 
-      - name: Run live crawler (Relic API, top 10000 players)
-        run: python3 scripts/crawl.py --count 10000
+      - name: Run live crawler (Relic API, top 15000 players)
+        run: python3 scripts/crawl.py --count 15000
 
       - name: Validate output
         run: |
