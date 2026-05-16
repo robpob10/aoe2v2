@@ -269,7 +269,7 @@ export default function StatsView() {
 
         {/* Footer info bar */}
         <p className="text-xs text-center pb-4" style={{ color: 'rgba(255,255,255,0.2)' }}>
-          2v2 winrate data from the top 15000 players
+          2v2 winrate data · top 15,000 players · ~1250 team ELO and above
         </p>
       </main>
     </div>
