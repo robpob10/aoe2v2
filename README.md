@@ -11,7 +11,7 @@ Live win-rate stats for 2v2 ranked random map, broken down by map and civ pair.
 - Top 10 civ pair combinations by play rate on each map, with win rates
 - The highlighted combo at the top is the highest win rate among the top 10 most-played pairs on the selected map
 - Data from the top 15,000 players on the Team RM leaderboard
-- All available match history is included (no rolling time window)
+- Matches from the last 180 days
 
 ## How the data is collected
 

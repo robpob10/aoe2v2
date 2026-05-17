@@ -28,6 +28,7 @@ import requests
 API_BASE = "https://aoe-api.worldsedgelink.com/community/leaderboard"
 LEADERBOARD_ID = 4      # TEAM_RM_RANKED — ratings here are team ELO
 MATCH_TYPE_2V2 = 7      # 2v2 RM ranked
+DAYS_BACK = 180         # Rolling window
 MIN_ELO = 1200          # Team ELO floor (leaderboard_id=4 ratings)
 BATCH_SIZE = 500        # Players per batch
 REQUEST_DELAY = 0.35    # ~170 req/min, under the 200/min rate limit
@@ -170,6 +171,10 @@ def main() -> None:
                         help="Wipe cached state and start over")
     args = parser.parse_args()
 
+    cutoff_ts = int(
+        (datetime.datetime.utcnow() - datetime.timedelta(days=DAYS_BACK)).timestamp()
+    )
+
     # 1. Civ metadata ─────────────────────────────────────────────────────────────────────────
     print("Fetching civ metadata …")
     civ_map = get_civ_map()
@@ -223,6 +228,8 @@ def main() -> None:
 
         for match in matches:
             if match.get("matchtype_id") != MATCH_TYPE_2V2:
+                continue
+            if match.get("startgametime", 0) < cutoff_ts:
                 continue
             mid = match["id"]
             if mid in seen:
