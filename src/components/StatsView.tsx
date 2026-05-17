@@ -269,7 +269,15 @@ export default function StatsView() {
 
         {/* Footer info bar */}
         <p className="text-xs text-center pb-4" style={{ color: 'rgba(255,255,255,0.2)' }}>
-          2v2 winrate data · top 15,000 players · ~1250 ELO and above · last 180 days
+          2v2 winrate data · top 15,000 players · ~1250 ELO and above · last 180 days ·{' '}
+          <a
+            href="https://github.com/robpob10/aoe2v2"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ color: 'rgba(255,255,255,0.35)', textDecoration: 'underline' }}
+          >
+            GitHub
+          </a>
         </p>
       </main>
     </div>
