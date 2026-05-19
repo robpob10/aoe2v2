@@ -1,5 +1,5 @@
 export interface TeamStat {
-  civs: [string, string];
+  civs: string[];
   games: number;
   wins: number;
   playrate: number;

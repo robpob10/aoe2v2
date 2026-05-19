@@ -23,10 +23,10 @@ jobs:
       - name: Install dependencies
         run: pip install requests
 
-      - name: Run live crawler (Relic API, top 15000 players)
-        run: python3 scripts/crawl.py --count 15000
+      - name: Run 2v2 crawler (Relic API, top 15000 players)
+        run: python3 scripts/crawl.py --mode 2v2 --count 15000
 
-      - name: Validate output
+      - name: Validate 2v2 output
         run: |
           MATCHES=$(python3 -c "import json; print(json.load(open('public/data/maps.json'))['total_matches'])" 2>/dev/null || echo 0)
           echo "total_matches=$MATCHES"
@@ -35,11 +35,15 @@ jobs:
             exit 1
           fi
 
+      - name: Run 3v3 crawler (Relic API, top 15000 players)
+        run: python3 scripts/crawl.py --mode 3v3 --count 15000
+        continue-on-error: true
+
       - name: Commit and push updated data
         run: |
           git config user.name  'github-actions[bot]'
           git config user.email 'github-actions[bot]@users.noreply.github.com'
-          git add public/data/maps.json
+          git add public/data/maps.json public/data/maps_3v3.json
           if git diff --staged --quiet; then
             echo "No changes — skipping commit"
           else

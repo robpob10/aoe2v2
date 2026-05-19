@@ -62,6 +62,19 @@ function winRateColor(pct: number): string {
 
 // ── Sub-components ────────────────────────────────────────────────────────────
 
+function CivList({ civs }: { civs: string[] }) {
+  return (
+    <>
+      {civs.map((civ, i) => (
+        <span key={civ}>
+          {i > 0 && <span style={{ color: 'rgba(255,255,255,0.3)', margin: '0 3px' }}>+</span>}
+          {civ}
+        </span>
+      ))}
+    </>
+  );
+}
+
 function TeamRow({ team }: { team: TeamStat }) {
   const winPct = team.winrate * 100;
 
@@ -73,9 +86,7 @@ function TeamRow({ team }: { team: TeamStat }) {
       onMouseLeave={(e) => { (e.currentTarget as HTMLTableRowElement).style.background = ''; }}
     >
       <td className="py-2.5 pl-4 pr-2 font-medium text-sm" style={{ color: '#eee' }}>
-        {team.civs[0]}
-        <span style={{ color: 'rgba(255,255,255,0.3)', margin: '0 3px' }}>+</span>
-        {team.civs[1]}
+        <CivList civs={team.civs} />
       </td>
       <td className="py-2.5 px-3 text-right font-mono tabular-nums text-sm" style={{ color: 'rgba(255,255,255,0.45)' }}>
         {team.games}
@@ -89,7 +100,7 @@ function TeamRow({ team }: { team: TeamStat }) {
 
 // ── Main component ────────────────────────────────────────────────────────────
 
-export default function StatsView() {
+export default function StatsView({ dataUrl = '/data/maps.json', footer }: { dataUrl?: string; footer?: string }) {
   const [data, setData] = useState<StatsData | null>(null);
   const [selectedMap, setSelectedMap] = useState<string>('');
   const [loading, setLoading] = useState(true);
@@ -97,7 +108,7 @@ export default function StatsView() {
   const [quoteIndex] = useState(() => Math.floor(Math.random() * AOE2_QUOTES.length));
 
   useEffect(() => {
-    fetch('/data/maps.json')
+    fetch(dataUrl)
       .then((r) => {
         if (!r.ok) throw new Error('Data file not found — run: python3 scripts/crawl.py');
         return r.json();
@@ -177,9 +188,7 @@ export default function StatsView() {
         {bestValueCombo && (
           <div className="text-center py-1">
             <span className="text-lg font-semibold" style={{ color: '#c8cdd2' }}>
-              {bestValueCombo.civs[0]}
-              <span style={{ color: 'rgba(255,255,255,0.25)', margin: '0 8px' }}>+</span>
-              {bestValueCombo.civs[1]}
+              <CivList civs={bestValueCombo.civs} />
             </span>
             <span
               className="ml-4 font-mono font-bold text-lg"
@@ -269,7 +278,7 @@ export default function StatsView() {
 
         {/* Footer info bar */}
         <p className="text-xs text-center pb-4" style={{ color: 'rgba(255,255,255,0.2)' }}>
-          2v2 winrate data · top 15,000 players · ~1250 ELO and above · last 180 days ·{' '}
+          {footer ?? '2v2 winrate data · top 15,000 players · ~1250 ELO and above · last 180 days'} ·{' '}
           <a
             href="https://github.com/robpob10/aoe2v2"
             target="_blank"
