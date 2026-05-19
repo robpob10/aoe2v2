@@ -1,9 +1,14 @@
-name: Crawl AoE2 2v2 data
+name: Crawl AoE2 match data
 
 on:
   schedule:
     - cron: '0 4 * * *'   # Daily at 04:00 UTC
-  workflow_dispatch:        # Allow manual trigger from GitHub Actions UI
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'Mode to crawl (leave blank for auto)'
+        required: false
+        default: ''
 
 permissions:
   contents: write
@@ -23,31 +28,46 @@ jobs:
       - name: Install dependencies
         run: pip install requests
 
-      - name: Run 2v2 crawler (Relic API, top 15000 players)
-        run: python3 scripts/crawl.py --mode 2v2 --count 15000
-
-      - name: Validate 2v2 output
+      - name: Determine crawl mode
+        id: mode
         run: |
-          MATCHES=$(python3 -c "import json; print(json.load(open('public/data/maps.json'))['total_matches'])" 2>/dev/null || echo 0)
+          if [ -n "${{ github.event.inputs.mode }}" ]; then
+            MODE="${{ github.event.inputs.mode }}"
+          elif [ $(( $(date +%-d) % 2 )) -eq 0 ]; then
+            MODE="3v3"
+          else
+            MODE="2v2"
+          fi
+          echo "mode=$MODE" >> $GITHUB_OUTPUT
+          echo "Crawl mode: $MODE"
+
+      - name: Run crawler (Relic API, top 15000 players)
+        run: python3 scripts/crawl.py --mode ${{ steps.mode.outputs.mode }} --count 15000
+
+      - name: Validate output
+        run: |
+          MODE="${{ steps.mode.outputs.mode }}"
+          FILE="public/data/maps.json"
+          [ "$MODE" = "3v3" ] && FILE="public/data/maps_3v3.json"
+          MATCHES=$(python3 -c "import json; print(json.load(open('$FILE'))['total_matches'])" 2>/dev/null || echo 0)
           echo "total_matches=$MATCHES"
           if [ "$MATCHES" -lt 1000 ]; then
             echo "Too few matches ($MATCHES) — refusing to commit"
             exit 1
           fi
 
-      - name: Run 3v3 crawler (Relic API, top 15000 players)
-        run: python3 scripts/crawl.py --mode 3v3 --count 15000
-        continue-on-error: true
-
       - name: Commit and push updated data
         run: |
+          MODE="${{ steps.mode.outputs.mode }}"
+          FILE="public/data/maps.json"
+          [ "$MODE" = "3v3" ] && FILE="public/data/maps_3v3.json"
           git config user.name  'github-actions[bot]'
           git config user.email 'github-actions[bot]@users.noreply.github.com'
-          git add public/data/maps.json public/data/maps_3v3.json
+          git add "$FILE"
           if git diff --staged --quiet; then
             echo "No changes — skipping commit"
           else
-            git commit -m "chore: update match data [skip ci]"
+            git commit -m "chore: update $MODE match data [skip ci]"
             git pull --rebase origin main
             git push
           fi
